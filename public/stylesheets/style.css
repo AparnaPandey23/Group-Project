@@ -15,3 +15,9 @@ a {
 #childList ul {
     width: 100%;
 }
+
+
+#childList ul li:first-child {
+    background-color: var(--highlight-color);
+    color: white;
+}
