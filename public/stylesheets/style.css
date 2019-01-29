@@ -12,3 +12,6 @@ a {
 }
 
 /*Child list*/
+#childList ul {
+    width: 100%;
+}
