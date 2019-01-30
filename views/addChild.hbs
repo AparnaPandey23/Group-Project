@@ -8,12 +8,26 @@
     <div class="col-12 col-md-4">
     
     <div class="card">
+        <form role="form" id="add-child-form">
         <img class="card-img-top" src="..." alt="Card image cap">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
+        <form class="form-horizontal text-center" role="form" id="log-form">
+            <div class="form-group mt">
+            <label for="inputUsername" class="control-label">Username</label>
+            </div>
+            <input type="text" class="form-control input-lg required" id="inputUsername" placeholder="@username">
+
+        <div class="form-group">
+            <label for="inputPassword" class="control-label">Password</label>
+            </div>
+                <input type="password" class="form-control input-lg required" id="inputPassword"
+                       placeholder="Password">
+           
+         
+        <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </div>
+    </form>
+        </form>
 </div>
     </div>
     <div class="d-none d-md-block col-md-4"></div>
