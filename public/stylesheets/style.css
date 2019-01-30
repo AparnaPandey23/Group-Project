@@ -61,3 +61,12 @@ a {
 #add-child-form div.input-group label{
    width: 100%;
 }
+
+#add-child-form-2 > div:nth-child(2) div{
+    padding: 0;
+}
+
+#add-child-form-2 > div:nth-child(2) {
+    width: 100%;
+    margin: auto 0;
+}
