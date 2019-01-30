@@ -10,23 +10,43 @@
     <div class="card">
         <form role="form" id="add-child-form">
         <img class="card-img-top" src="..." alt="Card image cap">
-        <form class="form-horizontal text-center" role="form" id="log-form">
-            <div class="form-group mt">
-            <label for="inputUsername" class="control-label">Username</label>
-            </div>
-            <input type="text" class="form-control input-lg required" id="inputUsername" placeholder="@username">
-
+            
+            <input type="text" class="form-control input-lg required" id="inputName" placeholder="Name">
+        
+            <div class="form-row">
+                <div class="col-4">
+                    <label class="my-1 mr-2">Date of Birth</label></div>
+                <div class="col-2">
+                  <input type="text" class="form-control" placeholder="Day">
+                </div>
+                <div class="col-3">
+                  <select class="custom-select mr-sm-2" id="monthSelect">
+                    <option selected>Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="3">April</option>
+                    <option value="3">May</option>
+                    <option value="3">June</option>
+                    <option value="3">July</option>
+                    <option value="3">August</option>
+                    <option value="3">September</option>
+                    <option value="3">October</option>
+                    <option value="3">November</option>
+                    <option value="3">December</option>
+                  </select>
+                </div>
+                <div class="col-3">
+                  <input type="text" class="form-control" placeholder="Year">
+                </div>
+              </div>
+            
+            <input type="text" class="form-control input-lg required" id="inputRoom" placeholder="Room">
+            <input type="text" class="form-control input-lg required" id="inputParent" placeholder="Parent's Name">
+        
         <div class="form-group">
-            <label for="inputPassword" class="control-label">Password</label>
+                <button type="submit" class="btn btn-primary">Add Child</button>
             </div>
-                <input type="password" class="form-control input-lg required" id="inputPassword"
-                       placeholder="Password">
-           
-         
-        <div class="form-group">
-                <button type="submit" class="btn btn-primary">Create Account</button>
-            </div>
-    </form>
         </form>
 </div>
     </div>
