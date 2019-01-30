@@ -49,6 +49,11 @@ a {
 
 }
 
+#add-child-form div.input-group{
+   margin: 0;
+}
+
+
 #add-child-form div.input-group div{
    padding: 0;
 }
