@@ -25,6 +25,8 @@ a {
 /*Add Child*/
 #add-child-form button {
     float: right;
+    background-color: var(--highlight-color);
+    border-color: var(--highlight-color);
 }
 
 #add-child-form {
