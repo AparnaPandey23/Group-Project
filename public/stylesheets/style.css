@@ -39,9 +39,8 @@ a {
     margin: 0;
 }
 
-#add-child-form button {
+#add-child-form-2 button {
     float: right;
-    margin: 2%;
 }
 
 #add-child-form div.form-row div:first-child{
