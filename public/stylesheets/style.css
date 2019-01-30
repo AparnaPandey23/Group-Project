@@ -43,3 +43,16 @@ a {
     float: right;
     margin: 2%;
 }
+
+#add-child-form div.form-row div:first-child{
+    background-color: red;
+
+}
+
+#add-child-form div.input-group div{
+   padding: 0;
+}
+
+#add-child-form div.input-group label{
+   width: 100%;
+}

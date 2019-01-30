@@ -12,15 +12,20 @@
          <div class="container"> <img class="card-img-top" src="images/placeholder.png" alt="Add picture"></div>
             <div class="container">
             <input type="text" class="form-control input-lg required" id="inputName" placeholder="Name">
-        
-            <div class="form-row">
-                <div class="col-4">
-                    <label class="my-1 mr-2">Date of Birth</label></div>
-                <div class="col-2">
-                  <input type="text" class="form-control" placeholder="Day">
+                
+                
+                
+                
+                
+                <div class="input-group mb-3 row">
+  <div class="input-group-prepend col-4">
+    <label class="input-group-text" for="monthSelect">Date of Birth</label>
+  </div>
+                    <div class="col-2">
+                  <input type="text" class="form-control" placeholder="Day" id="daySelect">
                 </div>
-                <div class="col-3">
-                  <select class="custom-select mr-sm-2" id="monthSelect">
+                    <div class="col-3">
+    <select class="custom-select" id="monthSelect">
                     <option selected>Month</option>
                     <option value="1">January</option>
                     <option value="2">February</option>
@@ -35,12 +40,17 @@
                     <option value="3">November</option>
                     <option value="3">December</option>
                   </select>
-                </div>
-                <div class="col-3">
+                    </div>
+                    <div class="col-3">
                   <input type="text" class="form-control" placeholder="Year">
                 </div>
-              </div>
-            
+                    
+</div>
+                
+                
+                
+                
+                
             <input type="text" class="form-control input-lg required" id="inputRoom" placeholder="Room">
             <input type="text" class="form-control input-lg required" id="inputParent" placeholder="Parent's Name">
         
