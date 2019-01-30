@@ -23,53 +23,19 @@ a {
 }
 
 /*Add Child*/
-#add-child-form > div:first-child{
-    padding: 0;
-}
-
-#add-child-form > div:nth-child(2){
-    padding: 2%;
-}
-
-#add-child-form input {
-    margin: 3% auto;
-}
-
-#add-child-form div.form-group {
-    margin: 0;
-}
-
-#add-child-form-2 button {
+#add-child-form button {
     float: right;
 }
 
-#add-child-form div.form-row div:first-child{
-    background-color: red;
-
-}
-
-#add-child-form div.input-group{
-   margin: 0;
-}
-
-
-#add-child-form div.input-group div{
-   padding: 0;
-}
-
-#add-child-form div.input-group label{
-   width: 100%;
-}
-
-#add-child-form-2 {
+#add-child-form {
     padding: 2%;
 }
-#add-child-form-2 > div:nth-child(2) div{
+#add-child-form > div:nth-child(2) div{
     padding: 0;
     margin-bottom: 3%;
 }
 
-#add-child-form-2 > div:nth-child(2) {
+#add-child-form > div:nth-child(2) {
     width: 100%;
     margin: auto 0;
 }
