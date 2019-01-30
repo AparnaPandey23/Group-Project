@@ -62,8 +62,12 @@ a {
    width: 100%;
 }
 
+#add-child-form-2 {
+    padding: 2%;
+}
 #add-child-form-2 > div:nth-child(2) div{
     padding: 0;
+    margin-bottom: 3%;
 }
 
 #add-child-form-2 > div:nth-child(2) {
