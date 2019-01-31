@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.min.js"></script>
+	<script src="/javascripts/auth.js"></script>
+	<script src="/javascripts/BannerJava.js"></script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="833979721561-m5oa0pokh6dddpn5ukls6rao7k8282vn.apps.googleusercontent.com">
+<div><a href="#" onclick="signOut();">Sign out</a></div>
+
     <title>{{title}}</title>
       <!--    Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -10,6 +18,7 @@
       
 <!--      Custom Stylesheet-->
     <link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="/javascripts/auth.js"></script>
   </head>
   <body>
     {{{body}}}
