@@ -1,3 +1,7 @@
+:root{
+    --highlight-color: #F8B500;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -5,4 +9,35 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+/*Child List*/
+#childList ul {
+    width: 100%;
+}
+
+
+#childList ul li:first-child {
+    background-color: var(--highlight-color);
+    color: white;
+}
+
+/*Add Child*/
+#add-child-form button {
+    float: right;
+    background-color: var(--highlight-color);
+    border-color: var(--highlight-color);
+}
+
+#add-child-form {
+    padding: 2%;
+}
+#add-child-form > div:nth-child(2) div{
+    padding: 0;
+    margin-bottom: 3%;
+}
+
+#add-child-form > div:nth-child(2) {
+    width: 100%;
+    margin: auto 0;
 }

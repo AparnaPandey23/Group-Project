@@ -9,6 +9,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET child list page. */
+router.get('/children', function(req, res, next) {
+  res.render('childList', { title: 'Children' });
+});
+
+/* GET add child page. */
+router.get('/addChild', function(req, res, next) {
+  res.render('addChild', { title: 'New Child' });
+});
 
 router.get('/feed', function(req, res, next) {
 
@@ -32,6 +41,5 @@ function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
 }
-
 
 module.exports = router;
