@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet"/>
+     <!--Let browser know website is optimized for mobile-->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AppName | Login</title>
+    <link rel="stylesheet" href="login-style.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+ 
+</head>
+<body>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large pink lighten-4">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating pink "><i class="material-icons">insert_chart</i></a></li>
+      <li><a class="btn-floating pink lighten-1"><i class="material-icons">format_quote</i></a></li>
+      <li><a class="btn-floating pink lighten-2"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating pink lighten-3"><i class="material-icons">attach_file</i></a></li>
+    </ul>
+</div>
+
+    <div class="container">
+        <form action="">
+           <div class="con">
+           <header class="head-form">
+               <!-- Logo Group -->
+               <img src="initial.svg" id="baby1" class="center-align"  >
+              <h2>App Name Woo!</h2>
+              <!--     A welcome message or an explanation of the login form -->
+              <p>Lorem ipsum dolor, sit amet</p>
+           </header>
+           <!--     End  header Content  -->
+           <br>
+           <div class="field-set">
+               <h2>Log In</h2>
+               <!--     A welcome message or an explanation of the login form -->
+               <p>login here using your username and password</p>
+               <br>
+              <!--   user name -->
+              <span class="input-item">
+                 <i class="material-icons prefix">face</i>
+                 <input class="form-input active validate" id="txt-input" type="text" placeholder="@UserName" required/>
+               </span>
+              <br><br>        
+           <!--   Password --> 
+              <span class="input-item">
+                <i class="material-icons prefix">lock_outline</i>
+              <!--   Password Input-->
+              <input class="form-input materialize-textarea validate" type="password" placeholder="Password" id="pwd"  name="password" required>
+            </span>
+              
+            <a class="waves-effect waves-light submits btn login" class="log-in" id="login" href="#"  >Log In</a>
+              <!-- <button class="log-in" id="login" onclick="wavingBaby()"> Log In </button> -->
+            
+           </div>
+
+           <div class="other">
+        <!--      Forgot Password button-->
+              <!-- <button class="btn submits frgt-pass" onclick="location.href = './forgot-pass.html';">Forgot-Password <i class="fas fa-question-circle"></i></button> -->
+              <a class="waves-effect waves-light submits frgt-pass btn "  href="./forgot-pass.html"><i class="material-icons right">help</i>Forgot-Password</a>
+              <!--     Sign Up button -->
+              <a class="waves-effect waves-light submits sign-up btn"  href="./registration-page.html"><i class="material-icons right">person_add</i>Sign Up! </a>
+              <!-- <button class="btn submits sign-up" onclick="location.href = './registration-page.html';">Sign Up   <i class="material-icons">person_add</i> -->
+              </button>
+           </div>
+          </div>
+        </form>
+        </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      
+     <script src="animate.js"></script> 
+</body>
+</html>

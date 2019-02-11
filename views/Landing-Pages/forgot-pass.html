@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet"/>
+     <!--Let browser know website is optimized for mobile-->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AppName | Forgot-Password</title>
+    <link rel="stylesheet" href="forgot-pass-style.css">
+
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+
+ 
+</head>
+<body>
+    <div class="container">
+        <form>
+           <div class="con">
+           <header class="head-form">
+               <!-- Logo Group -->
+               <img src="initial.svg" id="baby1" class="center-align"  >
+              <h2>App Name Woo!</h2>
+              <!--     A welcome message or an explanation of the login form -->
+              <p>Lorem ipsum dolor, sit amet</p>
+           </header>
+           <!--     End  header Content  -->
+           <div class="field-set">
+               <h2>Forgot Your Password?</h2>
+               <!--     A welcome message or an explanation of the login form -->
+               <p>No Problem! Just enter your registered email address below and wait for an email from us. Reset your password and you are good to go!</p>
+               <br>
+               <span class="input-item">
+                <i class="material-icons prefix">email</i>
+              <!--   Password Input-->
+              <input class="form-input materialize-textarea" type="email" placeholder="Email" id="email" required>
+            </span>
+              <!-- <button class="log-in" id="login" onclick="wavingBaby()"><i class="material-icons right">send</i>Send Confirmation Email </button> -->
+              <a class="waves-effect waves-light submits btn login" href="#" onclick="Materialize.toast('Email Sent',2000,'rounded')" ><i class="material-icons right" >send</i>Send Confirmation Email </a>
+
+            
+        <!--     Back button-->
+            <!-- <button class="btn submits back" onclick="location.href = './login-page.html';"> Back</button> -->
+            <a class="waves-effect waves-light submits back btn"  href="./login-page.html"><i class="material-icons left">arrow_back</i>Back</a>
+          </div>
+           </div>
+        </form>
+        </div>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</body>
+</html>
