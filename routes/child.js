@@ -34,6 +34,25 @@ router.post('/addchild', function(req, res, next){
 
     });
 });
+// will get every child in the database will have to change this to prevent this from happning 
+router.get('/getchild'
+           , function(req, res, next)
+           {
+    Child.find({userid:req.query.userid}, function (err,child_fname) {
+        if (err)
+            res.send(err);
+        res.json(child_fname);
+    });
+});
 
+// deleate the Child Request need to pass in the id of the child to be deleated
+router.delete('/delchild/:id', function(req, res ,next){
+    var id = req.params.id; 
+    Child.remove({_id:id}, function(err, child_fname){ /*Deleates the Comment by Id*/
+        if(err)
+            res.send(err);
+        res.json(child_fname); /* Returns the list of comments */
+    });
+});
 
 module.exports = router;

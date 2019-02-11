@@ -5,7 +5,7 @@ $(document).ready(
          */
         $("#add-child-form").submit(function (event) {
             event.preventDefault();
-	var date = event.target.inputDay.value + event.target.inputMonth.value + event.target.inputYear.value;
+	var date = event.target.inputDay.value +"/"+ event.target.inputMonth.value +"/"+ event.target.inputYear.value;
             $.ajax({
                 type: 'POST',
                 url: '/child/addchild',
@@ -29,3 +29,4 @@ $(document).ready(
             });
         }); 
     });
+
