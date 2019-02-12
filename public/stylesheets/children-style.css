@@ -1,9 +1,7 @@
 #log-form span {
     margin: 5px;
 }
-/*
 
-#test {
-    background-color: white;
-    height: 100%;
-}*/
+#log-form ul {
+    width: 100%;
+}
