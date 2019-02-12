@@ -1,43 +1,60 @@
-<div class="col-md-8 col-md-offset-2">
-    <h2>Register new account</h2>
-    <form class="form-horizontal" role="form" id="reg-form">
-        <div class="form-group mt">
-            <div class="col-sm-10 col-sm-offset-2">
-            <div class="col-sm-3">
-                <label for="inputUsername" class="control-label">Username</label>
-            </div>
-            <div class="col-sm-9">
-                <input type="text" class="form-control input-lg required" id="inputUsername" placeholder="@username">
-            </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-            <div class="col-sm-3">
-                <label for="inputPassword" class="control-label">Password</label>
-            </div>
-            <div class="col-sm-9">
-                <input type="password" class="form-control input-lg required" id="inputPassword"
-                       placeholder="Password">
-            </div>
-        </div>
-	<div class="form-group">
-            <div class="col-sm-10 col-sm-offset-2">
-            <div class="col-sm-3">
-                <label for="inputEmail " class="control-label">Email</label>
-            </div>
-             <div class="col-sm-15">
-                <input type="Email" class="form-control input-lg required" id="inputEmail"
-                       placeholder="Email">
-            </div>        </div>
 
-        <div class="form-group">
-            <div class="row col-sm-offset-2 col-sm-10 mt">
-                <button type="submit" class="btn btn-warning btn-lg">Create Account</button>
-            </div>
+    {{!-- <title>AppName | Regirstration</title>
+    <link rel="stylesheet" href="registration-style.css"> --}}
+
+    <div class="container">
+        <form>
+           <div class="con">
+           <header class="head-form">
+               <!-- Logo Group -->
+               <img src="logo2.svg" id="baby1" class="center-align"  >
+              <h2>App Name Woo!</h2>
+              <!--     A welcome message or an explanation of the login form -->
+              <p>Lorem ipsum dolor, sit amet</p>
+           </header>
+           <!--     End  header Content  -->
+           <br>
+           <div class="field-set">
+               <h2>Welcome!</h2>
+               <!--     A welcome message or an explanation of the login form -->
+               <p>Registering is only for parents ok?</p>
+               <br>
+              <!--   user name -->
+              <span class="input-item">
+                 <i class="material-icons prefix">face</i>
+                 <input class="form-input active validate" id="txt-input" type="text" placeholder="@UserName" required>
+               </span>
+              <br>       
+           <!--   Password --> 
+              <span class="input-item">
+                <i class="material-icons prefix">email</i>
+              <!--   Password Input-->
+              <input class="form-input materialize-textarea validate" type="email" placeholder="Email" id="email" required>
+            </span>
+            <span class="input-item">
+                <i class="material-icons prefix ">lock </i>
+                <input class="form-input validate" id="txt-input" type="password" placeholder="Password" required>
+              </span>
+             <br>        
+          <!--   Password --> 
+             <span class="input-item">
+               <i class="material-icons prefix">lock</i>
+             <!--   Password Input-->
+             <input class="form-input materialize-textarea validate" type="password" placeholder="Confirm Password" id="pwd"  name="password" required>
+           </span>
+
+           <span >
+            <input type="checkbox" id="checked">
+            <label for="checked ">I agree to the term and conditions</label>
+           </span>
+           <br>
+           <a class="waves-effect waves-light submits btn login" onclick="Materialize.toast('Welcome!',2000)"  href="#">Sign Up!</a>
+            <!-- <button class="log-in" id="login" onclick="wavingBaby()"> Sign Up! </button> -->
+           </div>
+
+            <!-- Back button
+            <button class="btn submits back" onclick="location.href = './login-page.html';"> Back </button> -->
+            <a class="waves-effect waves-light submits back btn"  href="./login-page.html"><i class="material-icons left">arrow_back</i>Back</a>
+          </div>
+        </form>
         </div>
-	<div>
-	 <div class="g-signin2" data-onsuccess="onSignIn"></div>
-	</div>
-    </form>
-</div>
