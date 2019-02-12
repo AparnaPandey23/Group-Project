@@ -111,7 +111,6 @@ form .con {
 }
 /* Login title form form */
 #forgotpass-form header h2 {
-    margin-top: -20px;
     font-size: 200%;
     font-family: 'Playfair Display', serif;
     color: #3e403f;
