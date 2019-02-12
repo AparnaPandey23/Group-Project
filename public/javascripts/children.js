@@ -9,3 +9,34 @@
       stopPropagation: false // Stops event propagation
     }
   );
+
+$(document).ready(
+    function() {        
+        /**
+         * Event handler for when the user attempts to register
+         */
+        $("#child-form").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/child/addChild',
+                dataType: 'json',
+                data: {
+                    'child_fname': event.target.input-FirstName.value,
+                    'child_fname': event.target.input-Surname.value,
+                    // HERE
+                },
+                success: function(token){
+                    $(location).attr('href', '/feed' );
+                    // Redirect to a login page
+                },
+                error: function(errMsg) {
+                    swal(
+                        'Oops...',
+                        errMsg.responseJSON.body,
+                        'error'
+                    )
+                }
+            });
+        }); 
+    });
