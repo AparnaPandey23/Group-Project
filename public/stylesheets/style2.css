@@ -22,6 +22,10 @@ body {
     width: 72.5%;
 }
 
+#forgotpass-form .container {
+    width: 70%;
+}
+
 
 /* for all 3 pages */
 form {
@@ -39,15 +43,22 @@ form {
     min-height: 600px;
     width: 100%;
     padding: 3%;
+    
 }
 
- #reg-form, #forgotpass-form { 
+#forgotpass-form { 
+    min-height: 300px;
+    width: 100%;
+    padding: 1%;
+}
+
+ #reg-form{ 
     min-height: 300px;
     padding: 1%;
     margin-left: -20px;
 } 
 
-#reg-form, #forgotpass-form  .field-set{
+#reg-form, #forgotpass-form .field-set{
     margin-left: 5px;
     padding: 20px;
     align-self: center;
@@ -59,7 +70,7 @@ form {
     align-self: center;
 }
 
-#forgotpass-form.field-set h2{
+#forgotpass-form .field-set h2{
     font-size: 40px;
 }
 
@@ -95,6 +106,7 @@ form .con {
 
 /* the header form form */
 #forgotpass-form header {
+    margin: 0;
     text-align: center;
 }
 /* Login title form form */
@@ -143,6 +155,9 @@ button {
 }
 #log-form button{
     margin: 5% auto;
+}
+#forgotpass-form button{
+    margin: 2% auto;
 }
 
 /* buttons hover */
@@ -211,6 +226,11 @@ input[type=email]:not(.browser-default){
     border: none;
     box-shadow: none;
     }
+
+    #forgotpass-form .login{
+        margin: 2% auto;
+    }
+    
     
 .login:hover{
     background:transparent;
