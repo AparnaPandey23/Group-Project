@@ -108,8 +108,6 @@ button {
 button:hover {
     transform: translatey(3px);
     box-shadow: none;
-    background-color: transparent;
-    border: 1px solid white;
 }
 
 /* buttons hover Animation */
