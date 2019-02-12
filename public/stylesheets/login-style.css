@@ -47,6 +47,8 @@ form .con {
   
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+
+    margin: 0 auto;
 }
 
 /* the header form form */
@@ -123,13 +125,13 @@ button {
 }
 
 /* buttons hover */
-a:hover {
+button:hover {
     transform: translatey(3px);
     box-shadow: none;
 }
 
 /* buttons hover Animation */
-a:hover {
+button:hover {
     animation: ani9 0.4s ease-in-out infinite alternate;
 }
 
