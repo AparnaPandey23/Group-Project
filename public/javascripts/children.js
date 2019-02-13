@@ -10,26 +10,31 @@
     }
   );
 
+
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 $(document).ready(
     function() {        
         /**
          * Event handler for when the user adds a new child
          */
+        
         $("#child-form").submit(function (event) {
             event.preventDefault();
-            var day = event.target.input-Day.value;
-            var month = event.target.input-Month.value;
-            var year = event.target.input-Year.value;
-            var dob = day + '/' + month + '/' + year;
+            var day = event.target.inputDay.value;
+            var month = event.target.inputMonth.value;
+            var monthNumber = months.indexOf(month) + 1;
+            var year = event.target.inputYear.value;
+            var dob = day + '/' + monthNumber + '/' + year;
             $.ajax({
                 type: 'POST',
                 url: '/child/addChild',
                 dataType: 'json',
                 data: {
-                    'child_fname': event.target.input-FirstName.value,
-                    'child_fname': event.target.input-Surname.value,
+                    'child_fname': event.target.inputFirstName.value,
+                    'child_fname': event.target.inputSurname.value,
                     'dob': dob,
-                    'parName': event.target.input-Parname
+                    'parName': event.target.inputParname.value
                 },
                 success: function(token){
                     $(location).attr('href', '/children' );
