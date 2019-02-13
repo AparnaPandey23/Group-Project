@@ -32,7 +32,7 @@ $(document).ready(
                 dataType: 'json',
                 data: {
                     'child_fname': event.target.inputFirstName.value,
-                    'child_fname': event.target.inputSurname.value,
+                    'child_lname': event.target.inputSurname.value,
                     'dob': dob,
                     'parName': event.target.inputParname.value
                 },
