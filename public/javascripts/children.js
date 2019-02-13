@@ -49,7 +49,7 @@ $(document).ready(
                 }
             });
         }); 
-    });
+    }, listChildren());
 
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
@@ -59,3 +59,6 @@ $('#monthsDropdown').click(function(event){
 //$(document).on('change', 'input.monthsDropdown', function() {
 //    console.log($(this).val());
 //});
+function listChildren() {
+    
+}
