@@ -10,11 +10,9 @@ router.get('/login', function(req, res, next) {
     res.render('login');
 });
 
-
 router.get('/forgotpass', function(req, res, next) {
     res.render('forgotpass');
 });
-
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
