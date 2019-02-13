@@ -37,7 +37,7 @@ $(document).ready(
                     'parName': event.target.inputParname.value
                 },
                 success: function(token){
-                    $(location).attr('href', '/children' );
+                    $(location).attr('href', '/child/children' );
                     // Redirect to a list of children
                 },
                 error: function(errMsg) {
