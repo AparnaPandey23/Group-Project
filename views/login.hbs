@@ -14,11 +14,12 @@
 </div>
 
     <div class="container">
-        <form action="" id= "log-form" class="loginform">
+
+        <form action="" id= "log-form" class="loginform z-depth-2">
            <div class="con"> 
            <header class="head-form">
                <!-- Logo Group -->
-               <img src="/images/initial.svg" id="baby1" class="center-align"  >
+               <img src="/images/initial.svg" id="baby1" class="responsive-img"  >
               <h2>App Name Woo!</h2>
               <!--     A welcome message or an explanation of the login form -->
               <p>Lorem ipsum dolor, sit amet</p>
@@ -31,31 +32,31 @@
                <p>login here using your username and password</p>
                <br>
               <!--   user name -->
-              <span class="input-item">
+              <span class="input-item z-depth-1">
                  <i class="material-icons prefix">face</i>
                  <input class="form-input active validate" id="inputUsername" type="text" placeholder="@UserName" required/>
                </span>
-              <br><br>        
+              <br>     
            <!--   Password --> 
-              <span class="input-item">
+              <span class="input-item z-depth-1">
                 <i class="material-icons prefix">lock_outline</i>
               <!--   Password Input-->
               <input class="form-input materialize-textarea validate" type="password" placeholder="Password" id="inputPassword"  name="password" required>
             </span>
               
              {{!-- <a class="waves-effect waves-light submits btn login" class="log-in" id="login" href="#"  type="submit">Log In</a>  --}}
-              <button class="log-in waves-effect waves-light  btn login" id="login" onclick="wavingBaby()" type="submit"> Log In </button> 
+              <button class=" waves-effect waves-light  btn login " id="login" onclick="wavingBaby()" type="submit"> Log In </button> 
             
-           </div>
-
-           <div class="other">
-        <!--      Forgot Password button-->
+            <div class="other">
+            <!-- Forgot Password button-->
               <!-- <button class="btn submits frgt-pass" onclick="location.href = './forgot-pass.html';">Forgot-Password <i class="fas fa-question-circle"></i></button> -->
               <a class="waves-effect waves-light  frgt-pass btn "  href="./forgotpass"><i class="material-icons right">help</i>Forgot-Password</a>
               <!--     Sign Up button -->
               <a class="waves-effect waves-light  sign-up btn"  href="./register"><i class="material-icons right">person_add</i>Sign Up! </a>
               <!-- <button class="btn submits sign-up" onclick="location.href = './registration-page.html';">Sign Up   <i class="material-icons">person_add</i> -->
               </button>
+           </div>
+
            </div>
           </div>
         </form>

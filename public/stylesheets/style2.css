@@ -5,6 +5,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    position: relative;
 }
 
 /* for all 3 pages */
@@ -26,11 +27,10 @@ body {
     width: 70%;
 }
 
-
 /* for all 3 pages */
 form {
-    width: 100%;
-    height: auto;
+    /* width: 100%;
+    height: 100%; */
     border-radius: 30px;
     margin: 1% auto;
     margin-top: 50px;
@@ -96,7 +96,7 @@ form .con {
 }
 /* Login title form form */
  header h2 {
-    font-size: 250%;
+    font-size: 270%;
     font-family: 'Playfair Display', serif;
     color: #3e403f;
 }
@@ -187,6 +187,7 @@ input[type=password]:not(.browser-default){
     border-bottom: none;
     width: 90%;
     text-align: center;
+    margin-top: 20px;
 }
 input[type=email]:not(.browser-default){
     border-bottom: none;
@@ -226,8 +227,8 @@ input[type=email]:not(.browser-default){
     box-shadow: none;
     }
 
-    #forgotpass-form .login{
-        margin: 2% auto;
+ #forgotpass-form .login{
+    margin: 2% auto;
     }
     
     
@@ -238,16 +239,9 @@ input[type=email]:not(.browser-default){
 }
 
  .other{
-    margin-left: 50%;
+    margin: 8%;
     align-self: center;
 }
-
-/* Submits */
-/* .submits {
-    display: inline-block;
-    font-size: 13px;
-    margin: 0.1em 0.2em;
-} */
 
 /*       Forgot Password button FAF3DD  */
 .frgt-pass {background: lightpink;
@@ -277,3 +271,71 @@ a:hover {
 a:hover {
     animation: ani9 0.4s ease-in-out infinite alternate;
 }
+
+/* Extra small devices (phones,tablets 768px and down) */
+@media only screen and (max-width:800px) {
+    .other{
+        margin: 8%;
+        align-self: center;
+        }
+
+    .container {
+        width: 100%;
+        }
+
+    form {
+        border-radius: 30px;
+        margin: 2% auto;
+        margin-top: 50px;
+        box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+        background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+    }
+} 
+@media only screen and (max-width:450px) {
+    .container {
+        width: 100%;
+        }
+
+    form {
+        border-radius: 30px;
+        margin: 0%;
+        margin-top: 20px;
+        box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+        background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+    }
+
+    header h2 {
+        font-size: 250%;
+        font-family: 'Playfair Display', serif;
+        color: #3e403f;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        line-height: 110%;
+        margin: 1.78rem 0 1.424rem 0;
+        
+    }
+    .input-item {
+        background: #fff;
+        color: #333;
+        padding: 15px 10px 10px 10px;
+        border-radius: 5px 0px 0px 5px;
+        margin-left: -25px;
+        }
+
+    #log-form button {
+        margin: -6.5%;
+
+    }
+    input[type=password]:not(.browser-default){
+        margin-top: 0px;
+    }
+    .other{
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {...}  */
