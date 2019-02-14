@@ -1,13 +1,10 @@
 
-    {{!-- <title>AppName | Regirstration</title>
-    <link rel="stylesheet" href="registration-style.css"> --}}
-
-    <div class="container">
-        <form id="reg-form">
+     <div class="container" id="reg">
+        <form id="reg-form" class="regform" action="">
            <div class="con">
            <header class="head-form">
                <!-- Logo Group -->
-               <img src="logo2.svg" id="baby1" class="center-align"  >
+               <img src="/images/logo2.svg" id="baby1" class="center-align"  >
               <h2>App Name Woo!</h2>
               <!--     A welcome message or an explanation of the login form -->
               <p>Lorem ipsum dolor, sit amet</p>
@@ -42,19 +39,21 @@
              <!--   Password Input-->
              <input class="form-input materialize-textarea validate" type="password" placeholder="Confirm Password" id="inputPassword2"  name="password" required>
            </span>
-
+  
            <span >
             <input type="checkbox" id="checked">
             <label for="checked ">I agree to the term and conditions</label>
            </span>
+           
            <br>
            {{!-- <a class="waves-effect waves-light submits btn login" onclick="Materialize.toast('Welcome!',2000)"  href="#">Sign Up!</a> --}}
-            <button class="log-in" id="login" onclick="wavingBaby()" type="submit"> Sign Up! </button>
+            <button class="waves-effect waves-light btn login" id="sign-in" type="submit"> Sign Up! </button>
            </div>
 
             <!-- Back button
             <button class="btn submits back" onclick="location.href = './login-page.html';"> Back </button> -->
-            <a class="waves-effect waves-light submits back btn"  href="./login-page.html"><i class="material-icons left">arrow_back</i>Back</a>
+            <a class="waves-effect waves-light  back btn"  href="./login"><i class="material-icons left">arrow_back</i>Back</a>
           </div>
         </form>
         </div>
+   

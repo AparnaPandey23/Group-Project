@@ -1,0 +1,359 @@
+/* Fonts Form Google Font ::- https://fonts.google.com/  -:: */
+@import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+/* End Fonts */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* for all 3 pages */
+body {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Vibur', cursive;
+    font-family: 'Abel', sans-serif;
+    opacity: .95;
+}
+
+.container {
+    width: 72.5%;
+}
+
+#forgotpass-form .container {
+    width: 70%;
+}
+
+/* for all 3 pages */
+form {
+    /* width: 100%;
+    height: 100%; */
+    border-radius: 30px;
+    margin: 1% auto;
+    margin-top: 50px;
+   
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+}
+
+#log-form { 
+    min-height: 600px;
+    width: 100%;
+    padding: 3%;
+    
+}
+
+#forgotpass-form { 
+    min-height: 300px;
+    width: 100%;
+    padding: 1%;
+}
+
+ #reg-form{ 
+    min-height: 300px;
+    padding: 1%;
+    margin-left: -20px;
+} 
+
+#reg-form, #forgotpass-form .field-set{
+    margin-left: 5px;
+    padding: 20px;
+    align-self: center;
+}
+
+#log-form .field-set{
+    margin-left: 10px;
+    padding-left: 30px;
+    align-self: center;
+}
+
+#forgotpass-form .field-set h2{
+    font-size: 40px;
+}
+
+/* for all 3 pages */
+/* form Container */
+form .con {
+    display: -webkit-flex;
+    display: flex;
+  
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+  
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  
+    margin: 0 auto;
+}
+
+/* the header form form */
+ header {
+    margin: 2% auto 10% auto;
+    text-align: center;
+}
+/* Login title form form */
+ header h2 {
+    font-size: 270%;
+    font-family: 'Playfair Display', serif;
+    color: #3e403f;
+}
+/*  A welcome message or an explanation of the login form */
+  header p {letter-spacing: 0.05em;}
+
+
+/* the header form form */
+#forgotpass-form header {
+    margin: 0;
+    text-align: center;
+}
+/* Login title form form */
+#forgotpass-form header h2 {
+    font-size: 200%;
+    font-family: 'Playfair Display', serif;
+    color: #3e403f;
+}
+
+.input-item {
+    background: #fff;
+    color: #333;
+    padding: 14.5px 0px 15px 9px;
+    border-radius: 5px 0px 0px 5px;  
+}
+
+/* focus  */
+input:focus {
+    transform: translateX(-2px);
+    border-radius: 5px;
+}
+
+
+/* buttons  */
+button {
+    display: inline-block;
+    color: #252537;
+  
+    width: 280px;
+    height: 50px;
+  
+    padding: 0 20px;
+    background: #fff;
+    border-radius: 5px;
+    
+    outline: none;
+    border: none;
+  
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+}
+#log-form button{
+    margin: 5% auto;
+}
+#forgotpass-form button{
+    margin: 2% auto;
+}
+
+/* buttons hover */
+button:hover {
+    transform: translatey(3px);
+    box-shadow: none;
+}
+
+/* buttons hover Animation */
+a:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
+}
+@keyframes ani9 {
+    0% {
+        transform: translateY(3px);
+    }
+    100% {
+        transform: translateY(5px);
+    }
+}
+
+input[type=text]:not(.browser-default){
+    border-bottom: none;
+    width: 90%;
+    text-align: center;
+}
+input[type=password]:not(.browser-default){
+    border-bottom: none;
+    width: 90%;
+    text-align: center;
+    margin-top: 20px;
+}
+input[type=email]:not(.browser-default){
+    border-bottom: none;
+    width: 90%;
+    text-align: center;
+}
+
+
+/*       Back button  */
+.back{
+    background: lightpink;
+    margin-left: 700px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+} 
+
+.login{
+    display: inline-block;
+    color: #252537;
+    width: 280px;
+    height: 50px;
+    padding: 15px 20px;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+    font: inherit;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    }
+
+ #forgotpass-form.login{
+    margin: 2% auto;
+    }
+    
+    
+.login:hover{
+    background:transparent;
+    color: #000;
+    /* box-shadow: 1px 6px 15px rgba(0,0,0,0.); */
+}
+
+#log-form.other{
+    margin: 8%;
+    align-self: center;
+}
+
+/*       Forgot Password button FAF3DD  */
+.frgt-pass {background: lightpink;
+    display: inline-block;
+    font-size: 13px;
+    margin-left: -30px;
+    margin-top: 10px;
+} 
+
+/*     Sign Up button  */
+ .sign-up {
+    background: #B8F2E6;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 13px;
+}
+
+/* buttons hover */
+a:hover {
+    transform: translatey(3px);
+    box-shadow: none;
+    color: white;
+}
+
+/* buttons hover Animation */
+a:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
+}
+
+/* Extra small devices (phones,tablets 768px and down) */
+@media only screen and (max-width:800px) {
+    #log-form.other{
+        margin: 8%;
+        align-self: center;
+        }
+
+    .container {
+        width: 100%;
+        }
+
+    form {
+        border-radius: 30px;
+        box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+        background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+    }
+    
+    #log-form { 
+        min-height: 600px;
+        width: 100%;
+        padding: 3%;
+        margin: 2% auto;
+        margin-top: 50px;
+        
+    }
+} 
+@media only screen and (max-width:450px) {
+    .container {
+        width: 100%;
+        }
+
+    #log-form form {
+        border-radius: 30px;
+        margin: 0%;
+        margin-top: 20px;
+        box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+        background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+    }
+
+    header h2 {
+        font-size: 250%;
+        font-family: 'Playfair Display', serif;
+        color: #3e403f;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        line-height: 110%;
+        margin: 1.78rem 0 1.424rem 0;
+        
+    }
+    .input-item {
+        background: #fff;
+        color: #333;
+        padding: 15px 10px 10px 10px;
+        border-radius: 5px 0px 0px 5px;
+        margin-left: -25px;
+        }
+
+    #log-form button {
+        margin: -6.5%;
+
+    }
+    input[type=password]:not(.browser-default){
+        margin-top: 0px;
+    }
+    .other{
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+    #log-form { 
+        min-height: 600px;
+        width: 100%;
+        padding: 3%;
+        margin: 2% auto;
+        margin-top: 50px;
+    }
+    #reg-form.back{
+        background: lightpink;
+        margin-left: 220px;
+        margin-top: -5px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    } 
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {...}  */
