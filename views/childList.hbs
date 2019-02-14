@@ -1,55 +1,99 @@
 <!--Title-->
+<head>
+<link rel="stylesheet" href="Nav-bar-style.css">
+        
+ <nav>
+    <div class="nav-wrapper red lighten-4">
+      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <a class="brand-logo" >App Name</a>
+      <ul class="side-nav teal lighten-4" id="mobile-demo">
+          
+        
+         <li class="sidenav-header red lighten-5">
+          <div class="row">
+            <div class="col s4">
+                <img src="App.PNG" width="48px" height="48px" alt="baby image" class="circle responsive-img valign profile-image">
+            </div>
+            <div class="col s8">
+               <a class="btn-flat dropdown-button waves-effect waves-light white-text" href="#" data-activates="profile-dropdown">Name<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                <ul id="profile-dropdown" class="dropdown-content">
+                    <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                    <li><a href="#"><i class="material-icons">settings</i>Setting</a></li>
+                    <li><a href="#"><i class="material-icons">help</i>Help</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="material-icons">lock</i>Lock</a></li>
+                    <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+          
+        <li class="white">
+          <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header waves-effect"><i class="material-icons">child_care</i>Child Profile <i class="material-icons right" style="margin-right:5;">arrow_drop_down</i></a>
+                
+              <div class="collapsible-body">
+                <ul>
+                  <li><a class="waves-effect waves-blue" href="/views/addChild"><i class="material-icons">face</i>Add Child</a></li>
+                  <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">accessibility</i>View activity</a></li>
+                </ul>
+              </div>
+                
+            </li>
+          </ul>
+        </li>
+          
+        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Option one</a></li>
+        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option two</a></li>
+        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option three</a></li>
+        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option four</a></li>
+        <li class="white">
+            <div class="divider"></div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</head>
 <div class="row no-gutters">
     <h2>Children</h2>
 </div>
 
-<!--List-->
-<div class="row no-gutters" id="childList">
-    <ul class="list-group">
-        <li class="list-group-item">
-            <div class="row no-gutters">
-                <div class="d-none d-md-block col-md-2"></div>
-                <div class="col-10 col-md-6">Name</div>
-                <div class="d-none d-md-block col-md-2">Present</div>
-                <div class="d-none d-md-block col-md-2">Absent</div>
-            </div>
-        </li>
-        
-        <li class="list-group-item">
-            <div class="row no-gutters">
-                <div class="d-none d-md-block col-md-2"></div>
-                <div class="col-10 col-md-6">Ethan</div>
-                <div class="d-none d-md-block col-md-2">Yes</div>
-                <div class="d-none d-md-block col-md-2">No</div>
-            </div>
-        </li>
-        
-        <li class="list-group-item">
-            <div class="row no-gutters">
-                <div class="d-none d-md-block col-md-2"></div>
-                <div class="col-10 col-md-6">Aparna</div>
-                <div class="d-none d-md-block col-md-2">Yes</div>
-                <div class="d-none d-md-block col-md-2">No</div>
-            </div>
-        </li>
-        
-        <li class="list-group-item">
-            <div class="row no-gutters">
-                <div class="d-none d-md-block col-md-2"></div>
-                <div class="col-10 col-md-6">Louise</div>
-                <div class="d-none d-md-block col-md-2">Yes</div>
-                <div class="d-none d-md-block col-md-2">No</div>
-            </div>
-        </li>
-        
-        <li class="list-group-item">
-            <div class="row no-gutters">
-                <div class="d-none d-md-block col-md-2"></div>
-                <div class="col-10 col-md-6">Oisín</div>
-                <div class="d-none d-md-block col-md-2">Yes</div>
-                <div class="d-none d-md-block col-md-2">No</div>
-            </div>
-        </li>
-        
-    </ul>
+<div class="container">
+      <table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Date Of Birth</th>
+              <th>Room</th>
+              <th>Present</th>
+          </tr>
+        </thead>
+
+        <tbody id="list">
+          <tr>
+            <td>Name</td>
+            <td>Date Of Birth</td>
+            <td>Room</td>
+            <td>Present</td>
+            </tr>
+          <tr>
+            <td>Name</td>
+            <td>Date Of Birth</td>
+            <td>Room</td>
+            <td>Present</td>
+          </tr>
+        </tbody>
+      </table>
 </div>
+<script>  
+$(document).ready(function(){
+  $('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
+  $('.button-collapse').sideNav('show');
+});</script>
