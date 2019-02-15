@@ -10,13 +10,13 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/feed', function(req, res, next) {
+router.get('/welcomePage', function(req, res, next) {
 
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.render('feed');
+            res.render('welcomePage');
         }
     }catch (err) {
             res.json({
