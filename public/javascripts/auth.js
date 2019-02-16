@@ -44,7 +44,7 @@ $(document).ready(
                 },
                 success: function(token){
 		cookieId(event.target.inputUsername.value);
-                    $(location).attr('href', '/child/addchild' );
+                    $(location).attr('href', '/child/children' );
                     // Redirect to logged in page
                 },
                 error: function(errMsg) {
