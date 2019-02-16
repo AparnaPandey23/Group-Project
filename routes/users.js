@@ -13,7 +13,7 @@ router.get('/login', function(req, res, next) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+    res.send('respond with a resource');
 });
 
 router.post('/register', function(req, res, next){
@@ -22,7 +22,7 @@ router.post('/register', function(req, res, next){
     var email = req.body.email;
     // Check if account already exists
     User.findOne({ 'user_name' :  username }, function(err, user)
-    {
+                 {
         if (err)
             res.send(err);
         // check to see if theres already a user with that email
@@ -43,7 +43,8 @@ router.post('/register', function(req, res, next){
             newUser.save(function(err, user) {
                 if (err)
                     throw err;
-	     res.cookie('Authorization', 'Bearer ' + user.access_token); 
+                res.cookie('Authorization', 'Bearer ' + user.access_token); 
+                cookieId();
                 res.json({'success' : 'account created'});
 
             });
@@ -84,7 +85,19 @@ router.post('/login', function(req, res, next){
         } }); });
 
 
-
+router.get('/getId', function(req, res, next){
+    User.findOne({'user_name': req.body.user_name}, function (err,user_id) {
+        if (err)
+            res.send(err);
+        if(user_id){
+        var id = user_id._id
+        // adding the id of the user to the coocie to pas on to children.
+        var d = new Date(Date.now() + (60*60*1000));
+        res.cookie('parid', id , { expires: d, path: '/child/addchild'});
+	res.json({'success' : 'Cookie Made'});
+        }
+    });
+});
 
 
 function createJwt(profile) {
