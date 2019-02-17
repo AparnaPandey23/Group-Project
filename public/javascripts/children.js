@@ -55,10 +55,3 @@ $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
     $("#inputMonth").val(month);
 });
-//
-//$(document).on('change', 'input.monthsDropdown', function() {
-//    console.log($(this).val());
-//});
-function listChildren() {
-    
-}
