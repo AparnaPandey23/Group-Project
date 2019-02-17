@@ -15,6 +15,7 @@ $(document).ready(
                     'email': event.target.inputEmail.value
                 },
                 success: function(token){
+		cookieId(event.target.inputUsername.value);
                     $(location).attr('href', '/feed' );
                     // Redirect to a login page
                 },
@@ -42,7 +43,8 @@ $(document).ready(
                     'password': event.target.inputPassword.value
                 },
                 success: function(token){
-                    $(location).attr('href', '/feed' );
+		cookieId(event.target.inputUsername.value);
+                    $(location).attr('href', '/welcomePage' );
                     // Redirect to logged in page
                 },
                 error: function(errMsg) {
@@ -57,7 +59,30 @@ $(document).ready(
     });
 
 
-
+function cookieId(name){
+    var user = name;
+     $.ajax({
+                type: 'POST',
+                url: '/users/getId',
+                dataType: 'json',
+                data: {
+                    'user_name': user
+                    },
+                success: function(token){
+                   swal(
+                        'shit',
+                        'it worked'
+                    ) 
+                },
+                     error: function(errMsg) {
+                    swal(
+                        'Oops...',
+                        'error'
+                    )
+                }
+            });
+                    
+}
 
 
     
