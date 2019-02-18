@@ -28,6 +28,8 @@ router.get('/feed', function(req, res, next) {
         }
 });
 
+
+
 function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;

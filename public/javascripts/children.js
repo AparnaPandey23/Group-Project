@@ -49,9 +49,14 @@ $(document).ready(
                 }
             });
         }); 
-    }, listChildren());
+    }, listChildInfo());
 
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
     $("#inputMonth").val(month);
 });
+
+function listChildInfo() {
+    var d = document.cookie;
+    console.log(d);
+}
