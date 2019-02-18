@@ -17,6 +17,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/addchild', function(req, res, next){
+    var jwtString  = req.cookies.parid;
+    var parident = jwtString;
     var childfname = req.body.child_fname;
     var childlname = req.body.child_lname; 
     var Dob = req.body.dob;
@@ -26,6 +28,7 @@ router.post('/addchild', function(req, res, next){
     newchild.child_fname = childfname ;
     newchild.child_lname = childlname;   
     newchild.dob = Dob;
+    newchild.par_id = parident;
     newchild.parName = par;
     newchild.save(function(err, child) {
         if (err)
