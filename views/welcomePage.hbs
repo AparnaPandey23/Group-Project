@@ -1,6 +1,21 @@
-<!--Title-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="Nav-bar-style.css">
+       <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    
+     <!--Let browser know website is optimized for mobile-->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nav-bar</title>
+    <link rel="stylesheet" href="Nav-bar-style.css">
         
  <nav>
     <div class="nav-wrapper red lighten-4">
@@ -12,7 +27,7 @@
          <li class="sidenav-header red lighten-5">
           <div class="row">
             <div class="col s4">
-                <img src="/images/App.PNG" width="48px" height="48px" alt="baby image" class="circle responsive-img valign profile-image">
+                <img src="/images/App.PNG"width="48px" height="48px" alt="baby image" class="circle responsive-img valign profile-image">
             </div>
             <div class="col s8">
                <a class="btn-flat dropdown-button waves-effect waves-light white-text" href="#" data-activates="profile-dropdown">Name<i class="mdi-navigation-arrow-drop-down right"></i></a>
@@ -50,39 +65,19 @@
       </ul>
     </div>
   </nav>
-</head>
-<div class="row no-gutters">
-    <h2>Children</h2>
-</div>
+    </head>
+    <body>
+         <main class="valign-wrapper">
+    <span class="container grey-text text-lighten-1 ">
 
-<div class="container">
-      <table>
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Date Of Birth</th>
-              <th>Room</th>
-              <th>Present</th>
-          </tr>
-        </thead>
+      <p class="flow-text">Welcome to</p>
+      <h1 class="title grey-text text-lighten-3">App name </h1>
 
-        <tbody id="list">
-          <tr>
-            <td>Name</td>
-            <td>Date Of Birth</td>
-            <td>Room</td>
-            <td>Present</td>
-            </tr>
-          <tr>
-            <td>Name</td>
-            <td>Date Of Birth</td>
-            <td>Room</td>
-            <td>Present</td>
-          </tr>
-        </tbody>
-      </table>
-</div>
-<script>  
+      <blockquote class="flow-text">A place to watch your children grow and learn </blockquote>
+
+      <div class="center-align">
+        
+        <script>  
 $(document).ready(function(){
   $('.button-collapse').sideNav({
       menuWidth: 300, // Default is 300
@@ -93,3 +88,8 @@ $(document).ready(function(){
   );
   $('.button-collapse').sideNav('show');
 });</script>
+    </body>
+          <div class="footer teal lighten-4">
+               © 2019 Copyright 
+        </div>
+</html> 

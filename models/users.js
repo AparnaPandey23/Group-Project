@@ -24,4 +24,5 @@ usersSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
+//expoting scema to server
 module.exports = mongoose.model('User', usersSchema);
