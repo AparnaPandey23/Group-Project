@@ -16,7 +16,7 @@ router.get('/feed', function(req, res, next) {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.render('feed');
+            res.render('welcomePage');
         }
     }catch (err) {
             res.json({
