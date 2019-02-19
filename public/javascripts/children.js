@@ -57,5 +57,18 @@ $('#monthsDropdown').click(function(event){
 });
 
 function listChildInfo() {
-    
+    $.ajax({
+        type: 'GET',
+        url: '/currentUser',
+        dataType: 'json',
+        success: function(user){
+           console.log(user);
+        },
+             error: function(errMsg) {
+            swal(
+                'Oops...',
+                'error'
+            )
+        }
+    });
 }
