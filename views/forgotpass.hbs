@@ -9,7 +9,7 @@
               <p>Lorem ipsum dolor, sit amet</p>
            </header>
            <!--     End  header Content  -->
-           <div class="field-set col m6">
+           <div class="field-set">
                <h2>Forgot Your Password?</h2>
                <!--     A welcome message or an explanation of the login form -->
                <p>No Problem! Just enter your registered email address below and wait for an email from us. Reset your password and you are good to go!</p>
@@ -19,12 +19,13 @@
               <!--   Password Input-->
               <input class="form-input materialize-textarea" type="email" placeholder="Email" id="email" required>
             </span>
+            <br>
               <!-- <button class="log-in" id="login" onclick="wavingBaby()"><i class="material-icons right">send</i>Send Confirmation Email </button> -->
               <a class="waves-effect waves-light  btn login" href="#" onclick="Materialize.toast('Email Sent',2000,'rounded')" ><i class="material-icons right" >send</i>Send Confirmation Email </a>
-            
+            <br>
         <!--     Back button-->
             <!-- <button class="btn submits back" onclick="location.href = './login-page.html';"> Back</button> -->
-            <a class="waves-effect waves-light  back btn"  href="./login"><i class="material-icons left">arrow_back</i>Back</a>
+            <a class="waves-effect waves-light  back btn" id="back" href="./login"><i class="material-icons left">arrow_back</i>Back</a>
           </div>
            </div>
         </form></div>

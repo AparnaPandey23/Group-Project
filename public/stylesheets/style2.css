@@ -303,12 +303,16 @@ a:hover {
         width: 200%;
     }
 
+    #forgotpass-form .field-set {
+        padding: 30px;
+        margin: 0px;
+    }
     #reg-form .field-set{
         margin: 0px;
     }
-
-    #reg-form #back{
+     #back{
         margin-left: 0px;
+        margin-top: 10px;
     }
 } 
 @media only screen and (max-width:450px) {
