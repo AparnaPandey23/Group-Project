@@ -28,6 +28,22 @@ router.get('/feed', function(req, res, next) {
         }
 });
 
+router.get('/currentUser', function(req, res, next) {
+    try {
+        var jwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(jwtString[1]);
+        if (profile) {
+            res.json({"userid":profile});
+        }
+    }catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "You are not logged in."
+                ]
+            });
+        }
+});
 
 
 function verifyJwt(jwtString) {
