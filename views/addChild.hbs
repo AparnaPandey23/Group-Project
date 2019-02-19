@@ -57,28 +57,32 @@
 
 <!--Nav Bar-->
     <link rel='stylesheet' href='/stylesheets/children-style.css' />
-<div class="container">
-    <form action="" id="child-form">
-        <div class="con">
-            <div class="field-set">
+
+<div class="container ">
+    <form action="" id="child-form" class="z-depth-2">
+        <div class="con ">
+            <div class="field-set ">
                 <h2>Add Child</h2>
                 <p>Add child to the system</p>
                 <div class="row">
                     <!--   First name -->
-                    <span class="input-item col s6">
-                        <input class="form-input active validate" id="inputFirstName" type="text" placeholder="First Name" required />
+                    <span class="input-item col s6 z-depth-1">
+                      <i class="fas fa-user-circle fa-1x"></i>
+                      <input class="form-input active validate z-depth-3" id="inputFirstName" type="text" placeholder="First Name" required />  
                     </span>
 
                     <!--   Surname -->
-                    <span class="input-item col s6">
-                        <input class="form-input active validate" id="inputSurname" type="text" placeholder="Surname" required />
+                    <span class="input-item col s6 z-depth-1">
+                      <i class="fas fa-user-circle fa-1x"></i>
+                      <input class="form-input active validate" id="inputSurname" type="text" placeholder="Surname" required />
                     </span>
                 </div>
                 <div class="row">
-                    <span class="input-item col s4">
+                    <span class="input-item col s4 z-depth-1">
                         <input class="form-input active validate" id="inputDay" type="text" placeholder="Day" required />
                     </span>
-                    <span class="input-item col s4" id="month-Section">
+                    <span class="input-item col s4 z-depth-1" id="month-Section">
+                     
                         <span id="month-Wrapper"><input class="form-input active validate" type="text" id="inputMonth" placeholder="Month" data-activates='monthsDropdown' required /></span>
                         <!-- Dropdown Structure -->
                         <ul id='monthsDropdown' class='dropdown-content'>
@@ -96,17 +100,19 @@
                             <li><a>December</a></li>
                         </ul>
                     </span>
-                    <span class="input-item col s4">
+                    <span class="input-item col s4 z-depth-1">
+                        
                         <input class="form-input active validate" id="inputYear" type="text" placeholder="Year" required />
                     </span>
                 </div>
                 <div class="row">
 
-                    <span class="input-item col s12">
+                    <span class="input-item col s12 z-depth-1" >
+                        <i class="material-icons prefix" style="margin-top:10px">people</i>
                         <input class="form-input active validate" id="inputParname" type="text" placeholder="Parent's Name" />
                     </span></div>
                 
-                <button class="log-in" id="submit-Btn" onclick="wavingBaby()" type="submit"> Sign Up! </button>
+                <button class="log-in waves-effect waves-light sign-up z-depth-1" id="submit-Btn" type="submit"> Sign Up! </button>
             </div>
         </div>
     </form>

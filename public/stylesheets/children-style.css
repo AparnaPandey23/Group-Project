@@ -5,3 +5,21 @@
 #child-form ul {
     width: 100%;
 }
+
+input[type=text]:not(.browser-default){
+    height: 2.5rem;
+    margin: 0 0 10px 0;
+}
+
+#child-form{
+    padding: 30px;
+}
+#submit-Btn{
+    background: white;
+    color: black;
+    
+}
+#submit-Btn:hover{
+    background: transparent;
+    border: 1px solid lightgray;
+}
