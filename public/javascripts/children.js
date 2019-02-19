@@ -57,6 +57,5 @@ $('#monthsDropdown').click(function(event){
 });
 
 function listChildInfo() {
-    var d = document.cookie;
-    console.log(d);
+    
 }
