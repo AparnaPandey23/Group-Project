@@ -62,7 +62,7 @@ $(document).ready(
 function cookieId(name){
     var user = name;
      $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: '/users/getId',
                 dataType: 'json',
                 data: {
