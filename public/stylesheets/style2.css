@@ -302,6 +302,14 @@ a:hover {
     #forgotpass-form.container {
         width: 200%;
     }
+
+    #reg-form .field-set{
+        margin: 0px;
+    }
+
+    #reg-form #back{
+        margin-left: 0px;
+    }
 } 
 @media only screen and (max-width:450px) {
     #log-form.container {
@@ -358,13 +366,7 @@ a:hover {
         margin: 2% auto;
         margin-top: 50px;
     }
-    #reg-form.back{
-        background: lightpink;
-        margin-left: 220px;
-        margin-top: -5px;
-        margin-bottom: 10px;
-        font-size: 12px;
-    } 
+
 } 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
