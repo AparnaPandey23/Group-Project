@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/addchild', function(req, res, next){
+    // Just changed because the request has the id in json
 //    var jwtString  = req.cookies.parid;
 //    var parident = jwtString;
     var childfname = req.body.child_fname;
@@ -49,6 +50,7 @@ router.get('/getchild'
     });
 });
 
+// Return all children given parent id (json request)
 router.post('/getchildren', function(req, res, next){
     Child.find({par_id:req.body.userid}, function (err,child_fname) {
         if (err)

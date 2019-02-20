@@ -1,4 +1,4 @@
-var currentUser, currentUserId;
+var currentUser;
 
 $('#inputMonth').dropdown({
       inDuration: 300,
