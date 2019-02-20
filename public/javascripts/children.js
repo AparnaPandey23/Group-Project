@@ -95,5 +95,21 @@ function cookieId(user){
 }
 
 function getChildren(id) {
-    console.log("Id = " + id);
+    $.ajax({
+        type: 'POST',
+        url: '/child/getChildren',
+        dataType: 'json',
+        data: {
+            'userid': id
+        },
+        success: function(child){
+           console.log(child);
+        },
+        error: function(errMsg) {
+           swal(
+                'Oops...',
+                'error'
+            )
+        }
+    });
 }
