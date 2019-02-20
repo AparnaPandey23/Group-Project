@@ -102,8 +102,8 @@ function getChildren(id) {
         data: {
             'userid': id
         },
-        success: function(child){
-           console.log(child);
+        success: function(children){
+           loadChildren(children);
         },
         error: function(errMsg) {
            swal(
@@ -112,4 +112,22 @@ function getChildren(id) {
             )
         }
     });
+}
+
+function loadChildren(list) {
+   
+}
+
+function tableRow(child) {
+    var output = "<tr><td>";
+    output += child.child_fname + " " = child.child_lname;
+    output += "</td><td>";
+    output += child.dob;
+    output += "</td><td>";
+    output += "Room";
+    output += "</td><td>";
+    output += "Present";
+    output += "</td></tr>";
+    
+    return output;
 }
