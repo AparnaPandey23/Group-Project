@@ -42,8 +42,8 @@
            </span>
           
            <span >
-            <input type="checkbox" id="checked" checked>
-            <label for="checked ">I agree to the term and conditions</label>
+            <input type="checkbox" id="checked">
+            <label for="checked" onclick="checkToggle">I agree to the term and conditions</label>
            </span>
            
            <br>
@@ -58,4 +58,10 @@
           </div>
         </form>
         </div>
+
+        <script>
+          function checkToggle() {
+            document.getElementById("checked").checked = !document.getElementById("checked").checked;
+          } 
+        </script>
    
