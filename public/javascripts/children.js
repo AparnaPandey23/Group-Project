@@ -115,12 +115,18 @@ function getChildren(id) {
 }
 
 function loadChildren(list) {
-   
+   var output = "";
+    
+    for(var i = 0; i < list.length; i++) {
+        output += tableRow(list[i]);
+    }
+    
+    $("#list").html(output);
 }
 
 function tableRow(child) {
     var output = "<tr><td>";
-    output += child.child_fname + " " = child.child_lname;
+    output += child.child_fname + " " + child.child_lname;
     output += "</td><td>";
     output += child.dob;
     output += "</td><td>";
