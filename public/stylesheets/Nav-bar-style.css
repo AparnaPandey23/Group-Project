@@ -1,12 +1,11 @@
-
-
-
-
+#dropdown:hover{
+  text-transform: none;
+}
 
 /* // FIX SIDENAV SPACING */
 .side-nav li, a {
   padding: 0 20px;
-    width: 150;
+  width: 150;
 }
 /* //FIX SIDEBAR DIVIDERS */
 .side-nav .divider {
@@ -106,5 +105,33 @@ nav #menu {
 }
 nav .brand-logo {
   margin-left: 20px;
-  
 }
+
+.side-nav  a {
+  padding: 10 0 10 0;
+  height: 70px;
+  line-height: 70px;
+  text-decoration: none;
+}
+
+#profile-dropdown{
+  top: 70px !important;
+  left: 25px !important;
+}
+
+#profile-dropdown li{
+  width: 300px;
+  font-size: 20px;
+  padding: 0;
+  text-align: left;
+  margin-right: 10px
+}
+
+.side-nav li>a>i.material-icons {
+  margin-right: 32px;
+}
+
+#profile-dropdown li>a>i.material-icons {
+  margin-right: 5px;
+}
+
