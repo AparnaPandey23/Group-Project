@@ -1,4 +1,4 @@
-var currentUser; 
+var currentUser, currentUserId;
 
 $('#inputMonth').dropdown({
       inDuration: 300,
@@ -78,7 +78,7 @@ function getCurrentUser(){
 }
 
 function cookieId(){
-    console.log(currentUser);
+    
      $.ajax({
         type: 'POST',
         url: '/users/getIdFromName',
@@ -88,6 +88,7 @@ function cookieId(){
         },
         success: function(id){
            getChildren(id);
+            currentUser.userid.id = id;
         },
         error: function(errMsg) {
            swal(
@@ -96,6 +97,8 @@ function cookieId(){
             )
         }
     });
+    
+    console.log(currentUser);
                     
 }
 
