@@ -18,7 +18,6 @@ input[type=text]:not(.browser-default){
 }
 #child-con{
     width: 75%;
-    
 }
 .field-set{
     margin: 20px;
@@ -38,8 +37,28 @@ input[type=text]:not(.browser-default){
 }
 
 .datepicker.datepicker-dropdown{
-    top: 500px;
-    margin-top: 80px;
-    left: 250px;
+    top: 30%;
+    /* margin-top: 80px; */
+    left: 50%;
     width: 35%;
+}
+a:hover{
+    transform: none;
+    animation: none;
+    text-transform: none;
+}
+
+nav .brand-logo {
+    padding: 10;
+}
+
+td{
+    padding: 8px 5px;
+}
+
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+    height: 66px;
+    line-height: 66px;
 }
