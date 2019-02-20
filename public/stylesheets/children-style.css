@@ -1,5 +1,6 @@
 #child-form span {
     margin: 5px;
+    margin-bottom: 10px;
 }
 
 #child-form ul {
@@ -7,19 +8,38 @@
 }
 
 input[type=text]:not(.browser-default){
-    height: 2.5rem;
+    height: 3rem;
     margin: 0 0 10px 0;
 }
 
 #child-form{
-    padding: 30px;
+    width: 100%;
+    margin-top: 50px;
 }
+#child-con{
+    width: 75%;
+    
+}
+.field-set{
+    margin: 20px;
+    width: 80%;
+}
+.field-set .row{
+    padding: 10px;
+}
+
 #submit-Btn{
     background: white;
-    color: black;
-    
+    color: black;  
 }
 #submit-Btn:hover{
     background: transparent;
     border: 1px solid lightgray;
+}
+
+.datepicker.datepicker-dropdown{
+    top: 500px;
+    margin-top: 80px;
+    left: 250px;
+    width: 35%;
 }
