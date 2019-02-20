@@ -48,6 +48,14 @@ router.get('/getchild'
     });
 });
 
+router.post('/getchildren', function(req, res, next){
+    Child.find({par_id:req.body.userid}, function (err,child_fname) {
+        if (err)
+            res.send(err);
+        res.json(child_fname);
+    });
+});
+
 // deleate the Child Request need to pass in the id of the child to be deleated
 router.delete('/delchild/:id', function(req, res ,next){
     var id = req.params.id; 
