@@ -1,4 +1,6 @@
- $('#inputMonth').dropdown({
+var currentUser; 
+
+$('#inputMonth').dropdown({
       inDuration: 300,
       outDuration: 225,
       constrainWidth: false, // Does not change width of dropdown to that of the activator
@@ -49,20 +51,22 @@ $(document).ready(
                 }
             });
         }); 
-    }, listChildInfo());
+    }, getCurrentUser());
 
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
     $("#inputMonth").val(month);
 });
 
-function listChildInfo() {
+
+function getCurrentUser(){
     $.ajax({
         type: 'GET',
         url: '/currentUser',
         dataType: 'json',
         success: function(user){
-           cookieId(user.userid);
+           currentUser = user;
+            listChildInfo();
         },
              error: function(errMsg) {
             swal(
@@ -71,6 +75,9 @@ function listChildInfo() {
             )
         }
     });
+}
+function listChildInfo() {
+    cookieId(currentUser.userid);
 }
 
 function cookieId(user){
