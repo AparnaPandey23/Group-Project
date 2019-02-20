@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <!-- NavBar layout -->
   <head>
 	<script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.min.js"></script>
 	<script src="/javascripts/auth.js"></script>
-	<script src="/javascripts/workingBack.js"></script>
+  <script src="/javascripts/workingBack.js"></script>
 	<script src="/javascripts/BannerJava.js"></script>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="833979721561-m5oa0pokh6dddpn5ukls6rao7k8282vn.apps.googleusercontent.com">
@@ -24,24 +25,73 @@
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      {{!-- <!--Import materialize.css--> --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet"/>
-    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-{{!-- <!--      Custom Stylesheet--> --}}
-    {{!-- <link rel='stylesheet' href='/stylesheets/style.css' /> --}}
-    {{!-- Login stylesheet --}}
-    <link rel='stylesheet' href='/stylesheets/login-style.css' />
+    {{!-- Style sheet for: Login, Forget-Pass, Registration pages --}}
+    <link rel='stylesheet' href='/stylesheets/children-style.css' />
+    <link rel="stylesheet" href="/stylesheets/Nav-bar-style.css">
 	
   </head>
   <body>
     {{{body}}}
+    <nav>
+        <div class="nav-wrapper z-depth-1 deep-purple lighten-3">
+        <a href="#" id="menu" data-activates="mobile-demo" class="button-collapse show-on-large" style="height:66px;"><i class="material-icons">menu</i></a>
+        <a class="brand-logo" >Toddler Town</a>
+        <ul class="side-nav teal lighten-4" id="mobile-demo">
+            <li class="sidenav-header red lighten-5">
+            <div class="row">
+                <div class="col s4">
+                    <img src="/images/initial.svg" width="48px" height="48px" alt="baby image" class="circle responsive-img valign profile-image">
+                </div>
+                <div class="col s8">
+                <a class="btn-flat dropdown-button waves-effect waves-light white-text" href="#" data-activates="profile-dropdown">Name<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="#"><i class="material-icons">person</i>Privacy</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="material-icons">person</i>Settings</a></li>
+                        <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            </li>
+            
+            <li class="white">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                <a class="collapsible-header waves-effect black-text"><i class="material-icons">child_care</i>Child Profile <i class="material-icons right grey-text" style="margin-right:5;">arrow_drop_down</i></a>
+                <div class="collapsible-body z-depth-3">
+                    <ul>
+                    <li><a class="waves-effect waves-blue" href="/child/addChild"><i class="material-icons">face</i>Add Child</a></li>
+                    <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">accessibility</i>View activity</a></li>
+                    <li><div class="divider"></div></li>
+                    </ul>
+                </div>
+                    
+                </li>
+            </ul>
+            </li>
+            
+            <li class="white"><a href="/child/children" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Children</a></li>
+            <li class="white"><a href="/feed" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Feed</a></li>
+            <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option three</a></li>
+            <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option four</a></li>
+            <li class="white">
+                <div class="divider"></div>
+            </li>
+        </ul>
+        </div>
+    </nav>
 
-      {{!-- <!--JavaScript at end of body for optimized loading--> --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      {{!-- <!--JavaScript at end of body for optimized loading-->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --> --}}
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-      
       <script src="/javascripts/auth.js"></script>
-     <script src="/public/javascripts/animate.js"></script> 
+     <script src="/javascripts/animate.js"></script> 
+      <script src="/javascripts/children.js"></script>  
   </body>
 </html>
