@@ -66,7 +66,7 @@ function getCurrentUser(){
         dataType: 'json',
         success: function(user){
            currentUser = user;
-            listChildInfo();
+            cookieId();
         },
              error: function(errMsg) {
             swal(
@@ -76,17 +76,15 @@ function getCurrentUser(){
         }
     });
 }
-function listChildInfo() {
-    cookieId(currentUser.userid);
-}
 
-function cookieId(user){
+function cookieId(){
+    console.log(currentUser);
      $.ajax({
         type: 'POST',
         url: '/users/getIdFromName',
         dataType: 'json',
         data: {
-            'user_name': user.user_name
+            'user_name': currentUser.userid.user_name
         },
         success: function(id){
            getChildren(id);
