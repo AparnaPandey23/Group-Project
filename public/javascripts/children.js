@@ -81,8 +81,8 @@ function cookieId(user){
         data: {
             'user_name': user.user_name
         },
-        success: function(token){
-           console.log(token);
+        success: function(id){
+           getChildren(id);
         },
         error: function(errMsg) {
            swal(
@@ -92,4 +92,8 @@ function cookieId(user){
         }
     });
                     
+}
+
+function getChildren(id) {
+    console.log("Id = " + id);
 }
