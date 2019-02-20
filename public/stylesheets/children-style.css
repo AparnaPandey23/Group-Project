@@ -14,7 +14,7 @@ input[type=text]:not(.browser-default){
 
 #child-form{
     width: 100%;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 #child-con{
     width: 75%;
@@ -61,4 +61,8 @@ nav .nav-wrapper {
     height: 100%;
     height: 66px;
     line-height: 66px;
+}
+#boop{
+    margin-top: 30px;
+    padding: 20px;
 }
