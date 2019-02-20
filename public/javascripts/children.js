@@ -62,7 +62,7 @@ function listChildInfo() {
         url: '/currentUser',
         dataType: 'json',
         success: function(user){
-           console.log(user);
+           cookieId(user.userid);
         },
              error: function(errMsg) {
             swal(
@@ -71,4 +71,26 @@ function listChildInfo() {
             )
         }
     });
+}
+
+function cookieId(user){
+     $.ajax({
+        type: 'GET',
+        url: '/users/getIdFromName',
+        dataType: 'json',
+        data: {
+            'user_name': user.user_name
+        },
+        success: function(token){
+           console.log(token);
+        },
+             error: function(errMsg) {
+            swal(
+                'Oops...',
+                'error'
+            )
+        }
+    });
+    return user;
+                    
 }
