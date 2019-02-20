@@ -1,68 +1,65 @@
-<!--Title-->
-
 <head>
-  <link rel="stylesheet" href="/stylesheets/Nav-bar-style.css">
-  <link rel='stylesheet' href='/stylesheets/children-style.css' />
- <nav>
-    <div class="nav-wrapper red lighten-4 z-depth-1">
-      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-      <a class="brand-logo" >App Name</a>
-      <ul class="side-nav teal lighten-4" id="mobile-demo">
-         <li class="sidenav-header red lighten-5">
-          <div class="row">
-            <div class="col s4">
-                <img src="/images/initial.svg" width="48px" height="48px" alt="baby image" class="circle responsive-img valign profile-image">
-            </div>
-            <div class="col s8">
-               <a class="btn-flat dropdown-button waves-effect waves-light white-text" href="#" data-activates="profile-dropdown">Name<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                <ul id="profile-dropdown" class="dropdown-content">
-                    <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
-                    <li><a href="#"><i class="material-icons">person</i>Privacy</a></li>
-                     <li class="divider"></li>
-                    <li><a href="#"><i class="material-icons">person</i>Settings</a></li>
-                    <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
-                </ul>
-            </div>
-          </div>
-        </li>
-          
-        <li class="white">
-          <ul class="collapsible collapsible-accordion">
-            <li>
-              <a class="collapsible-header waves-effect black-text"><i class="material-icons">child_care</i>Child Profile <i class="material-icons right grey-text" style="margin-right:5;">arrow_drop_down</i></a>
-              <div class="collapsible-body z-depth-3">
-                <ul>
-                  <li><a class="waves-effect waves-blue" href="/child/addChild"><i class="material-icons">face</i>Add Child</a></li>
-                  <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">accessibility</i>View activity</a></li>
-                  <li><div class="divider"></div></li>
-                </ul>
-              </div>
-                
-            </li>
-          </ul>
-        </li>
-          
-        <li class="white"><a href="/child/children" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Children</a></li>
-        <li class="white"><a href="/feed" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Feed</a></li>
-        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option three</a></li>
-        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option four</a></li>
-        <li class="white">
-            <div class="divider"></div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
+      <link rel='stylesheet' href='/stylesheets/children-style.css' />
+      <link rel="stylesheet" href="/stylesheets/Nav-bar-style.css">
 </head>
 <!--Nav Bar-->
+    <nav>
+        <div class="nav-wrapper z-depth-1 deep-purple lighten-3">
+        <a href="#" id="menu" data-activates="mobile-demo" class="button-collapse show-on-large" style="height:66px;"><i class="material-icons">menu</i></a>
+        <a class="brand-logo" >Toddler Town</a>
+        <ul class="side-nav teal lighten-4" id="mobile-demo">
+            <li class="sidenav-header red lighten-5">
+            <div class="row">
+                <div class="col s4">
+                    <img src="/images/initial.svg" width="48px" height="48px" alt="baby image" class="circle responsive-img valign profile-image">
+                </div>
+                <div class="col s8">
+                <a class="btn-flat dropdown-button waves-effect waves-light white-text" href="#" data-activates="profile-dropdown">Name<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="#"><i class="material-icons">person</i>Privacy</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="material-icons">person</i>Settings</a></li>
+                        <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            </li>
+            
+            <li class="white">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                <a class="collapsible-header waves-effect black-text"><i class="material-icons">child_care</i>Child Profile <i class="material-icons right grey-text" style="margin-right:5;">arrow_drop_down</i></a>
+                <div class="collapsible-body z-depth-3">
+                    <ul>
+                    <li><a class="waves-effect waves-blue" href="/child/addChild"><i class="material-icons">face</i>Add Child</a></li>
+                    <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">accessibility</i>View activity</a></li>
+                    <li><div class="divider"></div></li>
+                    </ul>
+                </div>
+                    
+                </li>
+            </ul>
+            </li>
+            
+            <li class="white"><a href="/child/children" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Children</a></li>
+            <li class="white"><a href="/feed" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Feed</a></li>
+            <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option three</a></li>
+            <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option four</a></li>
+            <li class="white">
+                <div class="divider"></div>
+            </li>
+        </ul>
+        </div>
+    </nav>
 
-<!--Nav Bar-->
+
 <div class="container " id="child-con">
     <form action="" id="child-form" class="z-depth-2">
         <div class="con ">
             <div class="field-set ">
                 <h2>Add Child</h2>
-                <p>Add child to the system</p>
+                <p>Add a child to the system</p>
                 <div class="row">
                     <!--   First name -->
                     <span class="input-item col s6 z-depth-1">
@@ -92,7 +89,7 @@
                         <input class="form-input active validate" id="inputParname" type="text" placeholder="Parent's Name" />
                     </span></div>
                 
-                <button class="log-in waves-effect waves-light sign-up z-depth-1" id="submit-Btn" type="submit"> Sign Up! </button>
+                <button class="log-in waves-effect waves-light sign-up z-depth-1" id="submit-Btn" type="submit" onclick="Materialize.toast('Added Child to Creche',2000,'rounded')"  > Add Child! </button>
             </div>
         </div>
     </form>
