@@ -102,7 +102,7 @@ router.get('/getId', function(req, res, next){
     });
 });
 
-router.get('/getIdFromName', function(req, res, next){
+router.post('/getIdFromName', function(req, res, next){
     User.findOne({'user_name': req.body.user_name}, function (err,user_id) {
         if(err) res.send(err);
         if(user_id){

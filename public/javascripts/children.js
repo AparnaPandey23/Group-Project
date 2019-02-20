@@ -75,7 +75,7 @@ function listChildInfo() {
 
 function cookieId(user){
      $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: '/users/getIdFromName',
         dataType: 'json',
         data: {
@@ -84,13 +84,12 @@ function cookieId(user){
         success: function(token){
            console.log(token);
         },
-             error: function(errMsg) {
-            swal(
+        error: function(errMsg) {
+           swal(
                 'Oops...',
                 'error'
             )
         }
     });
-    return user;
                     
 }
