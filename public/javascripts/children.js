@@ -36,18 +36,15 @@ $(document).ready(
                     'child_fname': event.target.inputFirstName.value,
                     'child_lname': event.target.inputSurname.value,
                     'dob': dob,
-                    'parName': event.target.inputParname.value
+                    'parName': event.target.inputParname.value,
+                    'parId': currentUser.userid.id
                 },
                 success: function(token){
                     $(location).attr('href', '/child/children' );
                     // Redirect to a list of children
                 },
                 error: function(errMsg) {
-                    swal(
-                        'Oops...',
-                        errMsg.responseJSON.body,
-                        'error'
-                    )
+                    console.log("Error");
                 }
             });
         }); 
@@ -78,7 +75,6 @@ function getCurrentUser(){
 }
 
 function cookieId(){
-    
      $.ajax({
         type: 'POST',
         url: '/users/getIdFromName',
@@ -96,10 +92,7 @@ function cookieId(){
                 'error'
             )
         }
-    });
-    
-    console.log(currentUser);
-                    
+    });      
 }
 
 function getChildren(id) {
