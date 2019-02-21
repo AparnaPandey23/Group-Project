@@ -12,9 +12,6 @@ $('#inputMonth').dropdown({
     }
   );
 
-
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 $(document).ready(
     function() {        
         /**
@@ -23,11 +20,6 @@ $(document).ready(
         
         $("#child-form").submit(function (event) {
             event.preventDefault();
-            var day = event.target.inputDay.value;
-            var month = event.target.inputMonth.value;
-            var monthNumber = months.indexOf(month) + 1;
-            var year = event.target.inputYear.value;
-            var dob = day + '/' + monthNumber + '/' + year;
             $.ajax({
                 type: 'POST',
                 url: '/child/addChild',
@@ -35,7 +27,7 @@ $(document).ready(
                 data: {
                     'child_fname': event.target.inputFirstName.value,
                     'child_lname': event.target.inputSurname.value,
-                    'dob': dob,
+                    'dob': event.target.inputDOB.value,
                     'parName': event.target.inputParname.value,
                     'parId': currentUser.userid.id
                 },
