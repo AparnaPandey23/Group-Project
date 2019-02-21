@@ -58,11 +58,18 @@ $(document).ready(
         }); 
     });
 
+// Logs out the user
+$(document).ready(
+    function() {     
+        $("#profile-dropdown > li:nth-child(2) a").click(signOut);
+    });
+
+
 
 function cookieId(name){
     var user = name;
      $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: '/users/getId',
                 dataType: 'json',
                 data: {
