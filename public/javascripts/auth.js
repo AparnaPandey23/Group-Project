@@ -1,3 +1,27 @@
+function cookieId(name){
+    var user = name;
+        $.ajax({
+                type: 'GET',
+                url: '/users/getId',
+                dataType: 'json',
+                data: {
+                    'user_name': user
+                    },
+                success: function(token){
+                },
+                        error: function(errMsg) {
+                    swal(
+                        'Oops...',
+                        errMsg.responseJSON.body,
+                        'error'
+                    )
+                }
+            });
+                    
+    }
+    
+
+
 $(document).ready(
     function() {        
         /**
@@ -15,7 +39,7 @@ $(document).ready(
                     'email': event.target.inputEmail.value
                 },
                 success: function(token){
-		cookieId(event.target.inputUsername.value);
+		        cookieId(event.target.inputUsername.value);
                     $(location).attr('href', '/feed' );
                     // Redirect to a login page
                 },
@@ -30,6 +54,11 @@ $(document).ready(
         }); 
     });
 
+
+
+
+
+
 $(document).ready(
     function() {       
         $("#log-form").submit(function (event) {
@@ -43,7 +72,7 @@ $(document).ready(
                     'password': event.target.inputPassword.value
                 },
                 success: function(token){
-		cookieId(event.target.inputUsername.value);
+		        cookieId(event.target.inputUsername.value);
                     $(location).attr('href', '/feed' );
                     // Redirect to logged in page
                 },
@@ -63,33 +92,6 @@ $(document).ready(
     function() {     
         $("#profile-dropdown > li:nth-child(2) a").click(signOut);
     });
-
-
-
-function cookieId(name){
-    var user = name;
-     $.ajax({
-                type: 'GET',
-                url: '/users/getId',
-                dataType: 'json',
-                data: {
-                    'user_name': user
-                    },
-                success: function(token){
-                   swal(
-                        'shit',
-                        'it worked'
-                    ) 
-                },
-                     error: function(errMsg) {
-                    swal(
-                        'Oops...',
-                        'error'
-                    )
-                }
-            });
-                    
-}
 
 
     

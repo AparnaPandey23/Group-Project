@@ -47,7 +47,6 @@ router.post('/register', function(req, res, next){
                 if (err)
                     throw err;
                 res.cookie('Authorization', 'Bearer ' + user.access_token); 
-                cookieId();
                 res.json({'success' : 'account created'});
 
             });
