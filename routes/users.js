@@ -102,12 +102,20 @@ router.get('/getId', function(req, res, next){
     });
 });
 
+router.post('/getIdFromName', function(req, res, next){
+    User.findOne({'user_name': req.body.user_name}, function (err,user_id) {
+        if(err) res.send(err);
+        if(user_id){
+            res.json(user_id._id);
+        }
+    });
+});
+
 
 function createJwt(profile) {
     return jwt.sign(profile, 'CSIsTheWorst', {
         expiresIn: '2d'
     });
 }
-
 
 module.exports = router;
