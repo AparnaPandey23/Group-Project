@@ -1,124 +1,133 @@
-<!--Title-->
-
 <head>
-<link rel="stylesheet" href="Nav-bar-style.css">
-        
- <nav>
-    <div class="nav-wrapper red lighten-4">
-      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-      <a class="brand-logo" >App Name</a>
-      <ul class="side-nav teal lighten-4" id="mobile-demo">
-          
-        
-         <li class="sidenav-header red lighten-5">
-          <div class="row">
-            <div class="col s4">
-                <img src="/images/App.PNG" width="48px" height="48px" alt="baby image" class="circle responsive-img valign profile-image">
-            </div>
-            <div class="col s8">
-               <a class="btn-flat dropdown-button waves-effect waves-light white-text" href="#" data-activates="profile-dropdown">Name<i class="mdi-navigation-arrow-drop-down right"></i></a>
-                <ul id="profile-dropdown" class="dropdown-content">
-                    <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
-                    <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
-                </ul>
-            </div>
-          </div>
-        </li>
-          
-        <li class="white">
-          <ul class="collapsible collapsible-accordion">
-            <li>
-              <a class="collapsible-header waves-effect"><i class="material-icons">child_care</i>Child Profile <i class="material-icons right" style="margin-right:5;">arrow_drop_down</i></a>
-                
-              <div class="collapsible-body">
-                <ul>
-                  <li><a class="waves-effect waves-blue" href="/child/addChild"><i class="material-icons">face</i>Add Child</a></li>
-                  <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">accessibility</i>View activity</a></li>
-                </ul>
-              </div>
-                
-            </li>
-          </ul>
-        </li>
-          
-        <li class="white"><a href="/child/children" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Children</a></li>
-        <li class="white"><a href="/feed" class="waves-effect waves-blue"><i class="material-icons">account_box</i>Feed</a></li>
-        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option three</a></li>
-        <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">account_box</i>option four</a></li>
-        <li class="white">
-            <div class="divider"></div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <link rel='stylesheet' href='/stylesheets/children-style.css' />
+      <link rel="stylesheet" href="/stylesheets/Nav-bar-style.css">
 </head>
-
 <!--Nav Bar-->
+    <nav>
+        <div class="nav-wrapper z-depth-1 deep-purple lighten-3">
+        <a href="#" id="menu" data-activates="mobile-demo" class="button-collapse show-on-large" style="height:66px;"><i class="material-icons">menu</i></a>
+        <a class="brand-logo" >Toddler Town !</a>
+        <ul class="side-nav" id="mobile-demo">
+            <li class="sidenav-header deep-purple lighten-2 z-depth-2">
+            <div class="row">
+                <div class="col s4">
+                    <img src="/images/initial.svg" id= "baby" alt="baby image" class="valign profile-image" style="width: 80px !important">
+                </div>
+                <div class="col s8">
+                <a class="btn-flat dropdown-button waves-effect  waves-dark white-text" href="#" data-activates="profile-dropdown">NAME<i class="material-icons right white-text" style="margin-left:40px; margin-top:-70px">arrow_drop_down</i></a>
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                        <li><a href="#"><i class="material-icons">lock</i>Privacy</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="material-icons">settings</i>Settings</a></li>
+                        <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+            </li>
+            
+            <li class="white">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                <a class="collapsible-header black-text"><i class="fas fa-child"></i>Child Profile <i class="material-icons right grey-text" style="margin-right:5;">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                    <li><a class="waves-effect waves-blue" href="/child/addChild"><i class="fas fa-plus"></i> Add Child </a></li>
+                    <li><a class="waves-effect waves-blue" href="#"><i class="fas fa-baby"></i> View activity</a></li>
+                    <li><a class="waves-effect waves-blue" href="#"><i class="far fa-sticky-note"></i> Observations</a></li>
+                    <li><a class="waves-effect waves-blue" href="#"><i class="far fa-bell"></i>Attendance</a></li>
+                    <li><div class="divider"></div></li>
+                    </ul>
+                </div>
+                    
+                </li>
+            </ul>
+            </li>
+            
+            <li class="white"><a href="/child/children" class="waves-effect waves-blue"><i class="material-icons">group</i>Children</a></li>
+              <li class="white"><a href="/feed" class="waves-effect waves-blue"><i class="material-icons">update</i>Feed and About Us</a></li>
+              <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">phone_iphone</i>Real-Time Updates</a></li>
+              <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">tag_faces</i>Stay Connected</a></li>
+              <li class="white">
+              <div class="divider"></div>
+            </li>
+        </ul>
+        </div>
+    </nav>
 
-<!--Nav Bar-->
-    <link rel='stylesheet' href='/stylesheets/children-style.css' />
-<div class="container">
-    <form action="" id="child-form">
-        <div class="con">
-            <div class="field-set">
+
+<div class="container " id="child-con">
+    <form action="" id="child-form" class="z-depth-2">
+        <div class="con ">
+            <div class="field-set ">
                 <h2>Add Child</h2>
-                <p>Add child to the system</p>
+                <p>Add a child to the system</p>
                 <div class="row">
                     <!--   First name -->
-                    <span class="input-item col s6">
-                        <input class="form-input active validate" id="inputFirstName" type="text" placeholder="First Name" required />
+                    <span class="input-item col s6 z-depth-1">
+                      <i class="fas fa-user-circle fa-1x"></i>
+                      <input class="form-input active validate z-depth-3" id="inputFirstName" type="text" placeholder="First Name" required />  
                     </span>
 
                     <!--   Surname -->
-                    <span class="input-item col s6">
-                        <input class="form-input active validate" id="inputSurname" type="text" placeholder="Surname" required />
+                    <span class="input-item col s6 z-depth-1">
+                      <i class="fas fa-user-circle fa-1x"></i>
+                      <input class="form-input active validate" id="inputSurname" type="text" placeholder="Surname" required />
                     </span>
-                </div>
-                <div class="row">
-                    <span class="input-item col s4">
-                        <input class="form-input active validate" id="inputDay" type="text" placeholder="Day" required />
-                    </span>
-                    <span class="input-item col s4" id="month-Section">
-                        <span id="month-Wrapper"><input class="form-input active validate" type="text" id="inputMonth" placeholder="Month" data-activates='monthsDropdown' required /></span>
-                        <!-- Dropdown Structure -->
-                        <ul id='monthsDropdown' class='dropdown-content'>
-                            <li><a>January</a></li>
-                            <li><a>February</a></li>
-                            <li><a>March</a></li>
-                            <li><a>April</a></li>
-                            <li><a>May</a></li>
-                            <li><a>June</a></li>
-                            <li><a>July</a></li>
-                            <li><a>August</a></li>
-                            <li><a>September</a></li>
-                            <li><a>October</a></li>
-                            <li><a>November</a></li>
-                            <li><a>December</a></li>
-                        </ul>
-                    </span>
-                    <span class="input-item col s4">
-                        <input class="form-input active validate" id="inputYear" type="text" placeholder="Year" required />
-                    </span>
-                </div>
-                <div class="row">
 
-                    <span class="input-item col s12">
+                </div>
+                <div class="row" id="date">
+                  <!--   DOB -->
+                  <span class="input-item col s12 z-depth-1" >
+                      <i class="fas fa-calendar-check"></i>
+                     {{!-- <label class="control-label" for="date"></label> --}}
+                     <input class="form-input active validate" id="inputDay" name="date" placeholder=" Date of Birth:  MM/DD/YYY" type="text" required/>
+                  </span>
+
+                </div>
+                <div class="row">
+                    <span class="input-item col s12 z-depth-1" >
+                        <i class="material-icons prefix" style="margin-top:10px">people</i>
                         <input class="form-input active validate" id="inputParname" type="text" placeholder="Parent's Name" />
                     </span></div>
                 
-                <button class="log-in" id="submit-Btn" onclick="wavingBaby()" type="submit"> Sign Up! </button>
+                <button class="log-in waves-effect waves-light sign-up z-depth-1" id="submit-Btn" type="submit" onclick="Materialize.toast('Added Child to Creche',2000,'rounded')"  > Add Child! </button>
             </div>
         </div>
     </form>
 </div>
+<div class="footer cyan lighten-3 white-text">
+          © 2019 Copyright 
+</div>
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 <script>  
-$(document).ready(function(){
-  $('.button-collapse').sideNav({
-      menuWidth: 300, // Default is 300
-      edge: 'left', // Choose the horizontal origin
-      closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true // Choose whether you can drag to open on touch screens
-    }
-  );
-  $('.button-collapse').sideNav('show');
-});</script>
+    $(document).ready(function(){
+      $('.button-collapse').sideNav({
+          menuWidth: 300, // Default is 300
+          edge: 'left', // Choose the horizontal origin
+          closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+          draggable: true // Choose whether you can drag to open on touch screens
+        }
+      );
+      $('.button-collapse').sideNav('show');
+    });
+
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+
+</script>

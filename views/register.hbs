@@ -5,7 +5,7 @@
            <header class="head-form">
                <!-- Logo Group -->
                <img src="/images/logo2.svg" id="baby1" class="center-align responsive-img"  >
-              <h2>App Name Woo!</h2>
+              <h2>Toddler Town!</h2>
               <!--     A welcome message or an explanation of the login form -->
               <p>Lorem ipsum dolor, sit amet</p>
            </header>
@@ -42,8 +42,8 @@
            </span>
           
            <span >
-            <input type="checkbox" id="checked" checked>
-            <label for="checked ">I agree to the term and conditions</label>
+            <input type="checkbox" id="checked">
+            <label for="checked" onclick="checkToggle">I agree to the term and conditions</label>
            </span>
            
            <br>
@@ -58,4 +58,10 @@
           </div>
         </form>
         </div>
+
+        <script>
+          function checkToggle() {
+            document.getElementById("checked").checked = !document.getElementById("checked").checked;
+          } 
+        </script>
    
