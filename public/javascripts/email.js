@@ -7,10 +7,9 @@ $(document).ready(function(){
 
 function constructEmailRequest(){
     var email = $('#emailInput').val();
-    if (validEmail(email))
-        var emailRequest = email;
-    else 
-        return null;
+    if (!validEmail(email)) return null;
+    var emailRequest = email;
+    
     
     return emailRequest;
 }
