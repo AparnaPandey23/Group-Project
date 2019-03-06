@@ -17,6 +17,7 @@ var options = {
 
 // Send email to caddress
 router.post('/send', function(req, res, next){
+    console.log(req.body);
     var subject, text, html;
     if(req.body.type == "forgot-psw"){
         subject = emailStructure.forgotPsw.subject;
@@ -39,7 +40,7 @@ router.post('/send', function(req, res, next){
     //       res.json({"Message sent:":info.response});
     //     }
     // });
-
+    res.json(JSON.stringify(email));
 });
 
 module.exports = router;
