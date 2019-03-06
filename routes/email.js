@@ -3,7 +3,6 @@ var router = express.Router();
 var creds = require('../creds');
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
-var util = require('util');
 
 var options = {
     auth: {
@@ -15,9 +14,8 @@ var options = {
   var client = nodemailer.createTransport(sgTransport(options));
 
 
-// Send email to address
+// Send email to caddress
 router.post('/send', function(req, res, next){
-    
     var email = {
         from: creds.email,
         to: req.body.recipient,
@@ -25,7 +23,15 @@ router.post('/send', function(req, res, next){
         text: req.body.text,
         html: req.body.html
       };
-    res.json(email);
+   
+      client.sendMail(email, function(err, info){
+        if (err){
+          res.send(err);
+        }
+        else {
+          res.json({"Message sent:":info.response});
+        }
+    });
 });
 
 module.exports = router;
