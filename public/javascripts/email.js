@@ -10,7 +10,6 @@ function constructEmailRequest(){
     if (!validEmail(email)) return null;
     var emailRequest = email;
     
-    
     return emailRequest;
 }
 

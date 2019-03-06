@@ -1,0 +1,7 @@
+{
+    "forgot-psw": {
+        "subject":"Reset Password",
+        "text":"Please click the link below to reset your password",
+        "html":"<a>Reset password</a>"
+    }
+}
