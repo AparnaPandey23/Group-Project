@@ -1,20 +1,16 @@
 $(document).ready(function(){
     $('#forgotPswEmailBtn').click(function() {
-        var emailRequest = constructEmailRequest();
-        if(emailRequest) sendEmail(emailRequest);
+        var email = $('#emailInput').val();
+        if (validEmail(email)) {
+            sendEmail(email, 'forgot-psw');
+        } else {
+            alert("Please enter a valid email address");
+        }
     });
 });
 
-function constructEmailRequest(){
-    var email = $('#emailInput').val();
-    if (!validEmail(email)) return null;
-    var emailRequest = email;
-    
-    return emailRequest;
-}
-
-function sendEmail(emailRequest){
-    console.log(emailRequest);
+function sendEmail(emailRequest, type){
+    console.log(emailRequest + " " + type);
 }
 
 function validEmail(email){
