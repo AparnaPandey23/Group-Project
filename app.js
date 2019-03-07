@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var childRouter = require('./routes/child');
 var emailRouter = require('./routes/email');
+var activityRouter = require('./routes/activity');
 var app = express();
 
 
@@ -25,6 +26,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/child', childRouter);
 app.use('/email', emailRouter);
+app.use('/activity', activityRouter);
 
 
 // catch 404 and forward to error handler
