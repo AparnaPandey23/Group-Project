@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/users');
 var jwt = require('jsonwebtoken');
+var cookieParser = require('cookie-parser');
 
 router.get('/register', function(req, res, next) {
     res.render('register');
@@ -88,6 +89,7 @@ router.post('/login', function(req, res, next){
 
 
 router.get('/getId', function(req, res, next){
+	res.json({'success' : 'ran the code'});
     User.findOne({'user_name': req.body.user_name}, function (err,user_id) {
         if (err)
             res.send(err);

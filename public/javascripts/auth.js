@@ -39,7 +39,7 @@ $(document).ready(
                     'email': event.target.inputEmail.value
                 },
                 success: function(token){
-		        cookieId(event.target.inputUsername.value);
+                    cookieId(event.target.inputUsername.value);
                     $(location).attr('href', '/feed' );
                     // Redirect to a login page
                 },
@@ -55,8 +55,35 @@ $(document).ready(
     });
 
 
+<<<<<<< HEAD
 
 
+=======
+function cookieId(name){
+    var user = name;
+    $.ajax({
+        type: 'GET',
+        url: '/users/getId',
+        dataType: 'json',
+        data: {
+            'user_name': user
+        },
+        success: function(token){
+            swal(
+                'shit',
+                'it worked'
+            ) 
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                'error'
+            )
+        }
+    });
+
+}
+>>>>>>> f63affe610b1618c34de8045b802fbe4d96e1080
 
 
 $(document).ready(
@@ -72,8 +99,13 @@ $(document).ready(
                     'password': event.target.inputPassword.value
                 },
                 success: function(token){
+<<<<<<< HEAD
 		        cookieId(event.target.inputUsername.value);
                     $(location).attr('href', '/feed' );
+=======
+                    cookieId(event.target.inputUsername.value);
+                    setTimeout(function(){ $(location).attr('href', '/feed' );}, 3000);
+>>>>>>> f63affe610b1618c34de8045b802fbe4d96e1080
                     // Redirect to logged in page
                 },
                 error: function(errMsg) {
@@ -94,12 +126,21 @@ $(document).ready(
     });
 
 
+<<<<<<< HEAD
     
     
+=======
+
+
+
+
+
+
+>>>>>>> f63affe610b1618c34de8045b802fbe4d96e1080
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-      console.log('User signed out.');
+        console.log('User signed out.');
     });
 }
-    
+
