@@ -4,6 +4,17 @@ var User = require('../models/users');
 var jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 
+// AUTH COURSE ===
+router.post('/signup', function(req, res, next){
+     
+});
+router.post('/signin', function(req, res, next){
+     
+});
+router.get('/secret', function(req, res, next){
+     
+});
+//===
 router.get('/register', function(req, res, next) {
     res.render('register');
 });
