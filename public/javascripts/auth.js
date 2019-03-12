@@ -123,3 +123,56 @@ function signOut() {
     });
 }
 
+// AUTH COURSE ===
+function signUp() {
+    console.log("User signing up");
+    $.ajax({
+        type: 'POST',
+        url: '/users/signup',
+        dataType: 'json',
+        data: {
+            
+        },
+        success: function(token){
+            
+        },
+        error: function(errMsg) {
+            console.log("Error: " + errMsg);
+        }
+    });
+}
+function signIn() {
+    console.log("User signing in");
+    $.ajax({
+        type: 'POST',
+        url: '/users/signin',
+        dataType: 'json',
+        data: {
+            
+        },
+        success: function(token){
+            
+        },
+        error: function(errMsg) {
+            console.log("Error: " + errMsg);
+        }
+    });
+}
+function accessSecret() {
+    console.log("User accessing secret data");
+    $.ajax({
+        type: 'POST',
+        url: '/users/secret',
+        dataType: 'json',
+        data: {
+            
+        },
+        success: function(token){
+            
+        },
+        error: function(errMsg) {
+            console.log("Error: " + errMsg);
+        }
+    });
+}
+// ===

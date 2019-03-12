@@ -6,13 +6,13 @@ var cookieParser = require('cookie-parser');
 
 // AUTH COURSE ===
 router.post('/signup', function(req, res, next){
-     
+     res.json({"Success":"User signed up"});
 });
 router.post('/signin', function(req, res, next){
-     
+    res.json({"Success":"User signed in"});     
 });
 router.get('/secret', function(req, res, next){
-     
+    res.json({"Success":"User accessed secret"});     
 });
 //===
 router.get('/register', function(req, res, next) {
