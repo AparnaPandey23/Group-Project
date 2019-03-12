@@ -1,3 +1,4 @@
+
 $(document).ready(
     // REGISTRATION
     function() {        // 1. User enters details and hits sign up button
@@ -48,8 +49,8 @@ $(document).ready(
                 },
                 success: function(token){
                     // 12. Redirect user to feed page
-                    setTimeout(function(){ $(location).attr('href', '/feed' );}, 3000);
                     createIdCookie(event.target.inputUsername.value);
+                    setTimeout(function(){ $(location).attr('href', '/feed' );}, 3000);
                 },
                 error: function(errMsg) {
                     swal(
@@ -78,14 +79,10 @@ function createIdCookie(username) {
             'user_name': username,
         },
         success: function(token){
-            
+            console.log(token);
         },
         error: function(errMsg) {
-            swal(
-                'Oops...',
-                errMsg.responseJSON.body,
-                'error'
-            )
+            console.log(errMsg);
         }
     });
 }

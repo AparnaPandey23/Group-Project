@@ -121,7 +121,7 @@ router.get('/currentUser', function(req, res, next) {
 router.get('/getId', function(req, res, next){
     User.findOne({'user_name': req.body.user_name}, function (err,user_id) {
         if (err)
-            res.send(err);
+            res.json({"Error":err});
         if(user_id){
             var id = user_id._id
             // adding the id of the user to the coocie to pas on to children.

@@ -1,5 +1,3 @@
-var currentUser;
-
 $('#inputMonth').dropdown({
       inDuration: 300,
       outDuration: 225,
@@ -17,7 +15,6 @@ $(document).ready(
         /**
          * Event handler for when the user adds a new child
          */
-        
         $("#child-form").submit(function (event) {
             event.preventDefault();
             $.ajax({
@@ -41,6 +38,10 @@ $(document).ready(
             });
         }); 
     }, getCurrentUser());
+
+function getCurrentUser() {
+    console.log(document.cookie);
+}
 
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
