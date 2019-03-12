@@ -39,8 +39,10 @@ $(document).ready(
                     'email': event.target.inputEmail.value
                 },
                 success: function(token){
-                    cookieId(event.target.inputUsername.value);
-                    $(location).attr('href', '/feed' );
+                    // Recieve the token sent back from the server
+                    console.log(token);
+                    // cookieId(event.target.inputUsername.value);
+                    // $(location).attr('href', '/feed' );
                     // Redirect to a login page
                 },
                 error: function(errMsg) {
