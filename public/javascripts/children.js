@@ -66,26 +66,6 @@ function getCurrentUser(){
     });
 }
 
-function cookieId(){
-     $.ajax({
-        type: 'POST',
-        url: '/users/getIdFromName',
-        dataType: 'json',
-        data: {
-            'user_name': currentUser.userid.user_name
-        },
-        success: function(id){
-           getChildren(id);
-            currentUser.userid.id = id;
-        },
-        error: function(errMsg) {
-           swal(
-                'Oops...',
-                'error'
-            )
-        }
-    });      
-}
 
 function getChildren(id) {
     $.ajax({
