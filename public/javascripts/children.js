@@ -47,26 +47,6 @@ $('#monthsDropdown').click(function(event){
     $("#inputMonth").val(month);
 });
 
-
-function getCurrentUser(){
-    $.ajax({
-        type: 'GET',
-        url: '/currentUser',
-        dataType: 'json',
-        success: function(user){
-           currentUser = user;
-            cookieId();
-        },
-             error: function(errMsg) {
-            swal(
-                'Oops...',
-                'error'
-            )
-        }
-    });
-}
-
-
 function getChildren(id) {
     $.ajax({
         type: 'POST',
