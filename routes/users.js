@@ -40,9 +40,9 @@ router.post('/register', function(req, res, next){
             newUser.user_name = username;
             newUser.password = newUser.generateHash(password);
             newUser.email = email;
-
+            
             // 7. Create a JWT for the user based on username (function is in this file at bottom)
-            newUser.access_token = createJwt({user_name:username});
+            // newUser.access_token = createJwt({user_name:username});
 
             // 8. Save the user details in the database
             newUser.save(function(err, user) {
@@ -51,6 +51,7 @@ router.post('/register', function(req, res, next){
                     throw err;
 
                 // 10. Send back a cookie with the access token to the user
+                user.access_token = createJwt({user_id:user._id});
                 res.cookie('Authorization', 'Bearer ' + user.access_token); 
 
                 // 11. Inform the browser that the user has successully signed up
@@ -74,7 +75,7 @@ router.post('/login', function(req, res, next){
           // Compare passwords
             if (user.validPassword(password)) {
                 // 6. Success : Assign new access token for the session
-                user.access_token = createJwt({user_name: username});
+                user.access_token = createJwt({user_id: user._id});
                 user.save();
 
                 // 10. Send back a cookie with the access token to the user
