@@ -20,6 +20,7 @@ $(document).ready(
 
                     // Redirect the user to the feed page
                     $(location).attr('href', '/feed' );
+                    createIdCookie(event.target.inputUsername.value);
                 },
                 error: function(errMsg) {
                     swal(
@@ -48,6 +49,7 @@ $(document).ready(
                 success: function(token){
                     // 12. Redirect user to feed page
                     setTimeout(function(){ $(location).attr('href', '/feed' );}, 3000);
+                    createIdCookie(event.target.inputUsername.value);
                 },
                 error: function(errMsg) {
                     swal(

@@ -105,7 +105,6 @@ router.get('/currentUser', function(req, res, next) {
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
             res.json({"userid":profile});
-            createIdCookie(getId(profile.user_name));
         }
     } catch (err) {
         console.log(err);
