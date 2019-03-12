@@ -68,7 +68,24 @@ $(document).ready(
 
 // Creates a cookie with the ID of the user
 function createIdCookie(username) {
-    // Send GET request
+    $.ajax({
+        type: 'GET',
+        url: '/users/getId',
+        dataType: 'json',
+        data: { 
+            'user_name': username,
+        },
+        success: function(token){
+            
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
 }
 
 // ???

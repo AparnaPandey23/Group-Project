@@ -102,11 +102,10 @@ router.post('/login', function(req, res, next){
 router.get('/currentUser', function(req, res, next) {
     try {
         var jwtString = req.cookies.Authorization.split(" ");
-        console.log(verifyJwt(jwtString[1]));
         var profile = verifyJwt(jwtString[1]);
-        console.log(jwtString);
         if (profile) {
             res.json({"userid":profile});
+            createIdCookie(getId(profile.user_name));
         }
     } catch (err) {
         console.log(err);
@@ -129,12 +128,10 @@ router.get('/getId', function(req, res, next){
             // adding the id of the user to the coocie to pas on to children.
             var d = new Date(Date.now() + (60*60*1000));
             res.cookie('parid', id , { expires: d, path: '/child/addchild'});
-            res.json({'success' : 'Cookie Made ' + id});
+            res.json({'success' : 'Cookie Made'});
         }
     });
 });
-
-
 
 function createJwt(profile) {
     return jwt.sign(profile, 'CSIsTheWorst', {
@@ -142,12 +139,9 @@ function createJwt(profile) {
     });
 }
 
-
 function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
 }
-
-
 
 module.exports = router;
