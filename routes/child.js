@@ -95,6 +95,7 @@ router.post('/getChildren', function(req, res, next){
 
 });
 
+// NOT CHANGED TO JWT YET - UNTIL ADDING DELETE CHILD BUTTON
 // deleate the Child Request need to pass in the id of the child to be deleated
 router.delete('/delchild/:id', function(req, res ,next){
     var id = req.params.id; 
