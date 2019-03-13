@@ -118,21 +118,6 @@ router.get('/currentUser', function(req, res, next) {
         }
 });
 
-/* GET request to store the ID of the user based on user name sent */
-router.get('/getId', function(req, res, next){
-    User.findOne({'user_name': req.body.user_name}, function (err,user_id) {
-        if (err)
-            res.json({"Error":err});
-        if(user_id){
-            var id = user_id._id
-            // adding the id of the user to the coocie to pas on to children.
-            var d = new Date(Date.now() + (60*60*1000));
-            res.cookie('parid', id , { expires: d, path: '/child/addchild'});
-            res.json({'success' : 'Cookie Made'});
-        }
-    });
-});
-
 function createJwt(profile) {
     return jwt.sign(profile, 'CSIsTheWorst', {
         expiresIn: '2d'
