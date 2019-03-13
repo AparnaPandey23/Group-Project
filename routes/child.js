@@ -70,7 +70,7 @@ router.get('/getchild'
 });
 
 // Return all children given parent id (json request)
-router.post('/getchildren', function(req, res, next){
+router.post('/getChildren', function(req, res, next){
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);

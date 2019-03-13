@@ -17,6 +17,7 @@ $(document).ready(
          */
         // Using document.cookie
         $("#child-form").submit(function (event) {
+            console.log("Add child");
             event.preventDefault();
             $.ajax({
                 type: 'POST',
@@ -27,7 +28,6 @@ $(document).ready(
                     'child_lname': event.target.inputSurname.value,
                     'dob': event.target.inputDOB.value,
                     'parName': event.target.inputParname.value,
-                    'parId': currentUser.userid.id
                 },
                 success: function(token){
                     $(location).attr('href', '/child/children' );
@@ -38,7 +38,7 @@ $(document).ready(
                 }
             });
         }); 
-    });
+    }, getChildren());
 
 
 $('#monthsDropdown').click(function(event){
@@ -46,14 +46,10 @@ $('#monthsDropdown').click(function(event){
     $("#inputMonth").val(month);
 });
 
-function getChildren(id) {
+function getChildren() {
     $.ajax({
         type: 'POST',
         url: '/child/getChildren',
-        dataType: 'json',
-        data: {
-            'userid': id
-        },
         success: function(children){
            loadChildren(children);
         },
