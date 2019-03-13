@@ -71,11 +71,28 @@ router.get('/getchild'
 
 // Return all children given parent id (json request)
 router.post('/getchildren', function(req, res, next){
-    Child.find({par_id:req.body.userid}, function (err,child_fname) {
-        if (err)
-            res.send(err);
-        res.json(child_fname);
-    });
+    try {
+        var jwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(jwtString[1]);
+        
+        if (profile) {
+            var userid = profile.user_id;
+            Child.find({par_id:userid}, function (err,child_fname) {
+                if (err)
+                    res.send(err);
+                res.json(child_fname);
+            });
+        }
+    } catch (err) {
+        console.log(err);
+            res.json({
+                "status": "error",
+                "body": [
+                    "You are not logged in."
+                ]
+            });
+        }
+
 });
 
 // deleate the Child Request need to pass in the id of the child to be deleated
