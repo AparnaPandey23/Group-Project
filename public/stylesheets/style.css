@@ -13,8 +13,9 @@ a {
 
 /*Child List*/
 #childList ul {
-    width: 100%;
+    width:100%;
 }
+
 
 
 #childList ul li:first-child {
