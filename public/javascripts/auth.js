@@ -55,7 +55,7 @@ $(document).ready(
                     // This will be included in every further request until it expires
 
                     // Redirect the user to the feed page
-                    $(location).attr('href', '/CrecheSet' );
+                    $(location).attr('href', '/creche/newCreche' );
                     //createIdCookie(event.target.inputUsername.value);
                 },
                 error: function(errMsg) {
