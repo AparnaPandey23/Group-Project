@@ -20,7 +20,7 @@ function sendEmail(address, type){
             'type' : type
         },
         success: function(info){
-            console.log(info);
+            console.log('Email sent: ' + info);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus + ": " + errorThrown);

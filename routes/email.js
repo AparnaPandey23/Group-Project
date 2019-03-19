@@ -32,15 +32,14 @@ router.post('/send', function(req, res, next){
         html: html
       };
    
-    //   client.sendMail(email, function(err, info){
-    //     if (err){
-    //       res.send(err);
-    //     }
-    //     else {
-    //       res.json({"Message sent:":info.response});
-    //     }
-    // });
-    res.json(JSON.stringify(email));
+      client.sendMail(email, function(err, info){
+        if (err){
+          res.send(err);
+        }
+        else {
+          res.json({"Message sent:":info.response});
+        }
+    });
 });
 
 module.exports = router;
