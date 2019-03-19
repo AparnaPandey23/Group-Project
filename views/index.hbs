@@ -40,7 +40,15 @@
               <!--   Password Input-->
               <input class="form-input materialize-textarea validate" type="password" placeholder="Password" id="inputPassword"  name="password" required>
             </span>
-              
+              <div class="switch">
+   	 	<label  class="switch">
+    	  	Parent
+    	  	<input type="checkbox" id="togBtn" value="false" name="disableYXLogo">
+    	  	<span class="lever"></span>
+		Staff	
+    		</label>
+  		</div>
+
              {{!-- <a class="waves-effect waves-light submits btn login" class="log-in" id="login" href="#"  type="submit">Log In</a>  --}}
               <button class=" waves-effect waves-light  btn login " id="login" onclick="wavingBaby()" type="submit"> Log In </button> 
             
@@ -50,8 +58,8 @@
               <a class="waves-effect waves-light  frgt-pass btn "  href="/users/forgotpass"><i class="material-icons right">help</i>Forgot-Password</a>
               <!--     Sign Up button -->
               <a class="waves-effect waves-light  sign-up btn"  href="/users/register"><i class="material-icons right">person_add</i>Sign Up! </a>
-              <!-- <button class="btn submits sign-up" onclick="location.href = './registration-page.html';">Sign Up   <i class="material-icons">person_add</i> -->
-	      <a class="waves-effect waves-light  sign-up btn"  href="/employee/register"><i class="material-icons right">person_add</i>Set up your Creche</a>
+              <!-- <button class="btn submits sign-up" onclick="location.href = './registration-page.html';">Sign Up   <i class="material-icons">store</i> -->
+	      <a class="waves-effect waves-light  sign-up btn"  href="/employee/register"><i class="material-icons right">store</i>Set up your Creche</a>
               </button>
            </div>
 
