@@ -35,6 +35,41 @@ $(document).ready(
     });
 
 $(document).ready(
+    // REGISTRATION
+    function() {        // 1. User enters details and hits sign up button
+        $("#EMPreg-form").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/users/registerEMP',
+                dataType: 'json', // 2. The following data is sent to the server in a post request:
+                data: {
+                    'user_name': event.target.inputUsername.value,
+                    'password': event.target.inputPassword.value,
+                    'email': event.target.inputEmail.value
+                },
+                success: function(token){
+                    // 12. If the user successfully signed up,
+                    // recieve the token sent back from the server.
+                    // The token is automatically saved as a cookie (res.cookie)
+                    // This will be included in every further request until it expires
+
+                    // Redirect the user to the feed page
+                    $(location).attr('href', '/CrecheSet' );
+                    //createIdCookie(event.target.inputUsername.value);
+                },
+                error: function(errMsg) {
+                    swal(
+                        'Oops...',
+                        errMsg.responseJSON.body,
+                        'error'
+                    )
+                }
+            });
+        }); 
+    });
+
+$(document).ready(
     // LOGIN
     function() {        // 1. User enters details and hits login button
         $("#log-form").submit(function (event) {

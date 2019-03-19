@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var childRouter = require('./routes/child');
 var emailRouter = require('./routes/email');
+var emploRouter = require('./routes/employee');
 var app = express();
 
 // AUTH COURSE ===
@@ -32,7 +33,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/child', childRouter);
 app.use('/email', emailRouter);
-
+app.use('/employee/', emploRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

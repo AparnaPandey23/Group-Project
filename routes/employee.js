@@ -1,67 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/users');
 var Employee = require('../models/employee');
 var jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 
 /* GET requests to render pages */
 router.get('/register', function(req, res, next) {
-    res.render('register');
-});
-router.get('/login', function(req, res, next) {
-    res.render('login');
+    res.render('registerEMP');
 });
 
-router.get('/forgotpass', function(req, res, next) {
-    res.render('forgotpass');
-});
-
-/* POST requests for registration and login */
-router.post('/register', function(req, res, next){
-    var username = req.body.user_name;
-    var password = req.body.password;
-    var email = req.body.email;
-    // Check if account already exists
-    User.findOne({ 'user_name' :  username }, function(err, user) {
-        // 3. Check if there is an error
-        if (err)
-            res.send(err);
-
-        // 4. Check to see if theres already a user with that email
-        if (user) {
-            res.status(401).json({
-                "status": "info",
-                "body": "Username already taken"
-            });
-        // 5. If there is no user with that username create the user
-             } else {
-	     var newUser = new User();
-
-            // 6. Set the user's local credentials
-            newUser.user_name = username;
-            newUser.password = newUser.generateHash(password);
-            newUser.email = email;
-            
-            // 7. Create a JWT for the user based on username (function is in this file at bottom)
-            // newUser.access_token = createJwt({user_name:username});
-
-            // 8. Save the user details in the database
-            newUser.save(function(err, user) {
-                // 9. If there is an error in doing this, stop and throw an error
-                if (err)
-                    throw err;
-
-                // 10. Send back a cookie with the access token to the user
-                user.access_token = createJwt({user_id:user._id});
-                res.cookie('Authorization', 'Bearer ' + user.access_token); 
-
-                // 11. Inform the browser that the user has successully signed up
-                res.json({'success' : user.access_token});
-            });
-	}
-    });
-});
+/* POST requests for registration and login */ 
 router.post('/registerEMP', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
@@ -71,27 +19,23 @@ router.post('/registerEMP', function(req, res, next){
         // 3. Check if there is an error
         if (err)
             res.send(err);
-		// 3. Check if there is an error
 
         // 4. Check to see if theres already a user with that email
-        if (user) {
+        if (employee) {
             res.status(401).json({
                 "status": "info",
                 "body": "Username already taken"
             });
-        // 5. If there is no user with that username create the user
-             } else {
-
-        // 4. Check to see if theres already a user with that email
+        } else { // 5. If there is no user with that username create the user
             var newEMP = new Employee();
 
             // 6. Set the user's local credentials
             newEMP.user_name = username;
-            newEMP.password = newEMP.generateHash(password);
+            newEMP.password = newUser.generateHash(password);
             newEMP.email = email;
             
             // 7. Create a JWT for the user based on username (function is in this file at bottom)
-            // newEMP.access_token = createJwt({user_name:username});
+            // newUser.access_token = createJwt({user_name:username});
 
             // 8. Save the user details in the database
             newEMP.save(function(err, employee) {
@@ -100,17 +44,17 @@ router.post('/registerEMP', function(req, res, next){
                     throw err;
 
                 // 10. Send back a cookie with the access token to the user
-                employee.access_token = createJwt({user_id:employee._id});
+                employee.access_token = createJwt({user_id:user._id});
                 res.cookie('Authorization', 'Bearer ' + employee.access_token); 
 
                 // 11. Inform the browser that the user has successully signed up
                 res.json({'success' : employee.access_token});
             });
-	}
+        }
     });
 });
-
-router.post('/login', function(req, res, next){
+/*
+router.post('/loginEMP', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
 
@@ -147,8 +91,8 @@ router.post('/login', function(req, res, next){
                 "body": "Username not found"
             });
         } }); });
-
-/* GET request to return profile of user currently logged in */
+*/
+/* GET request to return profile of user currently logged in */ 
 router.get('/currentUser', function(req, res, next) {
     try {
         var jwtString = req.cookies.Authorization.split(" ");
