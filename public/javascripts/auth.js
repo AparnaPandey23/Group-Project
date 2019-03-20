@@ -84,34 +84,6 @@ $(document).ready(
         }
         }); 
     });
-$(document).ready(
-    // LOGIN
-    function() {
-        $("#EMPlog-form").submit(function (event) {
-	    if(switchStatus == true){
-            event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '/users/loginEMP',
-                dataType: 'json',
-                data: { 
-                    'user_name': event.target.inputUsername.value,
-                    'password': event.target.inputPassword.value
-                },
-                success: function(token){
-                    setTimeout(function(){ $(location).attr('href', '/staff' );}, 3000);
-                },
-                error: function(errMsg) {
-                    swal(
-                        'Oops...',
-                        errMsg.responseJSON.body,
-                        'error'
-                    )
-                }
-            });
-        }
-        }); 
-    });
 
 // Logs out the user
 $(document).ready(
@@ -124,11 +96,11 @@ var switchStatus = false;
 $("#togBtn").on('change', function() {
     if ($(this).is(':checked')) {
         switchStatus = $(this).is(':checked');
-        //alert(switchStatus);// To verify
+        // alert(switchStatus);// To verify
     }
     else {
        switchStatus = $(this).is(':checked');
-       //alert(switchStatus);// To verify
+    //    alert(switchStatus);// To verify
     }
 });
 
