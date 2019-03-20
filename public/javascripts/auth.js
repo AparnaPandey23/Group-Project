@@ -1,3 +1,4 @@
+var switchStatus = false;
 
 $(document).ready(
     // REGISTRATION
@@ -35,7 +36,7 @@ $(document).ready(
             event.preventDefault();
             $.ajax({
                 type: 'POST',
-                url: '/users/registerEMP',
+                url: '/employee/register',
                 dataType: 'json',
                 data: {
                     'user_name': event.target.inputUsername.value,
@@ -59,10 +60,9 @@ $(document).ready(
 $(document).ready(
     // LOGIN
     function() {
-        console.log(switchStatus);
         $("#log-form").submit(function (event) {
+            event.preventDefault();
             if(switchStatus == false){
-                event.preventDefault();
                 $.ajax({
                     type: 'POST',
                     url: '/users/login',
@@ -85,7 +85,7 @@ $(document).ready(
             } else if(switchStatus == true) {
                 $.ajax({
                     type: 'POST',
-                    url: '/users/loginEMP',
+                    url: '/employee/login',
                     dataType: 'json',
                     data: { 
                         'user_name': event.target.inputUsername.value,
@@ -113,7 +113,7 @@ $(document).ready(
     });
 
 //function to determin wether staff or parent login
-var switchStatus = false;
+
 $("#togBtn").on('change', function() {
     if ($(this).is(':checked')) {
         switchStatus = $(this).is(':checked');
