@@ -43,4 +43,29 @@ function createJwt(profile) {
     });
 }
 
+/* GET request to return profile of user currently logged in */
+router.get('/currentCreche', function(req, res, next) {
+    try {
+        var jwtString = req.cookies.Authorization_Creche.split(" ");
+        var profile = verifyJwt(jwtString[1]);
+        if (profile) {
+            res.json({"userid":profile});
+        }
+    } catch (err) {
+        console.log(err);
+            res.json({
+                "status": "error",
+                "body": [
+                    "No staff of this creche is logged in."
+                ]
+            });
+        }
+});
+
+function verifyJwt(jwtString) {
+    var value = jwt.verify(jwtString, 'CSIsTheWorst');
+    return value;
+}
+
+
 module.exports = router;
