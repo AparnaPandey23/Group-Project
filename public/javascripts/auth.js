@@ -59,29 +59,50 @@ $(document).ready(
 $(document).ready(
     // LOGIN
     function() {
+        console.log(switchStatus);
         $("#log-form").submit(function (event) {
-	    if(switchStatus == false){
-            event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '/users/login',
-                dataType: 'json',
-                data: { 
-                    'user_name': event.target.inputUsername.value,
-                    'password': event.target.inputPassword.value
-                },
-                success: function(token){
-                    setTimeout(function(){ $(location).attr('href', '/feed' );}, 3000);
-                },
-                error: function(errMsg) {
-                    swal(
-                        'Oops...',
-                        errMsg.responseJSON.body,
-                        'error'
-                    )
-                }
-            });
-        }
+            if(switchStatus == false){
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/users/login',
+                    dataType: 'json',
+                    data: { 
+                        'user_name': event.target.inputUsername.value,
+                        'password': event.target.inputPassword.value
+                    },
+                    success: function(token){
+                        setTimeout(function(){ $(location).attr('href', '/feed' );}, 3000);
+                    },
+                    error: function(errMsg) {
+                        swal(
+                            'Oops...',
+                            errMsg.responseJSON.body,
+                            'error'
+                        )
+                    }
+                });
+            } else if(switchStatus == true) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/users/loginEMP',
+                    dataType: 'json',
+                    data: { 
+                        'user_name': event.target.inputUsername.value,
+                        'password': event.target.inputPassword.value
+                    },
+                    success: function(token){
+                        setTimeout(function(){ $(location).attr('href', '../creche/home' );}, 3000);
+                    },
+                    error: function(errMsg) {
+                        swal(
+                            'Oops...',
+                            errMsg.responseJSON.body,
+                            'error'
+                        )
+                    }
+                });
+            }
         }); 
     });
 

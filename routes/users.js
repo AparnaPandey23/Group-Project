@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/users');
-var Employee = require('../models/employee');
 var jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 
@@ -49,36 +48,6 @@ router.post('/register', function(req, res, next){
     });
 });
 
-router.post('/registerEMP', function(req, res, next){
-    var username = req.body.user_name;
-    var password = req.body.password;
-    var email = req.body.email;
-
-    Employee.findOne({ 'user_name' :  username }, function(err, user) {
-        if (err)
-            res.send(err);
-        if (user) {
-            res.status(401).json({
-                "status": "info",
-                "body": "Username already taken"
-            });
-        } else {
-            var newEMP = new Employee();
-            newEMP.user_name = username;
-            newEMP.password = newEMP.generateHash(password);
-            newEMP.email = email;
-
-            newEMP.save(function(err, employee) {
-                if (err)
-                    throw err;
-
-                employee.access_token = createJwt({emp_id:employee._id});
-                res.cookie('Authorization', 'Bearer ' + employee.access_token); 
-                res.json({'success' : employee.access_token});
-            });
-	}
-    });
-});
 
 router.post('/login', function(req, res, next){
     var username = req.body.user_name;
@@ -92,36 +61,6 @@ router.post('/login', function(req, res, next){
                 user.access_token = createJwt({user_id: user._id});
                 user.save();
                 res.cookie('Authorization', 'Bearer ' + user.access_token); 
-                res.json({'success' : 'loggedIn'});
-            }
-            else {
-                res.status(401).send({
-                    "status": "error",
-                    "body": "Email or password does not match"
-                });
-            }
-        }
-        else
-        {
-            res.status(401).send({
-                "status": "error",
-                "body": "Username not found"
-            });
-        } }); });
-
-
-router.post('/loginEMP', function(req, res, next){
-    var username = req.body.user_name;
-    var password = req.body.password;
-
-    Employee.findOne({'user_name': username}, function (err, employee) {
-        if (err)
-            res.send(err);
-        if (employee) {
-            if (employee.validPassword(password)) {
-                employee.access_token = createJwt({emp_id: employee._id});
-                employee.save();
-                res.cookie('Authorization', 'Bearer ' + employee.access_token); 
                 res.json({'success' : 'loggedIn'});
             }
             else {
