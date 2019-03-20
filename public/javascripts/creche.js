@@ -1,5 +1,7 @@
 $(document).ready(
     function() { 
+        console.log("Creche ready");
+
         $("#Creche_setup").submit(function (event) {
             event.preventDefault();
             $.ajax({
@@ -15,7 +17,6 @@ $(document).ready(
 		            'creche_a4': event.target.line4Add.value
                 },
                 success: function(token){
-         
                     $(location).attr('href', '/creche/home' );
                 },
                 error: function(errMsg) {

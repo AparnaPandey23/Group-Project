@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Creche = require('../models/creche');
+var jwt = require('jsonwebtoken');
 
 /* GET add new Creche page. */
 router.get('/newCreche', function(req, res, next) {
@@ -30,8 +31,16 @@ router.post('/newcreche', function(req, res, next){
     newcreche.save(function(err, creche) {
         if (err)
             throw err;
-        res.json({'success' : 'Creche Registered created'});
+        creche.access_token = createJwt({creche_id:creche._id});
+        res.cookie('Authorization_Creche', 'Bearer ' + creche.access_token); 
+        res.json({'success' : 'Creche Registered created: ' + creche.access_token});
     });
 });
+
+function createJwt(profile) {
+    return jwt.sign(profile, 'CSIsTheWorst', {
+        expiresIn: '2d'
+    });
+}
 
 module.exports = router;

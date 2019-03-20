@@ -16,7 +16,6 @@ $(document).ready(
                 },
                 success: function(token){
                     $(location).attr('href', '/feed' );
-                    createIdCookie(event.target.inputUsername.value);
                 },
                 error: function(errMsg) {
                     swal(
