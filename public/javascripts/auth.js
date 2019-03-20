@@ -101,8 +101,10 @@ $(document).ready(
     });
 $(document).ready(
     // LOGIN
+    // ID needs to be renamed, otherwise each time a user registers
+    // it will call this function aswell
     function() {        // 1. User enters details and hits login button
-        $("#log-form").submit(function (event) {
+        $("#staff-log-form").submit(function (event) {
 	    if(switchStatus == true){
             event.preventDefault();
             $.ajax({
@@ -115,7 +117,7 @@ $(document).ready(
                 },
                 success: function(token){
                     // 12. Redirect user to feed page
-                    //createIdCookie(event.target.inputUsername.value);
+                    createIdCookie(event.target.inputUsername.value);
                     setTimeout(function(){ $(location).attr('href', '/staff' );}, 3000);
                 },
                 error: function(errMsg) {
