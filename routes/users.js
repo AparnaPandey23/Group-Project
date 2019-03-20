@@ -84,23 +84,14 @@ router.post('/login', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
 
-    // 3. Check if the username exists in the database
     User.findOne({'user_name': username}, function (err, user) {
-        // 4. If there are any errors, return the error
         if (err)
             res.send(err);
-        // 5. If user account found then check the password
         if (user) {
-          // Compare passwords
             if (user.validPassword(password)) {
-                // 6. Success : Assign new access token for the session
                 user.access_token = createJwt({user_id: user._id});
                 user.save();
-
-                // 10. Send back a cookie with the access token to the user
                 res.cookie('Authorization', 'Bearer ' + user.access_token); 
-
-                // 11. Inform the browser that the user has successully signed up
                 res.json({'success' : 'loggedIn'});
             }
             else {
@@ -123,23 +114,14 @@ router.post('/loginEMP', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
 
-    // 3. Check if the username exists in the database
     Employee.findOne({'user_name': username}, function (err, employee) {
-        // 4. If there are any errors, return the error
         if (err)
             res.send(err);
-        // 5. If user account found then check the password
         if (employee) {
-          // Compare passwords
             if (employee.validPassword(password)) {
-                // 6. Success : Assign new access token for the session
-                employee.access_token = createJwt({user_id: employee._id});
+                employee.access_token = createJwt({emp_id: employee._id});
                 employee.save();
-
-                // 10. Send back a cookie with the access token to the user
                 res.cookie('Authorization', 'Bearer ' + employee.access_token); 
-
-                // 11. Inform the browser that the user has successully signed up
                 res.json({'success' : 'loggedIn'});
             }
             else {

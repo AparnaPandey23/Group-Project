@@ -58,21 +58,19 @@ $(document).ready(
 
 $(document).ready(
     // LOGIN
-    function() {        // 1. User enters details and hits login button
+    function() {
         $("#log-form").submit(function (event) {
 	    if(switchStatus == false){
             event.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: '/users/login',
-                dataType: 'json', // 2. The following data is sent to the server in a post request:
+                dataType: 'json',
                 data: { 
                     'user_name': event.target.inputUsername.value,
                     'password': event.target.inputPassword.value
                 },
                 success: function(token){
-                    // 12. Redirect user to feed page
-                    createIdCookie(event.target.inputUsername.value);
                     setTimeout(function(){ $(location).attr('href', '/feed' );}, 3000);
                 },
                 error: function(errMsg) {
@@ -88,23 +86,19 @@ $(document).ready(
     });
 $(document).ready(
     // LOGIN
-    // ID needs to be renamed, otherwise each time a user registers
-    // it will call this function aswell
-    function() {        // 1. User enters details and hits login button
-        $("#staff-log-form").submit(function (event) {
+    function() {
+        $("#EMPlog-form").submit(function (event) {
 	    if(switchStatus == true){
             event.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: '/users/loginEMP',
-                dataType: 'json', // 2. The following data is sent to the server in a post request:
+                dataType: 'json',
                 data: { 
                     'user_name': event.target.inputUsername.value,
                     'password': event.target.inputPassword.value
                 },
                 success: function(token){
-                    // 12. Redirect user to feed page
-                    createIdCookie(event.target.inputUsername.value);
                     setTimeout(function(){ $(location).attr('href', '/staff' );}, 3000);
                 },
                 error: function(errMsg) {
