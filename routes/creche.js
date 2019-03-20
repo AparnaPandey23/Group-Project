@@ -2,16 +2,15 @@ var express = require('express');
 var router = express.Router();
 var Creche = require('../models/creche');
 
-
 /* GET add new Creche page. */
 router.get('/newCreche', function(req, res, next) {
     res.render('CrecheSetup', { title: 'New Creche' });
-  });
+});
+
 /* GET add landing  page. */
 router.get('/home', function(req, res, next) {
     res.render('CrecheHome', { title: 'Creche Home' });
-  });
-
+});
 
 router.post('/newcreche', function(req, res, next){
     var name = req.body.creche_name;
@@ -31,10 +30,8 @@ router.post('/newcreche', function(req, res, next){
     newcreche.save(function(err, creche) {
         if (err)
             throw err;
-        res.json({'success' : 'Crecche Registered created'});
-
+        res.json({'success' : 'Creche Registered created'});
     });
 });
-
 
 module.exports = router;
