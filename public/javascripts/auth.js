@@ -1,25 +1,19 @@
 
 $(document).ready(
     // REGISTRATION
-    function() {        // 1. User enters details and hits sign up button
+    function() {
         $("#reg-form").submit(function (event) {
             event.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: '/users/register',
-                dataType: 'json', // 2. The following data is sent to the server in a post request:
+                dataType: 'json',
                 data: {
                     'user_name': event.target.inputUsername.value,
                     'password': event.target.inputPassword.value,
                     'email': event.target.inputEmail.value
                 },
                 success: function(token){
-                    // 12. If the user successfully signed up,
-                    // recieve the token sent back from the server.
-                    // The token is automatically saved as a cookie (res.cookie)
-                    // This will be included in every further request until it expires
-
-                    // Redirect the user to the feed page
                     $(location).attr('href', '/feed' );
                     createIdCookie(event.target.inputUsername.value);
                 },
@@ -36,27 +30,20 @@ $(document).ready(
 
 $(document).ready(
     // REGISTRATION
-    function() {        // 1. User enters details and hits sign up button
+    function() {
         $("#EMPreg-form").submit(function (event) {
             event.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: '/users/registerEMP',
-                dataType: 'json', // 2. The following data is sent to the server in a post request:
+                dataType: 'json',
                 data: {
                     'user_name': event.target.inputUsername.value,
                     'password': event.target.inputPassword.value,
                     'email': event.target.inputEmail.value
                 },
                 success: function(token){
-                    // 12. If the user successfully signed up,
-                    // recieve the token sent back from the server.
-                    // The token is automatically saved as a cookie (res.cookie)
-                    // This will be included in every further request until it expires
-
-                    // Redirect the user to the feed page
                     $(location).attr('href', '/creche/newCreche' );
-                    //createIdCookie(event.target.inputUsername.value);
                 },
                 error: function(errMsg) {
                     swal(
@@ -139,21 +126,37 @@ $(document).ready(
     });
 
 // Creates a cookie with the ID of the user
-function createIdCookie(username) {
-    $.ajax({
-        type: 'GET',
-        url: '/users/getId',
-        dataType: 'json',
-        data: { 
-            'user_name': username,
-        },
-        success: function(token){
-            console.log(token);
-        },
-        error: function(errMsg) {
-            console.log(errMsg);
-        }
-    });
+function createIdCookie(username, isStaff) {
+    if(isStaff)
+        $.ajax({
+            type: 'GET',
+            url: '/users/getId',
+            dataType: 'json',
+            data: { 
+                'user_name': username,
+            },
+            success: function(token){
+                console.log(token);
+            },
+            error: function(errMsg) {
+                console.log(errMsg);
+            }
+        });
+    else
+        $.ajax({
+            type: 'GET',
+            url: '/users/getId',
+            dataType: 'json',
+            data: { 
+                'user_name': username,
+            },
+            success: function(token){
+                console.log(token);
+            },
+            error: function(errMsg) {
+                console.log(errMsg);
+            }
+        }); 
 }
 
 //function to determin wether staff or parent login

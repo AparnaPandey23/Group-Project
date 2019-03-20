@@ -22,88 +22,58 @@ router.post('/register', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
     var email = req.body.email;
-    // Check if account already exists
+
     User.findOne({ 'user_name' :  username }, function(err, user) {
-        // 3. Check if there is an error
         if (err)
             res.send(err);
-
-        // 4. Check to see if theres already a user with that email
         if (user) {
             res.status(401).json({
                 "status": "info",
                 "body": "Username already taken"
             });
-        // 5. If there is no user with that username create the user
-             } else {
-	     var newUser = new User();
-
-            // 6. Set the user's local credentials
+        } else {
+            var newUser = new User();
             newUser.user_name = username;
             newUser.password = newUser.generateHash(password);
             newUser.email = email;
             
-            // 7. Create a JWT for the user based on username (function is in this file at bottom)
-            // newUser.access_token = createJwt({user_name:username});
-
-            // 8. Save the user details in the database
             newUser.save(function(err, user) {
-                // 9. If there is an error in doing this, stop and throw an error
                 if (err)
                     throw err;
 
-                // 10. Send back a cookie with the access token to the user
                 user.access_token = createJwt({user_id:user._id});
                 res.cookie('Authorization', 'Bearer ' + user.access_token); 
-
-                // 11. Inform the browser that the user has successully signed up
                 res.json({'success' : user.access_token});
             });
 	}
     });
 });
+
 router.post('/registerEMP', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
     var email = req.body.email;
-    // Check if account already exists
+
     Employee.findOne({ 'user_name' :  username }, function(err, user) {
-        // 3. Check if there is an error
         if (err)
             res.send(err);
-		// 3. Check if there is an error
-
-        // 4. Check to see if theres already a user with that email
         if (user) {
             res.status(401).json({
                 "status": "info",
                 "body": "Username already taken"
             });
-        // 5. If there is no user with that username create the user
-             } else {
-
-        // 4. Check to see if theres already a user with that email
+        } else {
             var newEMP = new Employee();
-
-            // 6. Set the user's local credentials
             newEMP.user_name = username;
             newEMP.password = newEMP.generateHash(password);
             newEMP.email = email;
-            
-            // 7. Create a JWT for the user based on username (function is in this file at bottom)
-            // newEMP.access_token = createJwt({user_name:username});
 
-            // 8. Save the user details in the database
             newEMP.save(function(err, employee) {
-                // 9. If there is an error in doing this, stop and throw an error
                 if (err)
                     throw err;
 
-                // 10. Send back a cookie with the access token to the user
-                employee.access_token = createJwt({user_id:employee._id});
+                employee.access_token = createJwt({emp_id:employee._id});
                 res.cookie('Authorization', 'Bearer ' + employee.access_token); 
-
-                // 11. Inform the browser that the user has successully signed up
                 res.json({'success' : employee.access_token});
             });
 	}
