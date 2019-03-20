@@ -119,40 +119,6 @@ $(document).ready(
         $("#profile-dropdown > li:nth-child(2) a").click(signOut);
     });
 
-// Creates a cookie with the ID of the user
-function createIdCookie(username, isStaff) {
-    if(isStaff)
-        $.ajax({
-            type: 'GET',
-            url: '/users/getId',
-            dataType: 'json',
-            data: { 
-                'user_name': username,
-            },
-            success: function(token){
-                console.log(token);
-            },
-            error: function(errMsg) {
-                console.log(errMsg);
-            }
-        });
-    else
-        $.ajax({
-            type: 'GET',
-            url: '/users/getId',
-            dataType: 'json',
-            data: { 
-                'user_name': username,
-            },
-            success: function(token){
-                console.log(token);
-            },
-            error: function(errMsg) {
-                console.log(errMsg);
-            }
-        }); 
-}
-
 //function to determin wether staff or parent login
 var switchStatus = false;
 $("#togBtn").on('change', function() {
