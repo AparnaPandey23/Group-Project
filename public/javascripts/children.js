@@ -1,5 +1,3 @@
-var currentUser;
-
 $('#inputMonth').dropdown({
       inDuration: 300,
       outDuration: 225,
@@ -17,8 +15,9 @@ $(document).ready(
         /**
          * Event handler for when the user adds a new child
          */
-        
+        // Using document.cookie
         $("#child-form").submit(function (event) {
+            console.log("Add child");
             event.preventDefault();
             $.ajax({
                 type: 'POST',
@@ -29,7 +28,6 @@ $(document).ready(
                     'child_lname': event.target.inputSurname.value,
                     'dob': event.target.inputDOB.value,
                     'parName': event.target.inputParname.value,
-                    'parId': currentUser.userid.id
                 },
                 success: function(token){
                     $(location).attr('href', '/child/children' );
@@ -40,61 +38,18 @@ $(document).ready(
                 }
             });
         }); 
-    }, getCurrentUser());
+    }, getChildren());
+
 
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
     $("#inputMonth").val(month);
 });
 
-
-function getCurrentUser(){
-    $.ajax({
-        type: 'GET',
-        url: '/currentUser',
-        dataType: 'json',
-        success: function(user){
-           currentUser = user;
-            cookieId();
-        },
-             error: function(errMsg) {
-            swal(
-                'Oops...',
-                'error'
-            )
-        }
-    });
-}
-
-function cookieId(){
-     $.ajax({
-        type: 'POST',
-        url: '/users/getIdFromName',
-        dataType: 'json',
-        data: {
-            'user_name': currentUser.userid.user_name
-        },
-        success: function(id){
-           getChildren(id);
-            currentUser.userid.id = id;
-        },
-        error: function(errMsg) {
-           swal(
-                'Oops...',
-                'error'
-            )
-        }
-    });      
-}
-
-function getChildren(id) {
+function getChildren() {
     $.ajax({
         type: 'POST',
         url: '/child/getChildren',
-        dataType: 'json',
-        data: {
-            'userid': id
-        },
         success: function(children){
            loadChildren(children);
         },
