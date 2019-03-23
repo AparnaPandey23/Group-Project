@@ -66,3 +66,30 @@ nav .nav-wrapper {
     margin-top: 30px;
     padding: 20px;
 }
+
+
+/* Extra small devices (phones,tablets 768px and down) */
+@media only screen and (max-width:800px) {
+    .datepicker.datepicker-dropdown{
+        width: 60%;
+    }
+    button{
+        height: 40px;
+        padding: 0px;
+        width: 200px;
+    }
+    #child-form {
+        width: 100%;
+        margin-top: 50px;
+    }
+    .sign-up {
+        margin-left: 40px;
+    }
+    #child-con {
+        width: 85%;
+    }
+
+    #child-form span {
+        margin-bottom: 0px;
+    }
+}
