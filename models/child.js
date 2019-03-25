@@ -7,7 +7,6 @@ var childSchema = new Schema({
     child_lname: {type: String},
     dob: {type: String,default: "jan ,01, 2000"},
     creche_id: {type: String, default: null },
-    parName:{type: String, default: null},
     par_id:{type: String, default: null}
 });
 
