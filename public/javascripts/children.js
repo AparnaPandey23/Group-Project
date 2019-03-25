@@ -24,35 +24,24 @@ $(document).ready(
                 type: 'GET',
                 url: '/users/currentUser',
                 success: function(profile){
+                    // If the logged in user is a parent
                     if(profile.userid.user_id){
                         var parId = profile.userid.user_id;
-                        addChild(parId);
-                    } else {
-                        addChild(null);
+                        console.log("Parent");
+                        setParent(parId, event);
+                    }
+                    // If the logged in user is a staff member
+                    else {
+                        console.log("Staff");
+
+                        setParent(null, event);
                     }
                 },
                 error: function(errMsg) {
                     console.log("Error");
                 }
             });
-            // $.ajax({
-            //     type: 'GET',
-            //     url: '/users/getParent',
-            //     dataType: 'json',
-            //     data: {
-            //         'user_name': event.target.inputParname.value
-            //     },
-            //     success: function(id){
-            //        addChild(id);
-            //     },
-            //     error: function(errMsg) {
-            //         swal(
-            //             'Oops...',
-            //             errMsg.responseJSON.body,
-            //             'error'
-            //         )
-            //     }
-            // });
+
         }); 
     },adjustForm(), getChildren());
 
@@ -70,7 +59,41 @@ function adjustForm(){
         }
     });
 }
-function addChild(parentId) {
+function setParent(parentId, event) {
+    // If the logged in user is a staff member
+    if(parentId == null) {
+        $.ajax({
+            type: 'POST',
+            url: '/users/getParent',
+            dataType: 'json',
+            data: {
+                'user_name': event.target.inputParname.value
+            },
+            success: function(id){
+                
+               addChild(id.id, event);
+            
+            },
+            error: function(errMsg) {
+                swal(
+                    'Oops...',
+                    errMsg.responseJSON.body,
+                    'error'
+                )
+            }
+        });
+    }
+    // If the logged in user is a parent
+    else {
+        addChild(parentId, event);
+    }
+
+   
+}
+
+function addChild(parId, event) {
+    console.log("done " + parId);
+
     $.ajax({
         type: 'POST',
         url: '/child/addChild',
@@ -79,10 +102,11 @@ function addChild(parentId) {
             'child_fname': event.target.inputFirstName.value,
             'child_lname': event.target.inputSurname.value,
             'dob': event.target.inputDOB.value,
-            'parId': event.target.inputParname.value,
+            'parId': parId,
         },
         success: function(token){
             $(location).attr('href', '/child/children' );
+            console.log(parId);
             // Redirect to a list of children
         },
         error: function(errMsg) {
@@ -90,7 +114,6 @@ function addChild(parentId) {
         }
     });
 }
-
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
     $("#inputMonth").val(month);

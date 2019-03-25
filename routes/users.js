@@ -139,9 +139,9 @@ function verifyJwt(jwtString) {
     return value;
 }
 
-router.get('/getParent', function(req, res, next){
+router.post('/getParent', function(req, res, next){
     var username = req.body.user_name;
-
+    console.log(req.body);
     User.findOne({'user_name': username}, function (err, user) {
         if (err)
             res.send(err);

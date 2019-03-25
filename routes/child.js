@@ -33,19 +33,17 @@ router.post('/addchild', function(req, res, next){
                 var userid = profile.user_id;
                 newchild.par_id = userid;
             } else if(profile.emp_id){
-                newchild.par_id = null;
+                newchild.par_id = req.body.parId;
             }
             
             var childfname = req.body.child_fname;
             var childlname = req.body.child_lname;
             var Dob = req.body.dob;
-            var par = req.body.parName;
 
             // Set the childs local credentials
             newchild.child_fname = childfname;
             newchild.child_lname = childlname;   
             newchild.dob = Dob;
-            newchild.parName = par;
 
             // Set creche
             var crecheid = creche.creche_id;
