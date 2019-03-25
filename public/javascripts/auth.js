@@ -109,7 +109,7 @@ $(document).ready(
 $(document).ready(
     function() {     
         $("#profile-dropdown > li:nth-child(2) a").click(signOut);
-    });
+    }, loadUsername());
 
 //function to determin wether staff or parent login
 
@@ -129,5 +129,39 @@ function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
+    });
+}
+
+var iconHTML = '<i class="mdi-navigation-arrow-drop-down right"></i>';
+
+function loadUsername () {
+    $.ajax({
+        type: 'GET',
+        url: '/users/getUserById',
+        success: function(profile){
+            $("#unamePlaceholder").html(profile.user_name + iconHTML);
+            console.log(profile.user_name);
+        },
+        error: function(errMsg) {
+            loadEmpUsername();
+        }
+    });
+}
+
+function loadEmpUsername(){
+    $.ajax({
+        type: 'GET',
+        url: '/employee/getUserById',
+        success: function(profile){
+            $("#unamePlaceholder").html(profile.user_name + iconHTML);
+            console.log(profile.user_name);
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
     });
 }
