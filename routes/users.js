@@ -139,4 +139,21 @@ function verifyJwt(jwtString) {
     return value;
 }
 
+router.get('/getParent', function(req, res, next){
+    var username = req.body.user_name;
+
+    User.findOne({'user_name': username}, function (err, user) {
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({"id":user._id});
+        }
+        else
+        {
+            res.status(401).send({
+                "status": "error",
+                "body": "Parent not found"
+            });
+        } }); });
+
 module.exports = router;
