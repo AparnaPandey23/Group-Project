@@ -98,6 +98,36 @@ router.get('/currentUser', function(req, res, next) {
         }
 });
 
+/* GET request to return profile of user currently logged in */
+router.get('/getUserById', function(req, res, next) {
+    try {
+        var jwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(jwtString[1]);
+
+        if (profile)
+        {
+            userid = profile.user_id;
+
+            try 
+            {
+                User.findOne({'_id': userid}, function (err, user)
+                {
+                    if (err)    res.send(err);
+                    if (user)   res.json({"user_name":user.user_name});
+                    else        res.status(401).send(   {"status": "error", "body": "User not found"});
+                });
+            } catch (err)
+            {
+                res.json(   {"status": "error","body": ["You are not logged in."]}  );
+            }
+        } else res.json(   {"status": "error","body": ["You are not logged in."]}  );
+    }
+    catch (err)
+    {
+        res.json(   {"status": "error","body": ["You are not logged in."]}  );
+    }   
+});
+
 function createJwt(profile) {
     return jwt.sign(profile, 'CSIsTheWorst', {
         expiresIn: '2d'
