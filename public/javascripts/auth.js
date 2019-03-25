@@ -139,6 +139,7 @@ function loadUsername () {
         type: 'GET',
         url: '/users/getUserById',
         success: function(profile){
+            $("#unamePlaceholder").html(profile.user_name + iconHTML);
             console.log(profile.user_name);
         },
         error: function(errMsg) {
