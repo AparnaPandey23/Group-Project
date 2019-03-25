@@ -18,24 +18,41 @@ $(document).ready(
         // Using document.cookie
         $("#child-form").submit(function (event) {
             event.preventDefault();
+            
+            // Determines  whether a parent or staff member is logged in
             $.ajax({
                 type: 'GET',
-                url: '/users/getParent',
-                dataType: 'json',
-                data: {
-                    'user_name': event.target.inputParname.value
-                },
-                success: function(id){
-                   addChild(id);
+                url: '/users/currentUser',
+                success: function(profile){
+                    if(profile.userid.user_id){
+                        var parId = profile.userid.user_id;
+                        addChild(parId);
+                    } else {
+                        addChild(null);
+                    }
                 },
                 error: function(errMsg) {
-                    swal(
-                        'Oops...',
-                        errMsg.responseJSON.body,
-                        'error'
-                    )
+                    console.log("Error");
                 }
             });
+            // $.ajax({
+            //     type: 'GET',
+            //     url: '/users/getParent',
+            //     dataType: 'json',
+            //     data: {
+            //         'user_name': event.target.inputParname.value
+            //     },
+            //     success: function(id){
+            //        addChild(id);
+            //     },
+            //     error: function(errMsg) {
+            //         swal(
+            //             'Oops...',
+            //             errMsg.responseJSON.body,
+            //             'error'
+            //         )
+            //     }
+            // });
         }); 
     },adjustForm(), getChildren());
 
