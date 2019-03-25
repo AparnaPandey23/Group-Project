@@ -36,11 +36,20 @@ router.post('/addchild', function(req, res, next){
                 newchild.par_id = null;
             }
             
+            var childfname = req.body.child_fname;
+            var childlname = req.body.child_lname;
+            var Dob = req.body.dob;
+            var par = req.body.parName;
+
             // Set the childs local credentials
-            newchild.child_fname = childfname ;
+            newchild.child_fname = childfname;
             newchild.child_lname = childlname;   
             newchild.dob = Dob;
             newchild.parName = par;
+
+            // Set creche
+            var crecheid = creche.creche_id;
+            newchild.creche_id = crecheid;
 
             // Save child to database
             newchild.save(function(err, child) {
@@ -86,7 +95,7 @@ router.post('/getChildren', function(req, res, next){
                 });
             } else if(profile.emp_id){
                 var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
-                var creche = crecheJwtString(jwtString[1]);
+                var creche = verifyJwt(crecheJwtString[1]);
                 var crecheid = creche.creche_id;
                 Child.find({creche_id:crecheid}, function (err,child_fname) {
                     if (err)
