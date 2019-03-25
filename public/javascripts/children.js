@@ -17,29 +17,62 @@ $(document).ready(
          */
         // Using document.cookie
         $("#child-form").submit(function (event) {
-            console.log("Add child");
             event.preventDefault();
             $.ajax({
-                type: 'POST',
-                url: '/child/addChild',
+                type: 'GET',
+                url: '/users/getParent',
                 dataType: 'json',
                 data: {
-                    'child_fname': event.target.inputFirstName.value,
-                    'child_lname': event.target.inputSurname.value,
-                    'dob': event.target.inputDOB.value,
-                    'parName': event.target.inputParname.value,
+                    'user_name': event.target.inputParname.value
                 },
-                success: function(token){
-                    $(location).attr('href', '/child/children' );
-                    // Redirect to a list of children
+                success: function(id){
+                   addChild(id);
                 },
                 error: function(errMsg) {
-                    console.log("Error");
+                    swal(
+                        'Oops...',
+                        errMsg.responseJSON.body,
+                        'error'
+                    )
                 }
             });
         }); 
-    }, getChildren());
+    },adjustForm(), getChildren());
 
+function adjustForm(){
+    $.ajax({
+        type: 'GET',
+        url: '/users/currentUser',
+        success: function(profile){
+            if(profile.userid.user_id){
+                $("#parNameInput").html("");
+            }
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
+}
+function addChild(parentId) {
+    $.ajax({
+        type: 'POST',
+        url: '/child/addChild',
+        dataType: 'json',
+        data: {
+            'child_fname': event.target.inputFirstName.value,
+            'child_lname': event.target.inputSurname.value,
+            'dob': event.target.inputDOB.value,
+            'parId': event.target.inputParname.value,
+        },
+        success: function(token){
+            $(location).attr('href', '/child/children' );
+            // Redirect to a list of children
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
+}
 
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
