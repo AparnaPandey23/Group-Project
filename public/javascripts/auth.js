@@ -145,9 +145,23 @@ function loadUsername () {
         error: function(errMsg) {
             loadEmpUsername();
         }
-    // $("'unamePlaceholder").html(uname + iconHTML);
-});}
+    });
+}
 
 function loadEmpUsername(){
-    console.log("No user");
+    $.ajax({
+        type: 'GET',
+        url: '/employee/getUserById',
+        success: function(profile){
+            $("#unamePlaceholder").html(profile.user_name + iconHTML);
+            console.log(profile.user_name);
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
 }

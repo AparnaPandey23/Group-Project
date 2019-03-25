@@ -98,7 +98,7 @@ router.get('/currentUser', function(req, res, next) {
         }
 });
 
-/* GET request to return profile of user currently logged in */
+/* GET request to return username of user currently logged in */
 router.get('/getUserById', function(req, res, next) {
     try {
         var jwtString = req.cookies.Authorization.split(" ");
