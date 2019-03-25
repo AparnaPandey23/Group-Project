@@ -152,8 +152,6 @@ function tableRow(child) {
     output += child.dob;
     output += "</td><td>";
     output += "Room";
-    output += "</td><td>";
-    output += "Present";
     output += "</td></tr>";
     
     return output;
