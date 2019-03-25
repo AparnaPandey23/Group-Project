@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var childRouter = require('./routes/child');
 var emailRouter = require('./routes/email');
-
+var crecheRouter = require('./routes/creche');
 var emploRouter = require('./routes/employee');
 var activityRouter = require('./routes/activity');
 
@@ -38,7 +38,7 @@ app.use('/child', childRouter);
 app.use('/email', emailRouter);
 app.use('/employee/', emploRouter);
 app.use('/activity', activityRouter);
-
+app.use('/creche', crecheRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
