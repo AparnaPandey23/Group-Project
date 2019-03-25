@@ -22,7 +22,7 @@ router.post('/addchild', function(req, res, next){
         var userJwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(userJwtString[1]);
         var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
-        var creche = crecheJwtString(jwtString[1]);
+        var creche = verifyJwt(crecheJwtString[1]);
         
         // Create new child object
         var newchild = new Child();
@@ -72,10 +72,9 @@ router.get('/getchild'
 
 // Return all children given parent id (json request)
 router.post('/getChildren', function(req, res, next){
-    
     try {
-        var jwtString = req.cookies.Authorization.split(" ");
-        var profile = verifyJwt(jwtString[1]);
+        var userJwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(userJwtString[1])
         
         if (profile) {
             if(profile.user_id){
@@ -83,10 +82,17 @@ router.post('/getChildren', function(req, res, next){
                 Child.find({par_id:userid}, function (err,child_fname) {
                     if (err)
                         res.send(err);
-                    res.json(child_fname);
+                        res.json(child_fname);
                 });
             } else if(profile.emp_id){
-                console.log("Emp");
+                var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
+                var creche = crecheJwtString(jwtString[1]);
+                var crecheid = creche.creche_id;
+                Child.find({creche_id:crecheid}, function (err,child_fname) {
+                    if (err)
+                        res.send(err);
+                        res.json(child_fname);
+                });
             }
         }
     } catch (err) {
