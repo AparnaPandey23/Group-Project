@@ -19,21 +19,22 @@ router.get('/', function(req, res, next) {
 
 router.post('/addchild', function(req, res, next){
     try {
-        var jwtString = req.cookies.Authorization.split(" ");
-        var profile = verifyJwt(jwtString[1]);
+        var userJwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(userJwtString[1]);
+        var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
+        var creche = crecheJwtString(jwtString[1]);
         
+        // Create new child object
+        var newchild = new Child();
+
+        // If the logged in user is a parent, set its par_id
         if (profile) {
             if(profile.user_id){
                 var userid = profile.user_id;
                 newchild.par_id = userid;
-
             } else if(profile.emp_id){
-                console.log("Emp");
+                newchild.par_id = null;
             }
-            
-            
-            // Create new child object
-            var newchild = new Child();
             
             // Set the childs local credentials
             newchild.child_fname = childfname ;
@@ -71,6 +72,7 @@ router.get('/getchild'
 
 // Return all children given parent id (json request)
 router.post('/getChildren', function(req, res, next){
+    
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
