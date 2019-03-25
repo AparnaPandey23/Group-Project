@@ -23,14 +23,15 @@ router.post('/addchild', function(req, res, next){
         var profile = verifyJwt(jwtString[1]);
         
         if (profile) {
-            var userid = profile.user_id;
-            
-            // Details of child entered by user
-            var childfname = req.body.child_fname;
-            var childlname = req.body.child_lname; 
-            var Dob = req.body.dob;
-            var par = req.body.parName;
+            if(profile.user_id){
+                var userid = profile.user_id;
+                newchild.par_id = userid;
 
+            } else if(profile.emp_id){
+                console.log("Emp");
+            }
+            
+            
             // Create new child object
             var newchild = new Child();
             
@@ -38,7 +39,6 @@ router.post('/addchild', function(req, res, next){
             newchild.child_fname = childfname ;
             newchild.child_lname = childlname;   
             newchild.dob = Dob;
-            newchild.par_id = userid;
             newchild.parName = par;
 
             // Save child to database
@@ -76,12 +76,16 @@ router.post('/getChildren', function(req, res, next){
         var profile = verifyJwt(jwtString[1]);
         
         if (profile) {
-            var userid = profile.user_id;
-            Child.find({par_id:userid}, function (err,child_fname) {
-                if (err)
-                    res.send(err);
-                res.json(child_fname);
-            });
+            if(profile.user_id){
+                var userid = profile.user_id;
+                Child.find({par_id:userid}, function (err,child_fname) {
+                    if (err)
+                        res.send(err);
+                    res.json(child_fname);
+                });
+            } else if(profile.emp_id){
+                console.log("Emp");
+            }
         }
     } catch (err) {
         console.log(err);
