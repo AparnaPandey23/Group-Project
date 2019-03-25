@@ -21,12 +21,11 @@
                   <li><a href="#"><i class="material-icons">lock</i>Privacy</a></li>
                   <li class="divider"></li>
                   <li><a href="/settings"><i class="material-icons">settings</i>Settings</a></li> <!--changed this-->
-                  <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
+                  <li><a  class = "modal-trigger" href="#logout-modal"><i class="material-icons">exit_to_app</i>Logout</a>  </li>
                 </ul>
             </div>
         </div>
         </li>
-        
         <li class="white">
         <ul class="collapsible collapsible-accordion">
             <li>
@@ -54,6 +53,18 @@
     </ul>
     </div>
 </nav>
+
+  <!-- Logout Modal Structure -->
+<div id="logout-modal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h4>Log-Out Confirmation</h4>
+    <p>Are you sure you want to log out?</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="modal-action modal-close purple lighten-3 btn-flat" style="margin-left:20px;">CANCEL</a>
+    <a href="/" class="modal-action modal-close purple lighten-3 btn-flat">CONFIRM</a>
+  </div>
+</div>
 <div class="container">
   <div class="row" id="settings-card"> 
     <div class="card blue lighten-4 z-depth-2">
@@ -129,7 +140,7 @@
     </ul> --}}
   </div>
 </div> --}}
-
+  
 <div class="footer deep-purple lighten-3 white-text">
           © 2019 Copyright 
 </div>
@@ -163,5 +174,9 @@
       };
       date_input.datepicker(options);
     })
+
+      $(document).ready(function(){
+        $('.modal').modal();
+      });
 
 </script>
