@@ -1,60 +1,57 @@
-  
-  <div class="fixed-action-btn ">
-    <a class="btn-floating btn-large pink lighten-4">
-      <i class="large material-icons">mode_edit</i>
-    </a>
-    <ul>
-      <li><a class="btn-floating pink "><i class="material-icons">insert_chart</i></a></li>
-      <li><a class="btn-floating pink lighten-1"><i class="material-icons">format_quote</i></a></li>
-      <li><a class="btn-floating pink lighten-2"><i class="material-icons">publish</i></a></li>
-      <li><a class="btn-floating pink lighten-3"><i class="material-icons">attach_file</i></a></li>
-    </ul>
-</div>
-
-    <div class="container">
-        <form action="" id= "log-form" class="loginform z-depth-2">
-           <div class="con"> 
-           <header class="head-form">
-               <!-- Logo Group -->
-               <img src="/images/initial.svg" id="baby1" class="responsive-img"  >
-              <h2>Toddler Town!</h2>
-              <!--     A welcome message or an explanation of the login form -->
-              <p>Lorem ipsum dolor, sit amet</p>
-           </header>
-           <!--     End  header Content  -->
-           <br>
-           <div class="field-set" id="log">
-               <h2>Log In</h2>
-               <!--     A welcome message or an explanation of the login form -->
-               <p>login here using your username and password</p>
-               <br>
-              <!--   user name -->
-              <span class="input-item z-depth-1">
-                 <i class="material-icons prefix">face</i>
-                 <input class="form-input active validate" id="inputUsername" type="text" placeholder="@UserName" required/>
-               </span>
-              <br>     
-           <!--   Password --> 
-              <span class="input-item z-depth-1">
-                <i class="material-icons prefix">lock_outline</i>
-              <!--   Password Input-->
-              <input class="form-input materialize-textarea validate" type="password" placeholder="Password" id="inputPassword"  name="password" required>
+<div class="container">
+    <form action="" id= "log-form" class="loginform z-depth-2">
+        <div class="con"> 
+        <header class="head-form">
+            <!-- Logo Group -->
+            <img src="/images/initial.svg" id="baby1" class="responsive-img"  >
+          <h2>Toddler Town!</h2>
+          <!--     A welcome message or an explanation of the login form -->
+          <p>Lorem ipsum dolor, sit amet</p>
+        </header>
+        <!--     End  header Content  -->
+        <br>
+        <div class="field-set" id="log">
+            <h2>Log In</h2>
+            <!--     A welcome message or an explanation of the login form -->
+            <p>login here using your username and password</p>
+            <br>
+          <!--   user name -->
+          <span class="input-item z-depth-1">
+              <i class="material-icons prefix">face</i>
+              <input class="form-input active validate" id="inputUsername" type="text" placeholder="@UserName" required/>
             </span>
-              
-             {{!-- <a class="waves-effect waves-light submits btn login" class="log-in" id="login" href="#"  type="submit">Log In</a>  --}}
-              <button class=" waves-effect waves-light  btn login " id="login" onclick="wavingBaby()" type="submit"> Log In </button> 
-            
-            <div class="other">
-            <!-- Forgot Password button-->
-              <!-- <button class="btn submits frgt-pass" onclick="location.href = './forgot-pass.html';">Forgot-Password <i class="fas fa-question-circle"></i></button> -->
-              <a class="waves-effect waves-light  frgt-pass btn "  href="/users/forgotpass"><i class="material-icons right">help</i>Forgot-Password</a>
-              <!--     Sign Up button -->
-              <a class="waves-effect waves-light  sign-up btn"  href="/users/register"><i class="material-icons right">person_add</i>Sign Up! </a>
-              <!-- <button class="btn submits sign-up" onclick="location.href = './registration-page.html';">Sign Up   <i class="material-icons">person_add</i> -->
-              </button>
-           </div>
-
-           </div>
-          </div>
-        </form>
+          <br>     
+        <!--   Password --> 
+          <span class="input-item z-depth-1">
+            <i class="material-icons prefix">lock_outline</i>
+          <!--   Password Input-->
+          <input class="form-input materialize-textarea validate" type="password" placeholder="Password" id="inputPassword"  name="password" required>
+        </span>
+          
+          {{!-- <a class="waves-effect waves-light submits btn login" class="log-in" id="login" href="#"  type="submit">Log In</a>  --}}
+          <button class=" waves-effect waves-light  btn login " id="main-login" onclick="wavingBaby()" type="submit"> Log In </button> 
+        
+        <div class="other">
+        <!-- Forgot Password button-->
+          <!-- <button class="btn submits frgt-pass" onclick="location.href = './forgot-pass.html';">Forgot-Password <i class="fas fa-question-circle"></i></button> -->
+          <a class="waves-effect waves-light  frgt-pass btn "  href="/users/forgotpass"><i class="material-icons right">help</i>Forgot-Password</a>
+          <!--     Sign Up button -->
+          <a class="waves-effect waves-light  sign-up btn"  href="/users/register"><i class="material-icons right">person_add</i>Sign Up! </a>
+          <!-- <button class="btn submits sign-up" onclick="location.href = './registration-page.html';">Sign Up   <i class="material-icons">person_add</i> -->
+          </button>
         </div>
+
+        </div>
+      </div>
+    </form>
+    </div>
+
+    <script>
+        document.getElementById('main-login').onclick =  function wavingBaby(){
+            let baby = document.getElementById('baby1');
+
+            setTimeout(function(){ baby.setAttribute("src","/images/wave1.svg")}, 300) ; 
+            setTimeout(function(){ baby.setAttribute("src","/images/wave2.svg")},600) ;
+            setInterval(wavingBaby, 600); 
+        }
+    </script>
