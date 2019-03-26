@@ -116,7 +116,7 @@ function loginCreche(id){
         },
         error: function(errMsg) {
             swal(
-                'Oops...',
+                'Cannot log in creche',
                 errMsg.responseJSON.body,
                 'error'
             )
@@ -158,7 +158,6 @@ function loadUsername () {
         url: '/users/getUserById',
         success: function(profile){
             $("#unamePlaceholder").html(profile.user_name + iconHTML);
-            console.log(profile.user_name);
         },
         error: function(errMsg) {
             loadEmpUsername();
@@ -172,14 +171,6 @@ function loadEmpUsername(){
         url: '/employee/getUserById',
         success: function(profile){
             $("#unamePlaceholder").html(profile.user_name + iconHTML);
-            console.log(profile.user_name);
-        },
-        error: function(errMsg) {
-            swal(
-                'Oops...',
-                errMsg.responseJSON.body,
-                'error'
-            )
         }
     });
 }

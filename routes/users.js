@@ -88,7 +88,6 @@ router.get('/currentUser', function(req, res, next) {
             res.json({"userid":profile});
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [
@@ -141,7 +140,6 @@ function verifyJwt(jwtString) {
 
 router.post('/getParent', function(req, res, next){
     var username = req.body.user_name;
-    console.log(req.body);
     User.findOne({'user_name': username}, function (err, user) {
         if (err)
             res.send(err);

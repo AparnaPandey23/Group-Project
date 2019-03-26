@@ -22,7 +22,6 @@ router.post('/addchild', function(req, res, next){
         var userJwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(userJwtString[1]);
         
-        console.log(req.body);
         // Create new child object
         var newchild = new Child();
 
@@ -59,7 +58,6 @@ router.post('/addchild', function(req, res, next){
             });
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [
@@ -94,7 +92,6 @@ router.post('/getChildren', function(req, res, next){
                         res.json(child_fname);
                 });
             } else if(profile.emp_id){
-                console.log(req.cookies);
                 // var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
                 // var creche = verifyJwt(crecheJwtString[1]);
                 // var crecheid = creche.creche_id;
@@ -106,7 +103,6 @@ router.post('/getChildren', function(req, res, next){
             }
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [

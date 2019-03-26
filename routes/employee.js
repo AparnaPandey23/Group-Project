@@ -79,7 +79,6 @@ router.get('/currentUser', function(req, res, next) {
             res.json({"empid":profile});
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [

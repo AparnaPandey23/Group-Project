@@ -70,13 +70,11 @@ function setParent(parentId, event) {
                 'user_name': event.target.inputParname.value
             },
             success: function(id){
-                
                addChild(id.id, event);
-            
             },
             error: function(errMsg) {
                 swal(
-                    'Oops...',
+                    'Cannot set parent',
                     errMsg.responseJSON.body,
                     'error'
                 )
@@ -123,12 +121,6 @@ function getChildren() {
         url: '/child/getChildren',
         success: function(children){
            loadChildren(children);
-        },
-        error: function(errMsg) {
-           swal(
-                'Oops...',
-                'error'
-            )
         }
     });
 }

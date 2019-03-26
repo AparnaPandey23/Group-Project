@@ -1,7 +1,5 @@
 $(document).ready(
     function() { 
-        console.log("Creche ready");
-
         $("#Creche_setup").submit(function (event) {
             event.preventDefault();
             $.ajax({
@@ -16,7 +14,7 @@ $(document).ready(
  		            'creche_a3': event.target.line3Add.value,
 		            'creche_a4': event.target.line4Add.value
                 },
-                success: function(token){
+                success: function(creche){
                     $(location).attr('href', '/creche/home' );
                 },
                 error: function(errMsg) {
@@ -24,7 +22,7 @@ $(document).ready(
                         'Oops...',
                         errMsg.responseJSON.body,
                         'error'
-                    )
+                    );
                 }
             });
         }); 

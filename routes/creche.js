@@ -64,7 +64,6 @@ router.get('/currentCreche', function(req, res, next) {
             res.json({"userid":profile});
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [
