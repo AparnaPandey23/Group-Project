@@ -90,7 +90,8 @@ $(document).ready(
                         'user_name': event.target.inputUsername.value,
                         'password': event.target.inputPassword.value
                     },
-                    success: function(token){
+                    success: function(employee){
+                        loginCreche(employee.creche_id);
                         setTimeout(function(){ $(location).attr('href', '../creche/home' );}, 3000);
                     },
                     error: function(errMsg) {
@@ -105,6 +106,23 @@ $(document).ready(
         }); 
     });
 
+function loginCreche(id){
+    $.ajax({
+        type: 'POST',
+        url: '/creche/login',
+        dataType: 'json',
+        data: { 
+            'creche_id': id
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
+}
 // Logs out the user
 $(document).ready(
     function() {     
