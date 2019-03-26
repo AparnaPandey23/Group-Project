@@ -33,7 +33,7 @@ router.post('/newcreche', function(req, res, next){
             throw err;
         creche.access_token = createJwt({creche_id:creche._id});
         res.cookie('Authorization_Creche', 'Bearer ' + creche.access_token); 
-        res.json({'success' : 'Creche Registered created: ' + creche.access_token});
+        res.json({'success' : 'Creche Registered created: ' + creche.access_token, 'id':creche._id});
     });
 });
 
