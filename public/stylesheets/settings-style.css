@@ -37,8 +37,6 @@ img.responsive-img.circle {
 }
 h3 { margin: 0;
 }
-#child-form span {border-radius: 10px;
-}
 form{
     background-image: none;
 }
@@ -56,4 +54,28 @@ form{
 #logout-modal .btn-flat {
     margin: 10px 10px !important;
 }
+/* 
+.collapsible {
+    color: black;
+} */
 
+.fixed-action-btn {
+    position: absolute;
+    right: 23px;
+    bottom: 23px;
+}
+
+#profile-form span {
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#profile-form span {
+    margin: 5px;
+    margin-bottom: 10px;
+}
+
+#profile-form ul {
+    width: 100%;
+}
