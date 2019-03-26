@@ -43,7 +43,7 @@ $(document).ready(
             });
 
         }); 
-    },adjustForm(), getChildren());
+    }, adjustForm(), getChildren());
 
 function adjustForm(){
     $.ajax({
@@ -92,8 +92,6 @@ function setParent(parentId, event) {
 }
 
 function addChild(parId, event) {
-    console.log("done " + parId);
-
     $.ajax({
         type: 'POST',
         url: '/child/addChild',
