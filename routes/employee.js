@@ -53,7 +53,7 @@ router.post('/login', function(req, res, next){
                 employee.access_token = createJwt({emp_id: employee._id});
                 employee.save();
                 res.cookie('Authorization', 'Bearer ' + employee.access_token); 
-                res.json({'success' : 'loggedIn'});
+                res.json({'success' : 'loggedIn', 'id':employee.creche_id});
             }
             else {
                 res.status(401).send({
