@@ -9,7 +9,7 @@ var EmployeeSchema = new Schema({
     password: String,
     email: String,
     rank: {type: String, default: 0 }, // sould be between 1-10 //
-    chrech_id: {type: String, default: null },
+    creche_id: {type: String, default: null },
     fb_id: { type: String, default: null },
     access_token: String
 });
