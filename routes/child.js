@@ -92,14 +92,14 @@ router.post('/getChildren', function(req, res, next){
                         res.json(child_fname);
                 });
             } else if(profile.emp_id){
-                // var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
-                // var creche = verifyJwt(crecheJwtString[1]);
-                // var crecheid = creche.creche_id;
-                // Child.find({creche_id:crecheid}, function (err,child_fname) {
-                //     if (err)
-                //         res.send(err);
-                //         res.json(child_fname);
-                // });
+                var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
+                var creche = verifyJwt(crecheJwtString[1]);
+                var crecheid = creche.creche_id;
+                Child.find({creche_id:crecheid}, function (err,child_fname) {
+                    if (err)
+                        res.send(err);
+                        res.json(child_fname);
+                });
             }
         }
     } catch (err) {

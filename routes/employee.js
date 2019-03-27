@@ -42,9 +42,9 @@ router.post('/register', function(req, res, next){
 });
 
 router.post('/updateCreche', function(req, res, next){
-    var creche_id = req.body.creche_id;
     var emp_id = req.body.emp_id;
-
+    var creche_id = req.body.creche_id;
+    
     Employee.findOne({ '_id' :  emp_id }, function(err, emp) {
         if (err)
             res.send(err);
@@ -53,9 +53,11 @@ router.post('/updateCreche', function(req, res, next){
             emp.save(function(err, employee) {
                 if (err)
                     throw err;
-                res.json({'success' : 'Creche added to user');
+                
             });
-        }  
+        } 
+        
+        res.json({'success' : 'Creche added to user'});
     });
 });
 
@@ -71,7 +73,7 @@ router.post('/login', function(req, res, next){
                 employee.access_token = createJwt({emp_id: employee._id});
                 employee.save();
                 res.cookie('Authorization', 'Bearer ' + employee.access_token); 
-                res.json({'success' : 'loggedIn', 'id':employee.creche_id});
+                res.json({'success' : 'loggedIn'});
             }
             else {
                 res.status(401).send({
