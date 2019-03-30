@@ -1,0 +1,83 @@
+<head>
+      <link rel="stylesheet" href="/stylesheets/settings-style.css">
+</head>
+<div class="container">
+  <div class="row" id="settings-card"> 
+    <div class="card blue lighten-4 z-depth-2">
+      <div class="card-image pink lighten-5 card-title z-depth-1">
+            <img src="/images/logo2.svg" class="circle responsive-img">
+            <h2 class="card-title purple lighten-3" style="border-radius:10px;">User Name: Profile Settings</h2>           
+            <div class="fixed-action-btn  halfway-fab">
+            <a class="btn-floating btn-large pink lighten-4"> <i class="large material-icons">mode_edit</i> </a>
+            <ul>
+              <li><a class="btn-floating pink "><i class="material-icons">insert_chart</i></a></li>
+              <li><a class="btn-floating pink lighten-1"><i class="material-icons">format_quote</i></a></li>
+              <li><a class="btn-floating pink lighten-2"><i class="material-icons">publish</i></a></li>
+              <li><a class="btn-floating pink lighten-3"><i class="material-icons">attach_file</i></a></li>
+            </ul>
+        </div>
+      </div>
+      <br>
+          <div class="card-content pink lighten-4">
+            <h3>Update Personal Info:</h3>
+            <div>
+                  <form action="" id="profile-form" >
+                      <div class="con ">
+                          <div class="field-set ">
+                              {{!-- <h2>Add Child</h2>
+                              <p>Add a child to the system</p> --}}
+                              <div class="row">
+                                  <!--   Full  name -->
+                                  <span class="input-item col s6 z-depth-1">
+                                    <i class="fas fa-user-circle fa-1x"></i>
+                                    <input class="form-input active validate z-depth-3" id="inputFirstName" type="text" placeholder="Full Name" required />  
+                                  </span>
+
+                              </div>
+                              <div class="row" id="mobile">
+                                <!--   Phone number -->
+                                <span class="input-item col s12 z-depth-1" >
+                                  <i class="fas fa-mobile-alt"></i>
+                                  <input class="form-input active validate" id="mobile" name="mobile" placeholder="Mobile Number" type="text" required/>
+                                </span>
+                                <!--   Spouse's Phone number -->
+                                <span class="input-item col s12 z-depth-1" >
+                                  <i class="fas fa-mobile-alt"></i>
+                                  <input class="form-input active validate" id="mobile2" name="mobile2" placeholder="Spouse's Mobile Number (Optional)" type="text"/>
+                                </span>
+                              </div>
+                              <div class="row">
+                                  <span class="input-item col s12 z-depth-1" >
+                                    <i class="fas fa-at" style="margin-top:20px;"></i>
+                                    <input class="form-input active validate" id="email" type="email" placeholder="Parent's Email" />
+                                  </span>
+                              </div>
+                              <div class="row">
+                                  <!--   Home Address -->
+                                  <span class="input-item col s6 z-depth-1">
+                                    <i class="fas fa-home fa-1x"></i>
+                                    <input class="form-input active validate z-depth-3" id="homeAdd" type="text" placeholder="Home Address" required />  
+                                  </span>
+
+                                  <!--   Work Address -->
+                                  <span class="input-item col s6 z-depth-1">
+                                    <i class="fas fa-building fa-1x"></i>
+                                    <input class="form-input active validate" id="workAdd" type="text" placeholder="Work Address (Optional)" />
+                                  </span>
+                              </div>
+                              <button class="log-in sign-up z-depth-1" id="submit-Btn" type="submit" onclick="Materialize.toast('Updated Profile',2000,'rounded')"  > Submit</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+</div>
+
+<div class="footer deep-purple lighten-3 white-text">
+          © 2019 Copyright 
+</div>
+<script src="/javascripts/profile-settings.js"></script>
