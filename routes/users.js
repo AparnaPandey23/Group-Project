@@ -10,7 +10,7 @@ router.get('/register', function(req, res, next) {
     
 });
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: 'Toddler Town!' , layout: '../views/layout2'});
+    res.render('login', { title: 'Toddler Town!' , layout: 'layout2'});
 });
 
 router.get('/forgotpass', function(req, res, next) {
