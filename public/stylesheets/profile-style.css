@@ -45,26 +45,6 @@ form{
     background-image: none;
 }
 
-/* Logout modal style */
-#logout-modal{
-    background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
-    margin-left: 310px !important;
-    height: 300px !important;
-}
-.modal .modal-footer , .modal-content {
-    background: transparent;
-    padding: 20px;
-}
-#logout-modal .btn-flat {
-    margin: 10px 10px !important;
-}
-
-.fixed-action-btn {
-    position: absolute;
-    right: 23px;
-    bottom: 23px;
-}
-
 #profile-form span {
     border-radius: 10px;
     width: 100%;
