@@ -2,7 +2,6 @@
       <link rel='stylesheet' href='/stylesheets/children-style.css' />
       <link rel="stylesheet" href="/stylesheets/Nav-bar-style.css">
       <link rel="stylesheet" href="/stylesheets/settings-style.css">
-
 </head>
 <!--Nav Bar-->
 <nav>
@@ -17,7 +16,7 @@
             <div class="col s8">
             <a class="btn-flat dropdown-button waves-effect waves-dark white-text" href="#" data-activates="profile-dropdown">NAME<i class="material-icons right white-text" style="margin-left:40px; margin-top:-70px">arrow_drop_down</i></a>
                 <ul id="profile-dropdown" class="dropdown-content">
-                  <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
+                  <li><a href="/profile"><i class="material-icons">person</i>Profile</a></li>
                   <li><a href="#"><i class="material-icons">lock</i>Privacy</a></li>
                   <li class="divider"></li>
                   <li><a href="/settings"><i class="material-icons">settings</i>Settings</a></li> <!--changed this-->
@@ -145,13 +144,7 @@
 <div class="footer deep-purple lighten-3 white-text">
           © 2019 Copyright 
 </div>
-<!-- Include jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Include Date Range Picker -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
+<script src="/javascripts/profile-settings.js"></script>
 <script>  
     $(document).ready(function(){
       $('.button-collapse').sideNav({
