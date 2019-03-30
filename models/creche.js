@@ -3,7 +3,14 @@ var Schema = mongoose.Schema;
 require('./util');
 
 
-var usersSchema = new Schema({
+var crecheSchema = new Schema({
     name: {type: String},
-    email: String
+    email: String,
+    street: String,
+    town: String,
+    country: String,
+    postcode: String
 });
+
+
+module.exports = mongoose.model('Creche', crecheSchema );

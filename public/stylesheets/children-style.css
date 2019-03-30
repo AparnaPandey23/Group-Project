@@ -93,3 +93,22 @@ nav .nav-wrapper {
         margin-bottom: 0px;
     }
 }
+
+.select-wrapper {
+    position: relative;
+    height: 50px;
+    
+}
+
+.fixed-action-btn{
+right:50px;/*desired value*/
+}
+
+.dropdown-content li>span {
+    font-size: 16px;
+    color: #26a69a;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+

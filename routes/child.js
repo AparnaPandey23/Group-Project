@@ -13,6 +13,7 @@ router.get('/addChild', function(req, res, next) {
   res.render('addChild', { title: 'New Child' });
 });
 
+
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });

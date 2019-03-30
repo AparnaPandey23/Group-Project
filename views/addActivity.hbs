@@ -3,27 +3,25 @@
       <link rel="stylesheet" href="/stylesheets/Nav-bar-style.css">
 </head>
 <!--Nav Bar-->
-    <nav>
-        <div class="nav-wrapper z-depth-1 deep-purple lighten-3">
-        <a href="#" id="menu" data-activates="mobile-demo" class="button-collapse show-on-large" style="height:66px;"><i class="material-icons">menu</i></a>
-        <a class="brand-logo" >Toddler Town !</a>
-        <ul class="side-nav " id="mobile-demo">
-            <li class="sidenav-header deep-purple lighten-2 z-depth-2">
-            <div class="row">
-                <div class="col s4">
-                    <img src="/images/initial.svg" id= "baby" alt="baby image" class="valign profile-image" style="width: 80px !important">                </div>
-                <div class="col s8">
-                <a class="btn-flat dropdown-button waves-effect white-text" href="#" data-activates="profile-dropdown" >NAME<i class="material-icons right white-text" style="margin-left:40px; margin-top:-70px">arrow_drop_down</i></a>
-                    <ul id="profile-dropdown" class="dropdown-content">
+   <nav>
+          <div class="nav-wrapper z-depth-1 deep-purple lighten-3">
+          <a href="#" id="menu" data-activates="mobile-demo" class="button-collapse show-on-large" style="height:66px;"><i class="material-icons">menu</i></a>
+          <a class="brand-logo" >Toddler Town !</a>
+          <ul class="side-nav" id="mobile-demo">
+              <li class="sidenav-header deep-purple lighten-2 z-depth-2">
+              <div class="row">
+                  <div class="col s4">
+                    <img src="/images/initial.svg" id= "baby" alt="baby image" class="valign profile-image" style="width: 80px !important">                  </div>
+                  <div class="col s8">
+                  <a class="btn-flat dropdown-button waves-effect waves-dark white-text" href="#" data-activates="profile-dropdown" id="unamePlaceholder">NAME<i class="material-icons right white-text" style="margin-left:40px; margin-top:-70px">arrow_drop_down</i></a>
+                      <ul id="profile-dropdown" class="dropdown-content">
                         <li><a href="#"><i class="material-icons">person</i>Profile</a></li>
-                        <li><a href="#"><i class="material-icons">lock</i>Privacy</a></li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="material-icons">settings</i>Settings</a></li>
                         <li><a href="#"><i class="material-icons">exit_to_app</i>Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-            </li>
+                      </ul>
+                  </div>
+              </div>
+              </li>
             
             <li class="white">
             <ul class="collapsible collapsible-accordion">
@@ -46,7 +44,7 @@
             <li class="white"><a href="/child/children" class="waves-effect waves-blue"><i class="material-icons">group</i>Children</a></li>
             <li class="white"><a href="/feed" class="waves-effect waves-blue"><i class="material-icons">update</i>Feed and About Us</a></li>
               <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">phone_iphone</i>Real-Time Updates</a></li>
-              <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">tag_faces</i>Stay Connected</a></li>
+              <li class="white"><a href="/activity/stayConnected" class="waves-effect waves-blue"><i class="material-icons">tag_faces</i>Stay Connected</a></li>
             <li class="white">
                 <div class="divider"></div>
             </li>
@@ -54,19 +52,24 @@
         </div>
     </nav>
 
+<!--
 <div class="pink lighten-3 z-depth-1" style="padding-bottom:20%; margin-left:5%;margin-right:5%;border-radius:20px;">
 <div class="row" style="margin: 2.5rem ">
-    <h2>Children Details:</h2>
+-->
+<div class="container " id="child-con">
+    <form action="" id="child-form" class="z-depth-2">
+        <div class="con ">
+            <div class="field-set ">
+    <h2>Activity's</h2>
 </div>
     
-    <div class="container " id="child-Activity">
+    <div class="container responsive " id="child-Activity">
      <table class="highlight centered responsive-table purple lighten-4 z-depth-2">
       <form action="" id="child-form" class="z-depth-2">
-        <div class="con ">
-            <div class="field-set " id="PickActivity">
-                <h2>Activity</h2>
+        <div class="con responsive ">
+            <div class="field-set col s8 z-depth-1 purple lighten-4 " id="PickActivity">
                 <select>
-                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" disabled selected>Pick an Activity</option>
                   <option value="1">Play-Dough</option>
                   <option value="2">Outdoor Play</option>
                   <option value="3">Colouring</option>
@@ -76,13 +79,11 @@
                   <option value="7">Water and Sand Play</option>
                   <option value="8">painting</option>
                 </select>
-                <label>Pick Activity</label>
               </div>
 
-               <div class="input-field col s6" id="PickaRoom">
-               <span class="flow-text">
+               <div class="field-set col s8 z-depth-1 purple lighten-4" id="PickaRoom">
                 <select>
-                  <option value="" disabled selected>Choose your option</option>
+                  <option value="" disabled selected>Pick a Room</option>
                   <option value="1">Nursery</option>
                   <option value="2">wobblers</option>
                   <option value="3">toddlers</option>
@@ -90,12 +91,17 @@
                   <option value="5">ECCE Class 1</option>
                   <option value="6">ECCE Class 2</option>
                 </select>
-                <label>Pick a Room</label>
-                </span>
               </div>
         </div>
     </form>
-   <div>
+        </table>
+    <button class="btn purple" id="fixed-action-btn toolbar" type="submit" name="action" postion="center">Add Activity
+    <i class="material-icons right">send</i>
+  </button>
+         </div>
+        </div>
+    </form>
+    
 </div>
 <div class="footer cyan lighten-3">
           © 2019 Copyright 
