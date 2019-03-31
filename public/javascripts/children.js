@@ -192,22 +192,26 @@ function loadChildren(list) {
 
 var childList = [];
 function getAttendanceInfo(list, i) {
-    var date = curday();
-    $.ajax({
-        type: 'POST',
-        url: '/child/getAttendance',
-        dataType: 'json',
-        data: {
-            'child_id': list[i]._id,
-            'date': date
-        },
-        success: function(record){
-            addToList(list, record.value, i)
-        },
-        error: function(errMsg) {
-            console.log("Error");
-        }
-    });
+    if(i < list.length) {
+        var date = curday();
+        $.ajax({
+            type: 'POST',
+            url: '/child/getAttendance',
+            dataType: 'json',
+            data: {
+                'child_id': list[i]._id,
+                'date': date
+            },
+            success: function(record){
+                addToList(list, record.value, i)
+            },
+            error: function(errMsg) {
+                console.log("Error");
+            }
+        });
+    } else {
+        console.log(childList);
+    }
 }
 
 function addToList(list, value, i) {
@@ -218,7 +222,7 @@ function addToList(list, value, i) {
         presence: value
     };
     childList[i] = data;
-    console.log(childList);
+    getAttendanceInfo(list, i+1)
 }
 function tableRow(child, rowNum) {
     $.ajax({
