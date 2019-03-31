@@ -129,19 +129,21 @@ function loadChildren(list) {
    var output = "";
     
     for(var i = 0; i < list.length; i++) {
-        output += tableRow(list[i]);
+        output += tableRow(list[i], i);
     }
     
     $("#list").html(output);
 }
 
-function tableRow(child) {
+function tableRow(child, rowNum) {
     var output = "<tr><td>";
     output += child.child_fname + " " + child.child_lname;
     output += "</td><td>";
     output += child.dob;
     output += "</td><td>";
     output += "Room";
+    output += "</td><td id='" + rowNum + "'>";
+    output += Present;
     output += "</td></tr>";
     
     return output;
