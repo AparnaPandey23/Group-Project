@@ -5,12 +5,12 @@ var jwt = require('jsonwebtoken');
 
 /* GET add new Creche page. */
 router.get('/newCreche', function(req, res, next) {
-    res.render('CrecheSetup', { title: 'New Creche' });
+    res.render('CrecheSetup', { title: 'New Creche', layout:"layout" });
 });
 
 /* GET add landing  page. */
 router.get('/home', function(req, res, next) {
-    res.render('CrecheHome', { title: 'Creche Home' });
+    res.render('CrecheHome', { title: 'Creche Home', layout: "layout2" });
 });
 
 router.post('/newcreche', function(req, res, next){
