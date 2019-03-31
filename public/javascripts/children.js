@@ -138,7 +138,7 @@ function loadChildren(list) {
 function tableRow(child, rowNum) {
     $.ajax({
         type: 'POST',
-        url: '/child/childTableRow',
+        url: '/child/tableRow',
         dataType: 'json',
         data: {
             'child_id': child._id,

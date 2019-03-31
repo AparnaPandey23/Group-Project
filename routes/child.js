@@ -125,6 +125,29 @@ router.delete('/delchild/:id', function(req, res ,next){
     });
 });
 
+router.post('/tableRow', function(req, res, next){
+    try {
+        var childId = req.body.child_id;
+        var rowNum = req.body.row_num;
+
+        Child.find({_id:childId}, function (err,child) {
+            if (err)
+                res.send(err);
+            if(child) {
+                child.row_num = rowNum;
+            }
+        });
+    } catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "Could not update attendance."
+                ]
+            });
+        }
+
+});
+
 function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
