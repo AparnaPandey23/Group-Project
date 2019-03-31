@@ -92,6 +92,13 @@ nav .nav-wrapper {
     #child-form span {
         margin-bottom: 0px;
     }
+    #submit-Btn{
+        padding: 0px;
+        width: 90%;
+    }
+    #boop{
+        margin-bottom: 80px;
+    }
 }
 
 .select-wrapper {
@@ -117,3 +124,4 @@ svg:not(:root) {
     margin-top: -85px !important;
     margin-left: 180px !important;
 }
+

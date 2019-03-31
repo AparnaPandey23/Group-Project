@@ -303,6 +303,17 @@ button:hover {
         margin-left: 0px;
         margin-top: 10px;
     }
+    #child-con {
+        width: 85%;
+        margin-bottom: 100px;
+    }
+    #submit-activity{
+        width: 70%;
+        margin-left: 40px;
+    }
+    #child-form{
+        padding-bottom: 50px;
+    }
 } 
 @media only screen and (max-width:450px) {
     #log-form.container {
