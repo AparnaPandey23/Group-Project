@@ -12,21 +12,7 @@ $('#inputMonth').dropdown({
 
 $('#list').click(function(event){
     var present = 1;
-    $.ajax({
-        type: 'POST',
-        url: '/child/attendance',
-        dataType: 'json',
-        data: {
-            'row_num': rowNum,
-            'value': 1
-        },
-        success: function(){
-            console.log("Attend");
-        },
-        error: function(errMsg) {
-            console.log("Error");
-        }
-    });
+    
 });
 
 $(document).ready(

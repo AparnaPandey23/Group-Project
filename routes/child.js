@@ -182,6 +182,25 @@ router.post('/attendance', function(req, res, next){
         }
 });
 
+router.get('/getChildFromRow', function(req, res, next){
+    var rowNum = req.body.row_num;
+    console.log(rowNum);
+    try {
+        Child.findOne({row_num:rowNum}, function (err,child) {
+            if (err)
+                res.send(err);
+            if(child)
+                res.json({"id":child._id});
+        });   
+    } catch (err) {
+        res.json({
+            "status": "error",
+            "body": [
+                "Could not update attendance."
+            ]
+        });
+    }
+});
 function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
