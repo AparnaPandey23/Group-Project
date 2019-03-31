@@ -49,8 +49,6 @@ router.post('/addchild', function(req, res, next){
             newchild.child_lname = childlname;   
             newchild.dob = Dob;
 
-            
-
             // Save child to database
             newchild.save(function(err, child) {
                 if (err)
@@ -126,22 +124,29 @@ router.delete('/delchild/:id', function(req, res ,next){
 });
 
 router.post('/tableRow', function(req, res, next){
+    console.log(req.body);
     try {
         var childId = req.body.child_id;
         var rowNum = req.body.row_num;
-
-        Child.find({_id:childId}, function (err,child) {
+        
+        Child.findOne({_id:childId}, function (err,child) {
             if (err)
                 res.send(err);
             if(child) {
+                console.log(child.child_fname);
                 child.row_num = rowNum;
+                child.save(function(err, child) {
+                    if (err)
+                        throw err;
+                    res.json({"Success":"Table row " + rowNum + " updated"});
+                });
             }
         });
     } catch (err) {
             res.json({
                 "status": "error",
                 "body": [
-                    "Could not update attendance."
+                    "Could not load attendance."
                 ]
             });
         }

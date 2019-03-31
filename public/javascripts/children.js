@@ -144,6 +144,9 @@ function tableRow(child, rowNum) {
             'child_id': child._id,
             'row_num': rowNum
         },
+        success: function(){
+            console.log("tr");
+        },
         error: function(errMsg) {
             console.log("Error");
         }
