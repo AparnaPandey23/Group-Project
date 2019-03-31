@@ -42,9 +42,11 @@
               <li class="sidenav-header deep-purple lighten-2 z-depth-2">
               <div class="row">
                   <div class="col s4">
-                    <img src="/images/initial.svg"  class="valign profile-image " style="width: 80px !important">                  </div>
+                    <img src="/images/initial.svg"  class="valign profile-image " style="width: 80px !important">                  
+                  </div>
                   <div class="col s8">
-                  <a class="btn-flat dropdown-button waves-effect waves-dark white-text" href="#" data-activates="profile-dropdown">NAME<i class="material-icons right white-text" style="margin-left:40px; margin-top:-70px">arrow_drop_down</i></a>
+                  <a class="btn-flat dropdown-button white-text" href="#" data-activates="profile-dropdown" id="unamePlaceholder">NAME</a>
+                  <i class="material-icons right white-text" style="z-index: 9999; margin-top: -67px; margin-right: 15px;">arrow_drop_down</i>     
                       <ul id="profile-dropdown" class="dropdown-content">
                         <li><a href="/profile"><i class="material-icons">person</i>Profile</a></li>
                         <li><a href="#"><i class="material-icons">lock</i>Privacy</a></li>
@@ -59,13 +61,13 @@
               <li class="white">
               <ul class="collapsible collapsible-accordion">
                   <li>
-                  <a class="collapsible-header black-text"><i class="fas fa-child"></i>Child Profile <i class="material-icons right grey-text" style="margin-right:5;">arrow_drop_down</i></a>
+                  <a class="collapsible-header black-text"><i class="fas fa-child"></i>Child Profile <i class="material-icons right grey-text" style="margin-right:5px;">arrow_drop_down</i></a>
                   <div class="collapsible-body ">
                       <ul >
-                      <li><a class="waves-effect waves-blue" href="/child/addChild"><i class="fas fa-plus"></i>Add Child</a></li>
-                      <li><a class="waves-effect waves-blue" href="#"><i class="fas fa-baby"></i> View activity</a></li>
-                      <li><a class="waves-effect waves-blue" href="#"><i class="far fa-sticky-note"></i> Observations</a></li>
-                      <li><a class="waves-effect waves-blue" href="#"><i class="far fa-bell"></i>Attendance</a></li>
+                      <li><a class="waves-effect waves-light" href="/child/addChild"><i class="fas fa-plus"></i>Add Child</a></li>
+                      <li><a class="waves-effect waves-light" href="/activity/addActivity"><i class="fas fa-baby"></i> View activity</a></li>
+                      <li><a class="waves-effect waves-light" href="#"><i class="far fa-sticky-note"></i> Observations</a></li>
+                      <li><a class="waves-effect waves-light" href="#"><i class="far fa-bell"></i>Attendance</a></li>
                       <li><div class="divider"></div></li>
                       </ul>
                   </div>
@@ -73,10 +75,10 @@
                   </li>
               </ul>
               </li>
-              <li class="white"><a href="/child/children" class="waves-effect waves-blue"><i class="material-icons">group</i>Children</a></li>
-              <li class="white"><a href="/feed" class="waves-effect waves-blue"><i class="material-icons">update</i>Feed and About Us</a></li>
-              <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">phone_iphone</i>Real-Time Updates</a></li>
-              <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">tag_faces</i>Stay Connected</a></li>
+              <li class="white"><a href="/child/children" class="waves-effect waves-light"><i class="material-icons">group</i>Children</a></li>
+              <li class="white"><a href="/feed" class="waves-effect waves-light"><i class="material-icons">update</i>Feed and About Us</a></li>
+              <li class="white"><a href="#" class="waves-effect waves-light"><i class="material-icons">phone_iphone</i>Real-Time Updates</a></li>
+              <li class="white"><a href="/activity/stayConnected" class="waves-effect waves-light"><i class="material-icons">tag_faces</i>Stay Connected</a></li>
               <li class="white">
               <div class="divider"></div>
               </li>

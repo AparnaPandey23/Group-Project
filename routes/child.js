@@ -5,12 +5,12 @@ var Child = require('../models/child');
 
 /* GET child list page. */
 router.get('/children', function(req, res, next) {
-  res.render('childList', { title: 'Children' });
+  res.render('childList', { title: 'View Children' ,layout: 'layout2' });
 });
 
 /* GET add child page. */
 router.get('/addChild', function(req, res, next) {
-  res.render('addChild', { title: 'New Child' });
+  res.render('addChild', { title: 'Add Child' ,layout: 'layout2'});
 });
 
 

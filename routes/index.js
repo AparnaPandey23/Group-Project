@@ -3,10 +3,14 @@ var router = express.Router();
 var Comment = require('../models/comments');
 var jwt = require('jsonwebtoken');
 
+router.all('/*', function (req, res, next) {
+    req.app.locals.layout = 'layout2'; // set your layout here
+    next(); // pass control to the next handler
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Toddler Town' });
+  res.render('index', { title: 'Toddler Town' , layout: 'layout'});
 });
 
 
@@ -16,7 +20,7 @@ router.get('/feed', function(req, res, next) {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.render('welcomePage', { title: 'Feed', layout: 'layout2' });
+            res.render('welcomePage', { title: 'Feed', layout: false, layout: 'layout2' });
         }
     }catch (err) {
             res.json({
@@ -35,7 +39,7 @@ router.get('/settings', function(req, res, next) {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.render('settings', { title: 'Settings' , layout: 'layout2'});
+            res.render('settings', { title: 'Settings',layout: false, layout: 'layout2'});
         }
     }catch (err) {
             res.json({
@@ -54,7 +58,7 @@ router.get('/profile', function(req, res, next) {
         var jwtString = req.cookies.Authorization.split(" ");
         var x = verifyJwt(jwtString[1]);
         if (x) {
-            res.render('profile', { title: 'User Profile' , layout: 'layout2'});
+            res.render('profile', { title: 'User Profile' , layout: false, layout: 'layout2'});
         }
     }catch (err) {
             res.json({

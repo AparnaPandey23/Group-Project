@@ -6,14 +6,15 @@ var cookieParser = require('cookie-parser');
 
 /* GET requests to render pages */
 router.get('/register', function(req, res, next) {
-    res.render('register');
+    res.render('register', { title: 'Register' , layout: 'layout'});
+    
 });
 router.get('/login', function(req, res, next) {
-    res.render('login');
+    res.render('login', { title: 'Toddler Town!' , layout: 'layout2'});
 });
 
 router.get('/forgotpass', function(req, res, next) {
-    res.render('forgotpass');
+    res.render('forgotpass', { title: 'Forgot Pass' , layout: 'layout'});
 });
 
 /* POST requests for registration and login */
