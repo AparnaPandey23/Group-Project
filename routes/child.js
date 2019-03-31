@@ -155,21 +155,39 @@ router.post('/tableRow', function(req, res, next){
 
 router.post('/attendance', function(req, res, next){
     try {
-        var newRecord = new Attendance();
+        // Get values from request
         var childId = req.body.child_id;
         var value = req.body.value;
         var date = req.body.date;
         
-        newRecord.child_id = childId;
-        newRecord.attendance = value;
-        newRecord.date = date;
-
-        newRecord.save(function(err, record) {
+        // Check if there is an attendance record
+        // for this child AND this date
+        Attendance.findOne({child_id:childId, date:date}, function (err,record) {
             if (err)
-                throw err;
-            res.json({'success' : 'Record updated'});
+                res.send(err);
+            // If there is a record, update its value
+            if(record) {
+                record.attendance = value;
+                record.save(function(err, record) {
+                    if (err)
+                        throw err;
+                    res.json({"Success":"Record updated"});
+                });
+            } else {
+                // If there is no record, create one
+                var newRecord = new Attendance();
+
+                newRecord.child_id = childId;
+                newRecord.attendance = value;
+                newRecord.date = date;
+
+                newRecord.save(function(err, record) {
+                    if (err)
+                        throw err;
+                    res.json({'success' : 'Record updated'});
+                });
+                }
         });
-        
     } catch (err) {
             res.json({
                 "status": "error",
