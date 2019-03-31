@@ -136,7 +136,18 @@ function loadChildren(list) {
 }
 
 function tableRow(child, rowNum) {
-    console.log("Get");
+    $.ajax({
+        type: 'POST',
+        url: '/child/childTableRow',
+        dataType: 'json',
+        data: {
+            'child_id': child._id,
+            'row_num': rowNum
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
     var output = "<tr><td>";
     output += child.child_fname + " " + child.child_lname;
     output += "</td><td>";
@@ -145,7 +156,9 @@ function tableRow(child, rowNum) {
     output += "Room";
     output += "</td><td id='" + rowNum + "'>";
     output += "Present";
-    output += "</td></tr>";
+    output += "</td></tr>"
+
+
     
     return output;
 }
