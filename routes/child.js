@@ -125,7 +125,6 @@ router.delete('/delchild/:id', function(req, res ,next){
 });
 
 router.post('/tableRow', function(req, res, next){
-    console.log(req.body);
     try {
         var childId = req.body.child_id;
         var rowNum = req.body.row_num;
@@ -134,7 +133,6 @@ router.post('/tableRow', function(req, res, next){
             if (err)
                 res.send(err);
             if(child) {
-                console.log(child.child_fname);
                 child.row_num = rowNum;
                 child.save(function(err, child) {
                     if (err)
@@ -182,9 +180,8 @@ router.post('/attendance', function(req, res, next){
         }
 });
 
-router.get('/getChildFromRow', function(req, res, next){
+router.post('/getChildFromRow', function(req, res, next){
     var rowNum = req.body.row_num;
-    console.log(rowNum);
     try {
         Child.findOne({row_num:rowNum}, function (err,child) {
             if (err)

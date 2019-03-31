@@ -12,6 +12,24 @@ $('#inputMonth').dropdown({
 
 $('#list').click(function(event){
     var present = 1;
+
+    if(!isNaN(event.target.id) && event.target.id != ""){
+        console.log(event.target.id);
+        $.ajax({
+            type: 'POST',
+            url: '/child/getChildFromRow',
+            dataType: 'json',
+            data: {
+                'row_num': event.target.id
+            },
+            success: function(child){
+                console.log(child.id);
+            },
+            error: function(errMsg) {
+                console.log("Error");
+            }
+        });
+    }
     
 });
 
