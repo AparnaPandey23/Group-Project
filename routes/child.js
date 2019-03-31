@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken')
 var Child = require('../models/child');
+var Attendance = require('../models/attendance');
 
 /* GET child list page. */
 router.get('/children', function(req, res, next) {
@@ -154,35 +155,31 @@ router.post('/tableRow', function(req, res, next){
 });
 
 
-// router.post('/attendance', function(req, res, next){
-//     console.log(req.body);
-//     try {
-//         var childId = req.body.child_id;
-//         var rowNum = req.body.row_num;
-        
-//         Child.findOne({_id:childId}, function (err,child) {
-//             if (err)
-//                 res.send(err);
-//             if(child) {
-//                 console.log(child.child_fname);
-//                 child.row_num = rowNum;
-//                 child.save(function(err, child) {
-//                     if (err)
-//                         throw err;
-//                     res.json({"Success":"Table row " + rowNum + " updated"});
-//                 });
-//             }
-//         });
-//     } catch (err) {
-//             res.json({
-//                 "status": "error",
-//                 "body": [
-//                     "Could not load attendance."
-//                 ]
-//             });
-//         }
+router.post('/attendance', function(req, res, next){
+    try {
+        var newRecord = new Attendance();
+        var childId = req.body.child_id;
+        var value = req.body.value;
+               
+        newRecord.child_id = childId;
+        newRecord.value = value;
 
-// });
+        newRecord.save(function(err, record) {
+            if (err)
+                throw err;
+            res.json({'success' : 'Record updated'});
+        });
+        
+    } catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "Could not update attendance."
+                ]
+            });
+        }
+});
+
 function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
