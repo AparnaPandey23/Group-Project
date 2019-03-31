@@ -33,10 +33,22 @@ router.post('/newcreche', function(req, res, next){
             throw err;
         creche.access_token = createJwt({creche_id:creche._id});
         res.cookie('Authorization_Creche', 'Bearer ' + creche.access_token); 
-        res.json({'success' : 'Creche Registered created: ' + creche.access_token});
+        res.json({'success' : 'Creche Registered created: ' + creche.access_token, 'id':creche._id});
     });
 });
 
+router.post('/login', function(req, res, next){
+    var id = req.body.creche_id;
+    Creche.findOne({ '_id' :  id }, function(err, creche) {
+        if (err)
+            res.send(err);
+        if (creche) {
+            creche.access_token = createJwt({creche_id:creche._id});
+            res.cookie('Authorization_Creche', 'Bearer ' + creche.access_token); 
+            res.json({'success' : 'Creche Logged in: ' + creche.access_token});
+        }
+    });
+});
 function createJwt(profile) {
     return jwt.sign(profile, 'CSIsTheWorst', {
         expiresIn: '2d'
@@ -52,7 +64,6 @@ router.get('/currentCreche', function(req, res, next) {
             res.json({"userid":profile});
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [

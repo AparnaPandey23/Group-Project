@@ -20,27 +20,36 @@ router.get('/', function(req, res, next) {
 
 router.post('/addchild', function(req, res, next){
     try {
-        var jwtString = req.cookies.Authorization.split(" ");
-        var profile = verifyJwt(jwtString[1]);
+        var userJwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(userJwtString[1]);
         
-        if (profile) {
-            var userid = profile.user_id;
-            
-            // Details of child entered by user
-            var childfname = req.body.child_fname;
-            var childlname = req.body.child_lname; 
-            var Dob = req.body.dob;
-            var par = req.body.parName;
+        // Create new child object
+        var newchild = new Child();
 
-            // Create new child object
-            var newchild = new Child();
+        // If the logged in user is a parent, set its par_id
+        if (profile) {
+            if(profile.user_id){
+                var userid = profile.user_id;
+                newchild.par_id = userid;
+            } else if(profile.emp_id){
+                var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
+                var creche = verifyJwt(crecheJwtString[1]);
+                newchild.par_id = req.body.parId;
+                // Set creche
+                var crecheid = creche.creche_id;
+                newchild.creche_id = crecheid;
+            }
             
+            var childfname = req.body.child_fname;
+            var childlname = req.body.child_lname;
+            var Dob = req.body.dob;
+
             // Set the childs local credentials
-            newchild.child_fname = childfname ;
+            newchild.child_fname = childfname;
             newchild.child_lname = childlname;   
             newchild.dob = Dob;
-            newchild.par_id = userid;
-            newchild.parName = par;
+
+            
 
             // Save child to database
             newchild.save(function(err, child) {
@@ -50,7 +59,6 @@ router.post('/addchild', function(req, res, next){
             });
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [
@@ -73,19 +81,29 @@ router.get('/getchild'
 // Return all children given parent id (json request)
 router.post('/getChildren', function(req, res, next){
     try {
-        var jwtString = req.cookies.Authorization.split(" ");
-        var profile = verifyJwt(jwtString[1]);
+        var userJwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(userJwtString[1])
         
         if (profile) {
-            var userid = profile.user_id;
-            Child.find({par_id:userid}, function (err,child_fname) {
-                if (err)
-                    res.send(err);
-                res.json(child_fname);
-            });
+            if(profile.user_id){
+                var userid = profile.user_id;
+                Child.find({par_id:userid}, function (err,child_fname) {
+                    if (err)
+                        res.send(err);
+                        res.json(child_fname);
+                });
+            } else if(profile.emp_id){
+                var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
+                var creche = verifyJwt(crecheJwtString[1]);
+                var crecheid = creche.creche_id;
+                Child.find({creche_id:crecheid}, function (err,child_fname) {
+                    if (err)
+                        res.send(err);
+                        res.json(child_fname);
+                });
+            }
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [

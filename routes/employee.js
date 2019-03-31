@@ -41,6 +41,26 @@ router.post('/register', function(req, res, next){
     });
 });
 
+router.post('/updateCreche', function(req, res, next){
+    var emp_id = req.body.emp_id;
+    var creche_id = req.body.creche_id;
+    
+    Employee.findOne({ '_id' :  emp_id }, function(err, emp) {
+        if (err)
+            res.send(err);
+        if (emp) {
+            emp.creche_id = creche_id;
+            emp.save(function(err, employee) {
+                if (err)
+                    throw err;
+                
+            });
+        } 
+        
+        res.json({'success' : 'Creche added to user'});
+    });
+});
+
 router.post('/login', function(req, res, next){
     var username = req.body.user_name;
     var password = req.body.password;
@@ -79,7 +99,6 @@ router.get('/currentUser', function(req, res, next) {
             res.json({"empid":profile});
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [

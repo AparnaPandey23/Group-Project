@@ -89,7 +89,6 @@ router.get('/currentUser', function(req, res, next) {
             res.json({"userid":profile});
         }
     } catch (err) {
-        console.log(err);
             res.json({
                 "status": "error",
                 "body": [
@@ -139,5 +138,21 @@ function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
 }
+
+router.post('/getParent', function(req, res, next){
+    var username = req.body.user_name;
+    User.findOne({'user_name': username}, function (err, user) {
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({"id":user._id});
+        }
+        else
+        {
+            res.status(401).send({
+                "status": "error",
+                "body": "Parent not found"
+            });
+        } }); });
 
 module.exports = router;
