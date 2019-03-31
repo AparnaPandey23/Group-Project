@@ -160,9 +160,11 @@ router.post('/attendance', function(req, res, next){
         var newRecord = new Attendance();
         var childId = req.body.child_id;
         var value = req.body.value;
+        var date = req.body.date;
                
         newRecord.child_id = childId;
         newRecord.value = value;
+        newRecord.date = date;
 
         newRecord.save(function(err, record) {
             if (err)
