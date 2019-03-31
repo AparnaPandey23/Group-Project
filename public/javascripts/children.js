@@ -12,26 +12,57 @@ $('#inputMonth').dropdown({
 
 $('#list').click(function(event){
     var present = 1;
-
-    if(!isNaN(event.target.id) && event.target.id != ""){
-        console.log(event.target.id);
-        $.ajax({
-            type: 'POST',
-            url: '/child/getChildFromRow',
-            dataType: 'json',
-            data: {
-                'row_num': event.target.id
-            },
-            success: function(child){
-                console.log(child.id);
-            },
-            error: function(errMsg) {
-                console.log("Error");
-            }
-        });
-    }
+    updateAttendance(0, 0);
+    // if(!isNaN(event.target.id) && event.target.id != ""){
+    //     console.log(event.target.id);
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/child/getChildFromRow',
+    //         dataType: 'json',
+    //         data: {
+    //             'row_num': event.target.id
+    //         },
+    //         success: function(child){
+    //             console.log(child.id);
+    //         },
+    //         error: function(errMsg) {
+    //             console.log("Error");
+    //         }
+    //     });
+    // }
     
 });
+
+var curday = function(){
+    today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //As January is 0.
+    var yyyy = today.getFullYear();
+    
+    if(dd<10) dd='0'+dd;
+    if(mm<10) mm='0'+mm;
+    return (dd+'/'+mm+'/'+yyyy);
+}
+
+function updateAttendance(id, value) {
+    
+    console.log(curday());
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '/child/attendance',
+    //     dataType: 'json',
+    //     data: {
+    //         'child_id': id,
+
+    //     },
+    //     success: function(child){
+    //         console.log(child.id);
+    //     },
+    //     error: function(errMsg) {
+    //         console.log("Error");
+    //     }
+    // });
+}
 
 $(document).ready(
     function() {        
