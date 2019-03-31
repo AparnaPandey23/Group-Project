@@ -8,7 +8,26 @@ $('#inputMonth').dropdown({
       alignment: 'left', // Displays dropdown with edge aligned to the left of button
       stopPropagation: false // Stops event propagation
     }
-  );
+);
+
+$('#list').click(function(event){
+    var present = 1;
+    $.ajax({
+        type: 'POST',
+        url: '/child/attendance',
+        dataType: 'json',
+        data: {
+            'row_num': rowNum,
+            'value': 1
+        },
+        success: function(){
+            console.log("Attend");
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
+});
 
 $(document).ready(
     function() {        
@@ -161,7 +180,5 @@ function tableRow(child, rowNum) {
     output += "Present";
     output += "</td></tr>"
 
-
-    
     return output;
 }
