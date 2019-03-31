@@ -74,6 +74,7 @@ padding: 15px 0 0 15px;
    bottom: 0;
    width: 100%;
    text-align: center;
+   z-index: 1;
 }
 
 
@@ -154,4 +155,15 @@ nav .brand-logo {
   position: absolute;
   right: 23px;
   bottom: 23px;
+}
+
+/* Extra small devices (phones,tablets 768px and down) */
+@media only screen and (max-width:800px) {
+  nav .brand-logo {
+    margin-left: -20px;
+  }
+  nav .brand-logo :hover {
+    transform: none !important;
+  }
+  
 }
