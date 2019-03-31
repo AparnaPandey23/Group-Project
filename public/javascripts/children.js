@@ -190,8 +190,35 @@ function loadChildren(list) {
     $("#list").html(output);
 }
 
+var childList = [];
 function getAttendanceInfo(list, i) {
+    var date = curday();
+    $.ajax({
+        type: 'POST',
+        url: '/child/getAttendance',
+        dataType: 'json',
+        data: {
+            'child_id': list[i]._id,
+            'date': date
+        },
+        success: function(record){
+            addToList(list[i], record.value, i)
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
+}
 
+function addToList(child, value, i) {
+    var data = {
+        child_fname:child.child_fname,
+        child_lname:child.child_lname,
+        dob:child.dob,
+        presence: value
+    };
+    childList[i] = data;
+    console.log(childList);
 }
 function tableRow(child, rowNum) {
     $.ajax({
