@@ -12,24 +12,23 @@ $('#inputMonth').dropdown({
 
 $('#list').click(function(event){
     var present = 1;
-    updateAttendance(0, 0);
-    // if(!isNaN(event.target.id) && event.target.id != ""){
-    //     console.log(event.target.id);
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/child/getChildFromRow',
-    //         dataType: 'json',
-    //         data: {
-    //             'row_num': event.target.id
-    //         },
-    //         success: function(child){
-    //             console.log(child.id);
-    //         },
-    //         error: function(errMsg) {
-    //             console.log("Error");
-    //         }
-    //     });
-    // }
+    if(!isNaN(event.target.id) && event.target.id != ""){
+        console.log(event.target.id);
+        $.ajax({
+            type: 'POST',
+            url: '/child/getChildFromRow',
+            dataType: 'json',
+            data: {
+                'row_num': event.target.id
+            },
+            success: function(child){
+                updateAttendance(child.id, present);
+            },
+            error: function(errMsg) {
+                console.log("Error");
+            }
+        });
+    }
     
 });
 
@@ -45,23 +44,20 @@ var curday = function(){
 }
 
 function updateAttendance(id, value) {
-    
-    console.log(curday());
-    // $.ajax({
-    //     type: 'POST',
-    //     url: '/child/attendance',
-    //     dataType: 'json',
-    //     data: {
-    //         'child_id': id,
-
-    //     },
-    //     success: function(child){
-    //         console.log(child.id);
-    //     },
-    //     error: function(errMsg) {
-    //         console.log("Error");
-    //     }
-    // });
+    var date = curday();
+    $.ajax({
+        type: 'POST',
+        url: '/child/attendance',
+        dataType: 'json',
+        data: {
+            'child_id': id,
+            'value': value,
+            'date': date
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
 }
 
 $(document).ready(
