@@ -1,7 +1,5 @@
 $(document).ready(
     function() { 
-        console.log("Creche ready");
-
         $("#Creche_setup").submit(function (event) {
             event.preventDefault();
             $.ajax({
@@ -16,16 +14,57 @@ $(document).ready(
  		            'creche_a3': event.target.line3Add.value,
 		            'creche_a4': event.target.line4Add.value
                 },
-                success: function(token){
-                    $(location).attr('href', '/creche/home' );
+                success: function(creche){
+                    // Not tested
+                    addCrecheToEmp(creche.id);
                 },
                 error: function(errMsg) {
                     swal(
                         'Oops...',
                         errMsg.responseJSON.body,
                         'error'
-                    )
+                    );
                 }
             });
         }); 
     });
+
+function addCrecheToEmp(id){
+    console.log("Call");
+    $.ajax({
+        type: 'GET',
+        url: '/employee/currentUser',
+        success: function(emp){
+            linkCreche(emp.empid.emp_id, id);
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            );
+        }
+    });
+}
+
+function linkCreche(emp_id, creche_id) {
+    $.ajax({
+        type: 'POST',
+        url: '/employee/updateCreche',
+        dataType: 'json',
+        data: {
+            'emp_id': emp_id,
+            'creche_id': creche_id
+        },
+        success: function(creche){
+            $(location).attr('href', '/creche/home' );
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            );
+        }
+    });
+}
