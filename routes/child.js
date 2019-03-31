@@ -216,6 +216,34 @@ router.post('/getChildFromRow', function(req, res, next){
         });
     }
 });
+
+router.post('/getAttendance', function(req, res, next){
+    var childId = req.body.child_id;
+    var date = req.body.date;
+    console.log(childId + "   " + date);
+    try {
+        Attendance.findOne({child_id:childId, date:date}, function (err,record) {
+            if (err)
+                res.send(err);
+            if(record)
+                res.json({"value": record.attendance});
+            else 
+            res.json({
+                "status": "error",
+                "body": [
+                    "Could not get attendance."
+                ]
+            });
+        });   
+    } catch (err) {
+        res.json({
+            "status": "error",
+            "body": [
+                "Could not get attendance."
+            ]
+        });
+    }
+});
 function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;

@@ -170,21 +170,29 @@ function getChildren() {
         type: 'POST',
         url: '/child/getChildren',
         success: function(children){
-           loadChildren(children);
+           getAttendanceInfo(children, 0);
         }
     });
 }
 
 function loadChildren(list) {
-   var output = "";
+    // Create array of children and attendances for that day:
+    //  Get the attendance of the child
+    //  Add all child info to global array - Both in recursive function
+    // Iterate through setting each child
     
-    for(var i = 0; i < list.length; i++) {
-        output += tableRow(list[i], i);
-    }
+//    var output = "";
     
+    // for(var i = 0; i < list.length; i++) {
+    //     output += tableRow(list[i], i);
+    // }
+    // getA
     $("#list").html(output);
 }
 
+function getAttendanceInfo(list, i) {
+
+}
 function tableRow(child, rowNum) {
     $.ajax({
         type: 'POST',
