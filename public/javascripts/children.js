@@ -136,6 +136,7 @@ function loadChildren(list) {
 }
 
 function tableRow(child, rowNum) {
+    console.log("Get");
     var output = "<tr><td>";
     output += child.child_fname + " " + child.child_lname;
     output += "</td><td>";
@@ -143,7 +144,7 @@ function tableRow(child, rowNum) {
     output += "</td><td>";
     output += "Room";
     output += "</td><td id='" + rowNum + "'>";
-    output += Present;
+    output += "Present";
     output += "</td></tr>";
     
     return output;
