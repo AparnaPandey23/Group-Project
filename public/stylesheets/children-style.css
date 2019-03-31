@@ -112,3 +112,8 @@ right:50px;/*desired value*/
     padding: 14px 16px;
 }
 
+svg:not(:root) {
+    overflow: hidden;
+    margin-top: -85px !important;
+    margin-left: 180px !important;
+}
