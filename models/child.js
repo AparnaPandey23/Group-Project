@@ -8,7 +8,7 @@ var childSchema = new Schema({
     dob: {type: String,default: "jan ,01, 2000"},
     creche_id: {type: String, default: null },
     par_id:{type: String, default: null},
-    row_num: {type: int}
+    row_num: {type: Number}
 });
 
 module.exports = mongoose.model('Child', childSchema);
