@@ -202,7 +202,7 @@ function getAttendanceInfo(list, i) {
             'date': date
         },
         success: function(record){
-            addToList(list[i], record.value, i)
+            addToList(list, record.value, i)
         },
         error: function(errMsg) {
             console.log("Error");
@@ -210,11 +210,11 @@ function getAttendanceInfo(list, i) {
     });
 }
 
-function addToList(child, value, i) {
+function addToList(list, value, i) {
     var data = {
-        child_fname:child.child_fname,
-        child_lname:child.child_lname,
-        dob:child.dob,
+        child_fname:list[i].child_fname,
+        child_lname:list[i].child_lname,
+        dob:list[i].dob,
         presence: value
     };
     childList[i] = data;
