@@ -11,9 +11,16 @@ $('#inputMonth').dropdown({
 );
 
 $('#list').click(function(event){
-    var present = 1;
+    var present = 2;
+    if(event.target.innerHTML == "Not set" || event.target.innerHTML == "Absent"){
+        present = 1;
+    } else if(event.target.innerHTML == "Present"){
+        present = 0;
+    } else if(event.target.innerHTML == "Error"){
+        console.log("Error");
+    }
+    
     if(!isNaN(event.target.id) && event.target.id != ""){
-        console.log(event.target.id);
         $.ajax({
             type: 'POST',
             url: '/child/getChildFromRow',
@@ -22,7 +29,7 @@ $('#list').click(function(event){
                 'row_num': event.target.id
             },
             success: function(child){
-                updateAttendance(child.id, present);
+                updateAttendance(child.id, present, event);
             },
             error: function(errMsg) {
                 console.log("Error");
@@ -43,7 +50,7 @@ var curday = function(){
     return (dd+'/'+mm+'/'+yyyy);
 }
 
-function updateAttendance(id, value) {
+function updateAttendance(id, value, event) {
     var date = curday();
     $.ajax({
         type: 'POST',
@@ -53,6 +60,12 @@ function updateAttendance(id, value) {
             'child_id': id,
             'value': value,
             'date': date
+        },
+        success: function(record) {
+            var present = "Error";
+            if(record.value == 0) present = "Absent";
+            else if(record.value == 1) present = "Present";
+            event.target.innerHTML = present;
         },
         error: function(errMsg) {
             console.log("Error");
@@ -152,7 +165,6 @@ function addChild(parId, event) {
         },
         success: function(token){
             $(location).attr('href', '/child/children' );
-            console.log(parId);
             // Redirect to a list of children
         },
         error: function(errMsg) {
@@ -197,7 +209,7 @@ function getAttendanceInfo(list, i) {
                 'date': date
             },
             success: function(record){
-                addToList(list, record.value, i)
+                addToList(list, record.value, i);
             },
             error: function(errMsg) {
                 console.log("Error");
@@ -220,7 +232,6 @@ function addToList(list, value, i) {
     getAttendanceInfo(list, i+1);
 }
 function tableRow(list, rowNum) {
-    console.log(list);
     if(rowNum < list.length){
     $.ajax({
         type: 'POST',
