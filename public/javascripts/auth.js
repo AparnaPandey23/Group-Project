@@ -114,7 +114,7 @@ function loginCreche(id){
         data: { 
             'creche_id': id
         }, success: function(){
-            console.log("Creche login");
+            $(location).attr('href', '/feed' );
         },
         error: function(errMsg) {
             swal(

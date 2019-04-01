@@ -39,7 +39,6 @@ router.post('/newcreche', function(req, res, next){
 
 router.post('/login', function(req, res, next){
     var id = req.body.creche_id;
-    console.log(id);
     Creche.findOne({ '_id' :  id }, function(err, creche) {
         if (err)
             res.send(err);
