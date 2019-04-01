@@ -220,14 +220,16 @@ router.post('/getChildFromRow', function(req, res, next){
 router.post('/getAttendance', function(req, res, next){
     var childId = req.body.child_id;
     var date = req.body.date;
+    console.log(req.body);
     try {
         Attendance.findOne({child_id:childId, date:date}, function (err,record) {
-            if (err)
+            if (err){
                 res.send(err);
-            if(record && record.attendance)
+            }
+            if(record)
                 res.json({"value": record.attendance});
             else 
-            res.json({"value":2});
+                res.json({"value":2});
         });   
     } catch (err) {
         res.json({

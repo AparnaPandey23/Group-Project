@@ -16,8 +16,11 @@ $('#list').click(function(event){
         type: 'GET',
         url: '/users/currentUser',
         success: function(profile){
+            console.log("This t");
+
             // If the logged in user is a staff members
-            if(profile.empid) {
+            if(profile.userid.emp_id) {
+                console.log("This");
                 changeAttendance(event);
             }
         },
