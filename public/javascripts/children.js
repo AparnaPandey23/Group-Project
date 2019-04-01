@@ -176,21 +176,15 @@ function getChildren() {
 }
 
 function loadChildren(list) {
-    // Create array of children and attendances for that day:
-    //  Get the attendance of the child
-    //  Add all child info to global array - Both in recursive function
-    // Iterate through setting each child
-    
-//    var output = "";
-    
-    // for(var i = 0; i < list.length; i++) {
-    //     output += tableRow(list[i], i);
-    // }
-    // getA
+    var output = "";
+    for(var i = 0; i < list.length; i++) {
+        output += tableRow(list[i]);
+    }
     $("#list").html(output);
 }
 
 var childList = [];
+var childListOut = [];
 function getAttendanceInfo(list, i) {
     if(i < list.length) {
         var date = curday();
@@ -210,45 +204,57 @@ function getAttendanceInfo(list, i) {
             }
         });
     } else {
-        console.log(childList);
+        tableRow(childList, 0);
     }
 }
 
 function addToList(list, value, i) {
     var data = {
+        _id:list[i]._id,
         child_fname:list[i].child_fname,
         child_lname:list[i].child_lname,
         dob:list[i].dob,
         presence: value
     };
     childList[i] = data;
-    getAttendanceInfo(list, i+1)
+    getAttendanceInfo(list, i+1);
 }
-function tableRow(child, rowNum) {
+function tableRow(list, rowNum) {
+    console.log(list);
+    if(rowNum < list.length){
     $.ajax({
         type: 'POST',
         url: '/child/tableRow',
         dataType: 'json',
         data: {
-            'child_id': child._id,
+            'child_id': list[rowNum]._id,
             'row_num': rowNum
         },
         success: function(){
-            console.log("tr");
+            addToOutput(list, rowNum);
         },
         error: function(errMsg) {
             console.log("Error");
         }
     });
+} else {
+    $("#list").html(childListOut);
+}
+   
+}
+
+function addToOutput(list, i) {
+    var child = list[i];
     var output = "<tr><td>";
     output += child.child_fname + " " + child.child_lname;
     output += "</td><td>";
     output += child.dob;
     output += "</td><td>";
     output += "Room";
-    output += "</td><td id='" + rowNum + "'>";
-    output += "Present";
+    output += "</td><td id='" + i + "'>";
+    output += child.presence;
     output += "</td></tr>"
 
-    return output;
+    childListOut += output;
+    tableRow(list, i+1);
 }
