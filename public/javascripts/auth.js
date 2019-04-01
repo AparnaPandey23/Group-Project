@@ -137,10 +137,12 @@ $("#togBtn").on('change', function() {
         // alert(switchStatus);// To verify
     }
     else {
-       switchStatus = $(this).is(':checked');
-    //    alert(switchStatus);// To verify
+        switchStatus = $(this).is(':checked');
+        //    alert(switchStatus);// To verify
     }
 });
+
+
 
 // ???
 function signOut() {
@@ -173,4 +175,189 @@ function loadEmpUsername(){
             $("#unamePlaceholder").html(profile.user_name + iconHTML);
         }
     });
+}
+
+
+// function to update the ussers Innfo 
+//
+// For Oisin to find the shit 
+//
+//
+//
+/*
+'mobileA': event.target.mobile.value,
+                    'mobileB': event.target.mobile2.value,
+                    'email': event.target.email.value,
+                    'homeAdd': event.target.homeAdd.value,
+                    'workAdd': event.target.workAdd.value
+
+*/
+// Get the id
+var idgoten;
+function getidofperson() {
+     $.ajax({
+        async: false,
+        type: 'GET',
+        url: '/users/currentUser',
+        dataType: 'json',
+        data: {
+        },
+        success: function(token){
+            console.log(token);
+            idgoten = token.userid.user_id;
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                'error'
+            )
+        }
+    });
+    return idgoten;
+}
+
+// update the name
+function updatefirstName() {
+   getidofperson();
+    $.ajax({
+        type: 'POST',
+        url: '/users/upDateName',
+        dataType: 'json',
+        data: {
+            'id': idgoten,
+            'name': document.getElementById("inputFirstName").value
+        },
+        success: function(token){
+         $(location).attr('href', '/settings' );
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
+    idgoten = null;
+}
+
+function updateMobile() {
+   getidofperson();
+    $.ajax({
+        type: 'POST',
+        url: '/users/upDateMobile',
+        dataType: 'json',
+        data: {
+            'id': idgoten,
+            'mobileA': document.getElementById("mobile").value
+        },
+        success: function(token){
+           $(location).attr('href', '/settings' );
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
+    idgoten = null;
+}
+
+function updateLandLine() {
+   getidofperson();
+    $.ajax({
+        type: 'POST',
+        url: '/users/upDateLandLine',
+        dataType: 'json',
+        data: {
+            'id': idgoten,
+            'mobileB': document.getElementById("mobile2").value
+        },
+        success: function(token){
+            $(location).attr('href', '/settings' );
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
+    idgoten = null;
+}
+
+function updateEmail() {
+   getidofperson();
+    $.ajax({
+        type: 'POST',
+        url: '/users/upDateEmail',
+        dataType: 'json',
+        data: {
+            'id': idgoten,
+            'email': document.getElementById("email").value
+        },
+        success: function(token){
+           $(location).attr('href', '/settings' );
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
+    idgoten = null;
+}
+
+
+function upDateHomeadd() {
+   getidofperson();
+    $.ajax({
+        type: 'POST',
+        url: '/users/upDateHomeadd',
+        dataType: 'json',
+        data: {
+            'id': idgoten,
+            'home_Add': document.getElementById("homeAdd").value
+        },
+        success: function(token){
+           $(location).attr('href', '/settings' );
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
+    idgoten = null;
+}
+
+function upDateworkAdd() {
+   getidofperson();
+    $.ajax({
+        type: 'POST',
+        url: '/users/upDateworkAdd',
+        dataType: 'json',
+        data: {
+            'id': idgoten,
+            'work_Add': document.getElementById("workAdd").value
+        },
+        success: function(token){
+            $(location).attr('href', '/settings' );
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                errMsg.responseJSON.body,
+                'error'
+            )
+        }
+    });
+    idgoten = null;
 }

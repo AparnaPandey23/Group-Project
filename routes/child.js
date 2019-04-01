@@ -68,9 +68,7 @@ router.post('/addchild', function(req, res, next){
         }
 });
 // will get every child in the database will have to change this to prevent this from happning 
-router.get('/getchild'
-           , function(req, res, next)
-           {
+router.get('/getchild',function(req, res, next){
     Child.find({userid:req.query.userid}, function (err,child_fname) {
         if (err)
             res.send(err);
