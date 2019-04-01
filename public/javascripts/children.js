@@ -245,6 +245,11 @@ function tableRow(list, rowNum) {
 
 function addToOutput(list, i) {
     var child = list[i];
+    var presence;
+    if(child.presence == 0) presence = "Absent";
+    else if(child.presence == 1) presence = "Present";
+    else if(child.presence == 2) presence = "Not set";
+
     var output = "<tr><td>";
     output += child.child_fname + " " + child.child_lname;
     output += "</td><td>";
@@ -252,7 +257,7 @@ function addToOutput(list, i) {
     output += "</td><td>";
     output += "Room";
     output += "</td><td id='" + i + "'>";
-    output += child.presence;
+    output += presence;
     output += "</td></tr>"
 
     childListOut += output;
