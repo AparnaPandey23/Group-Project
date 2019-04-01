@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken')
 var Child = require('../models/child');
+var Attendance = require('../models/attendance');
 
 /* GET child list page. */
 router.get('/children', function(req, res, next) {
@@ -48,8 +49,6 @@ router.post('/addchild', function(req, res, next){
             newchild.child_fname = childfname;
             newchild.child_lname = childlname;   
             newchild.dob = Dob;
-
-            
 
             // Save child to database
             newchild.save(function(err, child) {
@@ -125,6 +124,122 @@ router.delete('/delchild/:id', function(req, res ,next){
     });
 });
 
+router.post('/tableRow', function(req, res, next){
+    try {
+        var childId = req.body.child_id;
+        var rowNum = req.body.row_num;
+        
+        Child.findOne({_id:childId}, function (err,child) {
+            if (err)
+                res.send(err);
+            if(child) {
+                child.row_num = rowNum;
+                child.save(function(err, child) {
+                    if (err)
+                        throw err;
+                    res.json({"Success":"Table row " + rowNum + " updated"});
+                });
+            }
+        });
+    } catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "Could not load attendance."
+                ]
+            });
+        }
+
+});
+
+
+router.post('/attendance', function(req, res, next){
+    try {
+        // Get values from request
+        var childId = req.body.child_id;
+        var value = req.body.value;
+        var date = req.body.date;
+        
+        // Check if there is an attendance record
+        // for this child AND this date
+        Attendance.findOne({child_id:childId, date:date}, function (err,record) {
+            if (err)
+                res.send(err);
+            // If there is a record, update its value
+            if(record) {
+                record.attendance = value;
+                record.save(function(err, record) {
+                    if (err)
+                        throw err;
+                        res.json({'value' : record.attendance});
+                });
+            } else {
+                // If there is no record, create one
+                var newRecord = new Attendance();
+
+                newRecord.child_id = childId;
+                newRecord.attendance = value;
+                newRecord.date = date;
+
+                newRecord.save(function(err, record) {
+                    if (err)
+                        throw err;
+                    res.json({'value' : record.attendance});
+                });
+                }
+        });
+    } catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "Could not update attendance."
+                ]
+            });
+        }
+});
+
+router.post('/getChildFromRow', function(req, res, next){
+    var rowNum = req.body.row_num;
+    try {
+        Child.findOne({row_num:rowNum}, function (err,child) {
+            if (err)
+                res.send(err);
+            if(child)
+                res.json({"id":child._id});
+        });   
+    } catch (err) {
+        res.json({
+            "status": "error",
+            "body": [
+                "Could not update attendance."
+            ]
+        });
+    }
+});
+
+router.post('/getAttendance', function(req, res, next){
+    var childId = req.body.child_id;
+    var date = req.body.date;
+    console.log(req.body);
+    try {
+        Attendance.findOne({child_id:childId, date:date}, function (err,record) {
+            if (err){
+                res.send(err);
+            }
+            if(record)
+                res.json({"value": record.attendance});
+            else 
+                res.json({"value":2});
+        });   
+    } catch (err) {
+        res.json({
+            "status": "error",
+            "body": [
+                "Could not get attendance."
+            ]
+        });
+    }
+});
 function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
