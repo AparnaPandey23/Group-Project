@@ -3,10 +3,10 @@ var router = express.Router();
 var Comment = require('../models/comments');
 var jwt = require('jsonwebtoken');
 
-router.all('/*', function (req, res, next) {
-    req.app.locals.layout = 'layout2'; // set your layout here
-    next(); // pass control to the next handler
-});
+// router.all('/*', function (req, res, next) {
+//     req.app.locals.layout = 'layout2'; // set your layout here
+//     next(); // pass control to the next handler
+// });
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
