@@ -1,5 +1,3 @@
-var currentUser;
-
 $('#inputMonth').dropdown({
       inDuration: 300,
       outDuration: 225,
@@ -17,92 +15,112 @@ $(document).ready(
         /**
          * Event handler for when the user adds a new child
          */
-        
+        // Using document.cookie
         $("#child-form").submit(function (event) {
             event.preventDefault();
+            
+            // Determines  whether a parent or staff member is logged in
             $.ajax({
-                type: 'POST',
-                url: '/child/addChild',
-                dataType: 'json',
-                data: {
-                    'child_fname': event.target.inputFirstName.value,
-                    'child_lname': event.target.inputSurname.value,
-                    'dob': event.target.inputDOB.value,
-                    'parName': event.target.inputParname.value,
-                    'parId': currentUser.userid.id
-                },
-                success: function(token){
-                    $(location).attr('href', '/child/children' );
-                    // Redirect to a list of children
+                type: 'GET',
+                url: '/users/currentUser',
+                success: function(profile){
+                    // If the logged in user is a parent
+                    if(profile.userid.user_id){
+                        var parId = profile.userid.user_id;
+                        console.log("Parent");
+                        setParent(parId, event);
+                    }
+                    // If the logged in user is a staff member
+                    else {
+                        console.log("Staff");
+
+                        setParent(null, event);
+                    }
                 },
                 error: function(errMsg) {
                     console.log("Error");
                 }
             });
-        }); 
-    }, getCurrentUser());
 
+        }); 
+    }, adjustForm(), getChildren());
+
+function adjustForm(){
+    $.ajax({
+        type: 'GET',
+        url: '/users/currentUser',
+        success: function(profile){
+            if(profile.userid.user_id){
+                $("#parNameInput").html("");
+            }
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
+}
+function setParent(parentId, event) {
+    // If the logged in user is a staff member
+    if(parentId == null) {
+        $.ajax({
+            type: 'POST',
+            url: '/users/getParent',
+            dataType: 'json',
+            data: {
+                'user_name': event.target.inputParname.value
+            },
+            success: function(id){
+               addChild(id.id, event);
+            },
+            error: function(errMsg) {
+                swal(
+                    'Cannot set parent',
+                    errMsg.responseJSON.body,
+                    'error'
+                )
+            }
+        });
+    }
+    // If the logged in user is a parent
+    else {
+        addChild(parentId, event);
+    }
+
+   
+}
+
+function addChild(parId, event) {
+    $.ajax({
+        type: 'POST',
+        url: '/child/addChild',
+        dataType: 'json',
+        data: {
+            'child_fname': event.target.inputFirstName.value,
+            'child_lname': event.target.inputSurname.value,
+            'dob': event.target.inputDOB.value,
+            'parId': parId,
+        },
+        success: function(token){
+            $(location).attr('href', '/child/children' );
+            console.log(parId);
+            // Redirect to a list of children
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
+}
 $('#monthsDropdown').click(function(event){
     var month = event.target.textContent;
     $("#inputMonth").val(month);
 });
 
-
-function getCurrentUser(){
-    $.ajax({
-        type: 'GET',
-        url: '/currentUser',
-        dataType: 'json',
-        success: function(user){
-           currentUser = user;
-            cookieId();
-        },
-             error: function(errMsg) {
-            swal(
-                'Oops...',
-                'error'
-            )
-        }
-    });
-}
-
-function cookieId(){
-     $.ajax({
-        type: 'POST',
-        url: '/users/getIdFromName',
-        dataType: 'json',
-        data: {
-            'user_name': currentUser.userid.user_name
-        },
-        success: function(id){
-           getChildren(id);
-            currentUser.userid.id = id;
-        },
-        error: function(errMsg) {
-           swal(
-                'Oops...',
-                'error'
-            )
-        }
-    });      
-}
-
-function getChildren(id) {
+function getChildren() {
     $.ajax({
         type: 'POST',
         url: '/child/getChildren',
-        dataType: 'json',
-        data: {
-            'userid': id
-        },
         success: function(children){
            loadChildren(children);
-        },
-        error: function(errMsg) {
-           swal(
-                'Oops...',
-                'error'
-            )
         }
     });
 }
@@ -124,8 +142,6 @@ function tableRow(child) {
     output += child.dob;
     output += "</td><td>";
     output += "Room";
-    output += "</td><td>";
-    output += "Present";
     output += "</td></tr>";
     
     return output;

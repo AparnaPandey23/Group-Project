@@ -1,0 +1,63 @@
+ .card{
+    border-radius: 20px ;
+    padding: 20px;
+    margin-left: 200px;
+    margin-top: 20px;
+    width: 70%;
+    background-image: linear-gradient(-225deg, #E3FDF5 50%, #FFE6FA 50%);
+}
+#settings-card {
+    margin-left: -200px !important;
+    width: 142.5%;
+    padding-bottom: 20px;
+}
+img.responsive-img.circle {
+    width: 200px;
+    height: 200px !important;
+    border-radius: 50%;
+}
+.card .card-image {
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.card .card-content {
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+.card .card-image .card-title {
+    color: #fff;
+    left: 250px;
+    margin-bottom: 100px;
+    font-size: 40px;
+}
+.card img:hover{
+    border: 3px dotted #eccaf7 ;
+}
+h3 { margin: 0;
+}
+form{
+    background-image: none;
+}
+
+.fixed-action-btn {
+    position: absolute;
+    right: 23px;
+    bottom: 23px;
+}
+
+#profile-form span {
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#profile-form span {
+    margin: 5px;
+    margin-bottom: 10px;
+}
+
+#profile-form ul {
+    width: 100%;
+}
