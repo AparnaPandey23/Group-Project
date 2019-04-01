@@ -11,6 +11,26 @@ $('#inputMonth').dropdown({
 );
 
 $('#list').click(function(event){
+    // Determines  whether a parent or staff member is logged in
+    $.ajax({
+        type: 'GET',
+        url: '/users/currentUser',
+        success: function(profile){
+            // If the logged in user is a staff members
+            if(profile.empid) {
+                changeAttendance(event);
+            }
+        },
+        error: function(errMsg) {
+            console.log("Error");
+        }
+    });
+
+    
+    
+});
+
+function changeAttendance(event){
     var present = 2;
     if(event.target.innerHTML == "Not set" || event.target.innerHTML == "Absent"){
         present = 1;
@@ -36,8 +56,7 @@ $('#list').click(function(event){
             }
         });
     }
-    
-});
+}
 
 var curday = function(){
     today = new Date();
@@ -81,7 +100,7 @@ $(document).ready(
         // Using document.cookie
         $("#child-form").submit(function (event) {
             event.preventDefault();
-            
+            console.log("Submit");
             // Determines  whether a parent or staff member is logged in
             $.ajax({
                 type: 'GET',
@@ -90,13 +109,12 @@ $(document).ready(
                     // If the logged in user is a parent
                     if(profile.userid.user_id){
                         var parId = profile.userid.user_id;
-                        console.log("Parent");
+                        console.log("Parent detected");
                         setParent(parId, event);
                     }
                     // If the logged in user is a staff member
                     else {
-                        console.log("Staff");
-
+                        console.log("Staff detected");
                         setParent(null, event);
                     }
                 },
@@ -123,6 +141,7 @@ function adjustForm(){
     });
 }
 function setParent(parentId, event) {
+    console.log("Set parent called");
     // If the logged in user is a staff member
     if(parentId == null) {
         $.ajax({
@@ -133,6 +152,7 @@ function setParent(parentId, event) {
                 'user_name': event.target.inputParname.value
             },
             success: function(id){
+               console.log("Got parent - " + id.id);
                addChild(id.id, event);
             },
             error: function(errMsg) {
@@ -146,6 +166,7 @@ function setParent(parentId, event) {
     }
     // If the logged in user is a parent
     else {
+        console.log("Parent logged in");
         addChild(parentId, event);
     }
 
@@ -153,6 +174,7 @@ function setParent(parentId, event) {
 }
 
 function addChild(parId, event) {
+    console.log("Add child called - id - " + parId);
     $.ajax({
         type: 'POST',
         url: '/child/addChild',
@@ -164,8 +186,10 @@ function addChild(parId, event) {
             'parId': parId,
         },
         success: function(token){
-            $(location).attr('href', '/child/children' );
+            // $(location).attr('href', '/child/children' );
             // Redirect to a list of children
+            console.log("Finished" + token.body);
+
         },
         error: function(errMsg) {
             console.log("Error");

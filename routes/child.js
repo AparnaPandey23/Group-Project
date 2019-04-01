@@ -30,11 +30,16 @@ router.post('/addchild', function(req, res, next){
         // If the logged in user is a parent, set its par_id
         if (profile) {
             if(profile.user_id){
+                console.log("user");
                 var userid = profile.user_id;
                 newchild.par_id = userid;
             } else if(profile.emp_id){
+                console.log(req.cookies);
+
                 var crecheJwtString = req.cookies.Authorization_Creche.split(" ");
+                console.log(crecheJwtString);
                 var creche = verifyJwt(crecheJwtString[1]);
+                console.log(creche);
                 newchild.par_id = req.body.parId;
                 // Set creche
                 var crecheid = creche.creche_id;

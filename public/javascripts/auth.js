@@ -113,6 +113,8 @@ function loginCreche(id){
         dataType: 'json',
         data: { 
             'creche_id': id
+        }, success: function(){
+            console.log("Creche login");
         },
         error: function(errMsg) {
             swal(
