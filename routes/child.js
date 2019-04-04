@@ -6,17 +6,49 @@ var Attendance = require('../models/attendance');
 
 /* GET child list page. */
 router.get('/children', function(req, res, next) {
-  res.render('childList', { title: 'View Children' ,layout: 'layout2' });
+    try {
+        var userJwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(userJwtString[1]);
+        
+        if (profile) {
+            if(profile.user_id){
+                res.render('childList', { title: 'Children' ,layout: 'layout2'}); 
+            } else if(profile.emp_id){
+                res.render('childList', { title: 'Children' ,layout: 'layout3'});                
+            }
+        }
+    } catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "You are not logged in."
+                ]
+            });
+        }
 });
 
 /* GET add child page. */
 router.get('/addChild', function(req, res, next) {
-  res.render('addChild', { title: 'Add Child' ,layout: 'layout2'});
-});
-
-
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  
+  try {
+    var userJwtString = req.cookies.Authorization.split(" ");
+    var profile = verifyJwt(userJwtString[1])
+    
+    if (profile) {
+        if(profile.user_id){
+            res.render('addChild', { title: 'Children' ,layout: 'layout2'}); 
+        } else if(profile.emp_id){
+            res.render('addChild', { title: 'Children' ,layout: 'layout3'});                
+        }
+    }
+} catch (err) {
+        res.json({
+            "status": "error",
+            "body": [
+                "You are not logged in."
+            ]
+        });
+    }
 });
 
 router.post('/addchild', function(req, res, next){
