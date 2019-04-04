@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var jwt = require('jsonwebtoken');
 
 /* GET add activity page. */
 router.get('/addActivity', function(req, res, next) {
   try {
     var userJwtString = req.cookies.Authorization.split(" ");
     var profile = verifyJwt(userJwtString[1]);
-    
+    console.log(profile);
     if (profile) {
         if(profile.user_id){
             res.render('addActivity', { title: 'Pick an Activity' ,layout: 'layout2'}); 
@@ -70,5 +71,11 @@ router.get('/privacy', function(req, res, next) {
         });
     }
 });
+
+function verifyJwt(jwtString) {
+    var value = jwt.verify(jwtString, 'CSIsTheWorst');
+    return value;
+}
+
 
 module.exports = router;
