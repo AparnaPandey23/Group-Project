@@ -10,13 +10,9 @@ router.get('/children', function(req, res, next) {
     try {
         var userJwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(userJwtString[1]);
-        
         if (profile) {
-            if(profile.user_id){
-                res.render('childList', { title: 'Children' ,layout: 'layout2'}); 
-            } else if(profile.emp_id){
-                res.render('childList', { title: 'Children' ,layout: 'layout3'});                
-            }
+            if(profile.user_id)     res.render('childList', { title: 'Children' ,layout: 'layout2'}); 
+            else if(profile.emp_id) res.render('childList', { title: 'Children' ,layout: 'layout3'});                
         }
     } catch (err) {
             res.json({
@@ -30,17 +26,12 @@ router.get('/children', function(req, res, next) {
 
 /* GET add child page. */
 router.get('/addChild', function(req, res, next) {
-  
   try {
     var userJwtString = req.cookies.Authorization.split(" ");
     var profile = verifyJwt(userJwtString[1])
-    console.log(profile);
     if (profile) {
-        if(profile.user_id){
-            res.render('addChild', { title: 'Children' ,layout: 'layout2'}); 
-        } else if(profile.emp_id){
-            res.render('addChild', { title: 'Children' ,layout: 'layout3'});                
-        }
+        if(profile.user_id)     res.render('addChild', { title: 'Children' ,layout: 'layout2'}); 
+        else if(profile.emp_id) res.render('addChild', { title: 'Children' ,layout: 'layout3'});
     }
 } catch (err) {
         res.json({
