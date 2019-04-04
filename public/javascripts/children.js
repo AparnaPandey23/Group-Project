@@ -230,7 +230,13 @@ function getChildren() {
         type: 'POST',
         url: '/child/getChildren',
         success: function(children){
-           getAttendanceInfo(children, 0);
+        //    getAttendanceInfo(children, 0);
+    
+        for(var i = 0; i < children.length; i++) {
+            addToOutput(children[i]);
+        }
+
+        $("#list").html(childListOut);
         }
     });
 }
@@ -302,12 +308,13 @@ function tableRow(list, rowNum) {
    
 }
 
-function addToOutput(list, i) {
-    var child = list[i];
-    var presence;
-    if(child.presence == 0) presence = "Absent";
-    else if(child.presence == 1) presence = "Present";
-    else if(child.presence == 2) presence = "Not set";
+// function addToOutput(list, i) {
+function addToOutput(child) {
+    // var child = list[i];
+    // var presence;
+    // if(child.presence == 0) presence = "Absent";
+    // else if(child.presence == 1) presence = "Present";
+    // else if(child.presence == 2) presence = "Not set";
 
     var output = "<tr><td>";
     output += child.child_fname + " " + child.child_lname;
@@ -315,10 +322,13 @@ function addToOutput(list, i) {
     output += child.dob;
     output += "</td><td>";
     output += "Room";
-    output += "</td><td id='" + i + "'>";
-    output += presence;
+    output += "</td><td>";
+    output += "Not set";
     output += "</td></tr>"
 
+
     childListOut += output;
-    tableRow(list, i+1);
+    console.log(childListOut)
+
+    // tableRow(list, i+1);
 }
