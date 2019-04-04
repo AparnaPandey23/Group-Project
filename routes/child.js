@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var jwt = require('jsonwebtoken')
+var jwt = require('jsonwebtoken');
 var Child = require('../models/child');
 var ChildLink = require('../models/childLink');
 var Attendance = require('../models/attendance');
@@ -34,7 +34,7 @@ router.get('/addChild', function(req, res, next) {
   try {
     var userJwtString = req.cookies.Authorization.split(" ");
     var profile = verifyJwt(userJwtString[1])
-    
+    console.log(profile);
     if (profile) {
         if(profile.user_id){
             res.render('addChild', { title: 'Children' ,layout: 'layout2'}); 
@@ -291,7 +291,7 @@ router.post('/getAttendance', function(req, res, next){
                 res.send(err);
             }
             if(record)
-                res.json({"value": record.attendance});
+                res.json({"record": record});
             else 
                 res.json({"value":2});
         });   
