@@ -138,7 +138,9 @@ router.post('/login', function(req, res, next){
                 "status": "error",
                 "body": "Username not found"
             });
-        } }); });
+        }
+    });
+});
 
 /* GET request to return profile of user currently logged in */ 
 router.get('/currentUser', function(req, res, next) {
@@ -180,8 +182,6 @@ router.get('/currentCreche', function(req, res, next) {
         }
 });
 
-
-
 function createJwt(profile) {
     return jwt.sign(profile, 'CSIsTheWorst', {
         expiresIn: '2d'
@@ -192,7 +192,6 @@ function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
 }
-
 
 /* GET request to return username of user currently logged in */
 router.get('/getUserById', function(req, res, next) {

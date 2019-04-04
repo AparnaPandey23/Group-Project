@@ -16,9 +16,7 @@ router.get('/home', function(req, res, next) {
         var profile = verifyJwt(userJwtString[1]);
         
         if (profile) {
-            if(profile.emp_id){
-                res.render('home2', { title: 'Home' ,layout: 'layout3'});                
-            }
+            if(profile.emp_id)  res.render('home2', { title: 'Home' ,layout: 'layout3'});                
         }
     } catch (err) {
             res.json({
@@ -101,6 +99,5 @@ function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
 }
-
 
 module.exports = router;
