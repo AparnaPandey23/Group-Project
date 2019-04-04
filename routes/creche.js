@@ -11,7 +11,23 @@ router.get('/newCreche', function(req, res, next) {
 
 /* GET add landing  page. */
 router.get('/home', function(req, res, next) {
-    res.render('CrecheHome', { title: 'Creche Home', layout: "layout2" });
+    try {
+        var userJwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(userJwtString[1]);
+        
+        if (profile) {
+            if(profile.emp_id){
+                res.render('privacy', { title: 'Privacy' ,layout: 'layout3'});                
+            }
+        }
+    } catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "Staff member not logged in."
+                ]
+            });
+        }
 });
 
 router.post('/newcreche', function(req, res, next){

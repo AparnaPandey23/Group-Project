@@ -17,20 +17,18 @@
             </ul>
         </div>
       </div>
-      <br>
+  <br>
           <div class="card-content pink lighten-4">
             <h3>Update Personal Info:</h3>
             <div>
-                  <form action="" id="profile-form" >
+                  <form action="/profile" id="profile-form" method="GET">
                       <div class="con ">
                           <div class="field-set ">
-                              {{!-- <h2>Add Child</h2>
-                              <p>Add a child to the system</p> --}}
                               <div class="row">
                                   <!--   Full  name -->
                                   <span class="input-item col s6 z-depth-1">
                                     <i class="fas fa-user-circle fa-1x"></i>
-                                    <input class="form-input active validate z-depth-3" id="inputFirstName" type="text" placeholder="Full Name" required />  
+                                    <input class="form-input active validate z-depth-3" id="inputFullName" type="text" placeholder="Full Name" required />  
                                   </span>
 				<button class="log-in sign-up z-depth-1" id="submit-Btn" onclick="updatefirstName()"  > Submit</button>
                               </div>
@@ -38,6 +36,7 @@
                                 <!--   Phone number -->
                                 <span class="input-item col s12 z-depth-1" >
                                   <i class="fas fa-mobile-alt"></i>
+
                                   <input class="form-input active validate" id="mobile" name="mobile" placeholder="Mobile Number" type="text" required/>			
                                 </span>
 				<button class="log-in sign-up z-depth-1" id="submit-Btn"  onclick="updateMobile()"  > Submit</button>	
@@ -45,13 +44,15 @@
                                 <span class="input-item col s12 z-depth-1" >
                                   <i class="fas fa-mobile-alt"></i>
                                   <input class="form-input active validate" id="mobile2" name="mobile2" placeholder="Landline Number (Optional)" type="text"/>
+
                                 </span>
 				<button class="log-in sign-up z-depth-1" id="submit-Btn"  onclick="updateLandLine()"  > Submit</button>
                               </div>
+                              {{!-- Email --}}
                               <div class="row">
                                   <span class="input-item col s12 z-depth-1" >
                                     <i class="fas fa-at" style="margin-top:20px;"></i>
-                                    <input class="form-input active validate" id="email" type="email" placeholder="Parent's Email" />
+                                    <input class="form-input active validate" id="inputEmail" type="email" placeholder="Parent's Email" />
                                   </span>
 				<button class="log-in sign-up z-depth-1" id="submit-Btn"  onclick="updateEmail()"  > Submit</button>
                               </div>
@@ -66,7 +67,7 @@
                                   <!--   Work Address -->
                                   <span class="input-item col s6 z-depth-1">
                                     <i class="fas fa-building fa-1x"></i>
-                                    <input class="form-input active validate" id="workAdd" type="text" placeholder="Work Address (Optional)" />
+                                    <input class="form-input active validate" id="inputWorkAdd" type="text" placeholder="Work Address (Optional)" />
                                   </span>
 				<button class="log-in sign-up z-depth-1" id="submit-Btn" onclick="upDateworkAdd()"  > Submit</button>
                               </div>
@@ -74,8 +75,32 @@
                       </div>
                   </form>
               </div>
-          </div>
+        </div>
       </div>
     </div>
 </div>
-<script src="/javascripts/profile-settings.js"></script>
+{{!-- <script>
+  function displayCard(){
+    document.getElementById("cardContent").style.display = "none";
+  }
+</script> --}}
+
+<script>
+  function updateDetails(){
+    // store input values after submission locally in variables: [in Profile Settings]
+    var user_fullName = document.getElementById("inputFullName").value;
+    var user_mob1 = document.getElementById("inputMobile").value;
+    var user_mob2 = document.getElementById("inputMobile2").value;
+    var user_email = document.getElementById("inputEmail").value;
+    var user_homeAdd = document.getElementById("inputHomeAdd").value;
+    var user_workAdd = document.getElementById("inputWorkAdd").value;
+
+    // update the user profile with changes in: [ User Profile]
+    document.getElementById('outputFullName').innerHTML = user_fullName;
+    document.getElementById('outputMobile').placeholder = user_mob1;
+    document.getElementById('outputMobile2').placeholder = user_mob2;
+    document.getElementById('outputEmail').placeholder = user_email;
+    document.getElementById('outputHomeAdd').placeholder = user_homeAdd;
+    document.getElementById('outputWorkAdd').placeholder = user_workAdd;
+}
+</script>

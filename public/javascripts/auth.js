@@ -168,6 +168,8 @@ function loginCreche(id){
         dataType: 'json',
         data: { 
             'creche_id': id
+        }, success: function(){
+            $(location).attr('href', '/feed' );
         },
         error: function(errMsg) {
             swal(
@@ -194,12 +196,15 @@ $("#togBtn").on('change', function() {
         //    alert(switchStatus);// To verify
     }
 });
-// Old Google One
+
 function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
-    });
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
 var iconHTML = '<i class="mdi-navigation-arrow-drop-down right"></i>';
 function loadUsername () {

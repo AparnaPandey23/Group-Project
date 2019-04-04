@@ -49,7 +49,7 @@
                   <i class="material-icons right white-text" style="z-index: 9999; margin-top: -67px; margin-right: 15px;">arrow_drop_down</i>     
                       <ul id="profile-dropdown" class="dropdown-content">
                         <li><a href="/profile"><i class="material-icons">person</i>Profile</a></li>
-                        <li><a href="#"><i class="material-icons">lock</i>Privacy</a></li>
+                        <li><a href="/activity/privacy"><i class="material-icons">lock</i>Privacy</a></li>
                         <li class="divider"></li>
                         <li><a href="/settings"><i class="material-icons">settings</i>Settings</a></li> <!--changed this-->
                         <li><a  class = "modal-trigger" href="#logout-modal"><i class="material-icons">exit_to_app</i>Logout</a>  </li>
@@ -57,6 +57,7 @@
                   </div>
               </div>
             
+                  
               </li>
               <li class="white">
               <ul class="collapsible collapsible-accordion">
@@ -65,9 +66,9 @@
                   <div class="collapsible-body ">
                       <ul >
                       <li><a class="waves-effect waves-light" href="/child/addChild"><i class="fas fa-plus"></i>Add Child</a></li>
-                      <li><a class="waves-effect waves-light" href="/activity/addActivity"><i class="fas fa-baby"></i> Pick an Activity</a></li>
-                      <li><a class="waves-effect waves-light" href="#"><i class="far fa-sticky-note"></i> Observations</a></li>
-                      <li><a class="waves-effect waves-light" href="#"><i class="far fa-bell"></i>Attendance</a></li>
+                      {{!-- in parent interface: view activity or real time updates ......... in staff interface: pick an activity--}}
+                      <li><a class="waves-effect waves-light" href="#"><i class="far fa-sticky-note"></i>View Observations</a></li>
+                      <li><a class="waves-effect waves-light" href="#"><i class="far fa-bell"></i>View Attendance</a></li>
                       <li><div class="divider"></div></li>
                       </ul>
                   </div>
@@ -76,9 +77,9 @@
               </ul>
               </li>
               <li class="white"><a href="/child/children" class="waves-effect waves-light"><i class="material-icons">group</i>Children</a></li>
-              <li class="white"><a href="/feed" class="waves-effect waves-light"><i class="material-icons">update</i>Feed and About Us</a></li>
               <li class="white"><a href="#" class="waves-effect waves-light"><i class="material-icons">phone_iphone</i>Real-Time Updates</a></li>
               <li class="white"><a href="/activity/stayConnected" class="waves-effect waves-light"><i class="material-icons">tag_faces</i>Stay Connected</a></li>
+              <li class="white"><a href="/feed" class="waves-effect waves-light"><i class="material-icons">update</i>About Us</a></li>
               <li class="white">
               <div class="divider"></div>
               </li>
@@ -94,7 +95,7 @@
       </div>
       <div class="modal-footer">
         <a href="#" class="modal-action modal-close purple lighten-3 btn-flat" style="margin-left:20px;">CANCEL</a>
-        <a href="/" class="modal-action modal-close purple lighten-3 btn-flat" onclick="logout()" >CONFIRM</a>
+        <a href="/" class="modal-action modal-close purple lighten-3 btn-flat" onclick="signOut()" >CONFIRM</a>
       </div>
     </div>
 
