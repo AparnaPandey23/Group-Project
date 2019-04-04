@@ -56,6 +56,61 @@ $(document).ready(
         }); 
     });
 
+
+var idRgoten;
+
+
+function getidofCreche() {
+    //console.log(idRgoten);
+    $.ajax({
+        async: false,
+        type: 'GET',
+        url: '/creche/currentCreche',
+        dataType: 'json',
+        data: {
+        },
+        success: function(token){
+            console.log(token);
+            idRgoten = token.Creche.creche_id;
+            console.log(idRgoten);
+        }
+    });
+    return idRgoten;
+}
+
+$(document).ready(
+    // REGISTRATION
+    function() {
+        $("#EMPMreg-form").submit(function (event) {
+            event.preventDefault();
+            idRgoten = getidofCreche();
+            $.ajax({
+                type: 'POST',
+                url: '/employee/registerM',
+                dataType: 'json',
+                data: {
+                    'user_name': event.target.inputUsername.value,
+                    'password': event.target.inputPassword.value,
+                    'email': event.target.inputEmail.value,
+                    'C_id': idRgoten
+                },
+                success: function(token){
+                    console.log("sucksess");
+                    $(location).attr('href', '/employee/NewEmployee' );
+                },
+                error: function(errMsg) {
+                    swal(
+                        'Oops...',
+                        errMsg.responseJSON.body,
+                        'error'
+                    )
+                }
+            });
+        }); 
+    });
+
+
+
 $(document).ready(
     // LOGIN
     function() {
@@ -128,9 +183,7 @@ $(document).ready(
     function() {     
         $("#profile-dropdown > li:nth-child(2) a").click(signOut);
     }, loadUsername());
-
 //function to determin wether staff or parent login
-
 $("#togBtn").on('change', function() {
     if ($(this).is(':checked')) {
         switchStatus = $(this).is(':checked');
@@ -141,19 +194,14 @@ $("#togBtn").on('change', function() {
         //    alert(switchStatus);// To verify
     }
 });
-
-
-
-// ???
+// Old Google One
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
     });
 }
-
 var iconHTML = '<i class="mdi-navigation-arrow-drop-down right"></i>';
-
 function loadUsername () {
     $.ajax({
         type: 'GET',
@@ -166,7 +214,6 @@ function loadUsername () {
         }
     });
 }
-
 function loadEmpUsername(){
     $.ajax({
         type: 'GET',
@@ -215,7 +262,6 @@ function getidofperson() {
     });
     return idgoten;
 }
-
 // update the name
 function updatefirstName() {
    getidofperson();
@@ -228,7 +274,7 @@ function updatefirstName() {
             'name': document.getElementById("inputFirstName").value
         },
         success: function(token){
-         $(location).attr('href', '/settings' );
+         //$(location).attr('href', '/settings' );
         },
         error: function(errMsg) {
             swal(
@@ -240,7 +286,6 @@ function updatefirstName() {
     });
     idgoten = null;
 }
-
 function updateMobile() {
    getidofperson();
     $.ajax({
@@ -252,7 +297,7 @@ function updateMobile() {
             'mobileA': document.getElementById("mobile").value
         },
         success: function(token){
-           $(location).attr('href', '/settings' );
+           //$(location).attr('href', '/settings' );
         },
         error: function(errMsg) {
             swal(
@@ -264,7 +309,6 @@ function updateMobile() {
     });
     idgoten = null;
 }
-
 function updateLandLine() {
    getidofperson();
     $.ajax({
@@ -276,7 +320,7 @@ function updateLandLine() {
             'mobileB': document.getElementById("mobile2").value
         },
         success: function(token){
-            $(location).attr('href', '/settings' );
+            //$(location).attr('href', '/settings' );
         },
         error: function(errMsg) {
             swal(
@@ -288,7 +332,6 @@ function updateLandLine() {
     });
     idgoten = null;
 }
-
 function updateEmail() {
    getidofperson();
     $.ajax({
@@ -297,10 +340,10 @@ function updateEmail() {
         dataType: 'json',
         data: {
             'id': idgoten,
-            'email': document.getElementById("email").value
+            'emaila': document.getElementById("email").value
         },
         success: function(token){
-           $(location).attr('href', '/settings' );
+          // $(location).attr('href', '/settings' );
         },
         error: function(errMsg) {
             swal(
@@ -312,9 +355,8 @@ function updateEmail() {
     });
     idgoten = null;
 }
-
-
 function upDateHomeadd() {
+    var thing = document.getElementById("homeAdd").value;
    getidofperson();
     $.ajax({
         type: 'POST',
@@ -322,10 +364,10 @@ function upDateHomeadd() {
         dataType: 'json',
         data: {
             'id': idgoten,
-            'home_Add': document.getElementById("homeAdd").value
+            'home_Addd': document.getElementById("homeAdd").value
         },
         success: function(token){
-           $(location).attr('href', '/settings' );
+          // $(location).attr('href', '/settings' );
         },
         error: function(errMsg) {
             swal(
@@ -337,7 +379,6 @@ function upDateHomeadd() {
     });
     idgoten = null;
 }
-
 function upDateworkAdd() {
    getidofperson();
     $.ajax({
@@ -346,10 +387,10 @@ function upDateworkAdd() {
         dataType: 'json',
         data: {
             'id': idgoten,
-            'work_Add': document.getElementById("workAdd").value
+            'work_Addd': document.getElementById("workAdd").value
         },
         success: function(token){
-            $(location).attr('href', '/settings' );
+           // $(location).attr('href', '/settings' );
         },
         error: function(errMsg) {
             swal(

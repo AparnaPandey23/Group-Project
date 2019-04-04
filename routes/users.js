@@ -203,7 +203,7 @@ router.post('/upDateLandLine',function(req,res,next){
     });
 });
 router.post('/upDateEmail',function(req,res,next){
-    var changeOB = req.body.email;
+    var changeOB = req.body.emaila;
     var id = req.body.id;
     User.updateOne({'_id': id}, {$set:{"email": changeOB}}, function(err, user){
         if (err)
@@ -214,9 +214,9 @@ router.post('/upDateEmail',function(req,res,next){
     });
 });
 router.post('/upDateHomeadd',function(req,res,next){
-    var changeOB = req.body.home_Add;
+    var changeOB = req.body.home_Addd;
     var id = req.body.id;
-    User.insertOne({'_id': id}, {$set:{"home_Add": changeOB}}, function(err, user){
+    User.insertOne({'_id': id}, {$set:{"home_add": changeOB}}, function(err, user){
         if (err)
             res.send(err);
         if (user) {
@@ -225,9 +225,9 @@ router.post('/upDateHomeadd',function(req,res,next){
     });
 });
 router.post('/upDateworkAdd',function(req,res,next){
-    var changeOB = req.body.work_Add;
+    var changeOB = req.body.work_Addd;
     var id = req.body.id;
-    User.updateOne({'_id': id}, {$set:{"work_Add": changeOB}}, function(err, user){
+    User.updateOne({'_id': id}, {$set:{"work_add": changeOB}}, function(err, user){
         if (err)
             res.send(err);
         if (user) {

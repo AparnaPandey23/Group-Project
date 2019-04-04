@@ -11,6 +11,7 @@ var emailRouter = require('./routes/email');
 var crecheRouter = require('./routes/creche');
 var emploRouter = require('./routes/employee');
 var activityRouter = require('./routes/activity');
+var roomRouter = require('./routes/room');
 
 var app = express();
 
@@ -39,6 +40,7 @@ app.use('/email', emailRouter);
 app.use('/employee/', emploRouter);
 app.use('/activity', activityRouter);
 app.use('/creche', crecheRouter);
+app.use('/room', roomRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
