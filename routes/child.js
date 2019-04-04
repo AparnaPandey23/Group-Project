@@ -291,7 +291,7 @@ router.post('/getAttendance', function(req, res, next){
                 res.send(err);
             }
             if(record)
-                res.json({"record": record});
+                res.json({"value": record.attendance});
             else 
                 res.json({"value":2});
         });   

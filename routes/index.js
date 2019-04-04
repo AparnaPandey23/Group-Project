@@ -67,9 +67,9 @@ router.get('/profile', function(req, res, next) {
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
             if(profile.user_id){
-                res.render('profile', { title: 'Settings' ,layout: 'User Profile'}); 
+                res.render('profile', { title: 'User Profile' ,layout: 'layout2'}); 
             } else if(profile.emp_id){
-                res.render('profile', { title: 'Settings' ,layout: 'User Profile'}); 
+                res.render('profile', { title: 'User Profile' ,layout: 'layout3'}); 
             }
         }
     }catch (err) {
