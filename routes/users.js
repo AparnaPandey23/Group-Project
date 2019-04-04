@@ -7,10 +7,9 @@ var cookieParser = require('cookie-parser');
 /* GET requests to render pages */
 router.get('/register', function(req, res, next) {
     res.render('register', { title: 'Register' , layout: 'layout'});
-    
 });
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: 'Toddler Town!' , layout: 'layout2'});
+    res.render('login', { title: 'Toddler Town!' , layout: 'layout'});
 });
 
 router.get('/forgotpass', function(req, res, next) {

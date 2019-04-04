@@ -15,13 +15,18 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/feed', function(req, res, next) {
-
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.render('welcomePage', { title: 'Feed', layout: false, layout: 'layout2' });
+            if(profile.user_id){
+                res.render('welcomePage', { title: 'Feed' ,layout: 'layout2'}); 
+            } else if(profile.emp_id){
+                res.render('welcomePage', { title: 'Feed' ,layout: 'layout3'});                
+            }
         }
+
+        
     }catch (err) {
             res.json({
                 "status": "error",
@@ -34,12 +39,15 @@ router.get('/feed', function(req, res, next) {
 
 //added
 router.get('/settings', function(req, res, next) {
-
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.render('settings', { title: 'Settings',layout: false, layout: 'layout2'});
+            if(profile.user_id){
+                res.render('settings', { title: 'Settings' ,layout: 'layout2'}); 
+            } else if(profile.emp_id){
+                res.render('settings', { title: 'Settings' ,layout: 'layout2'}); 
+            }
         }
     }catch (err) {
             res.json({
@@ -56,9 +64,13 @@ router.get('/profile', function(req, res, next) {
 
     try {
         var jwtString = req.cookies.Authorization.split(" ");
-        var x = verifyJwt(jwtString[1]);
-        if (x) {
-            res.render('profile', { title: 'User Profile' , layout: false, layout: 'layout2'});
+        var profile = verifyJwt(jwtString[1]);
+        if (profile) {
+            if(profile.user_id){
+                res.render('profile', { title: 'Settings' ,layout: 'User Profile'}); 
+            } else if(profile.emp_id){
+                res.render('profile', { title: 'Settings' ,layout: 'User Profile'}); 
+            }
         }
     }catch (err) {
             res.json({
