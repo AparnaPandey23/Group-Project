@@ -11,7 +11,7 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/NewEmployee', function(req, res, next) {
-    res.render('registerEMPM', { title: 'Creche Home', layout: "layout2" });
+    res.render('registerEMPM', { title: 'Register Employee', layout: "layout3" });
 });
 
 /* POST requests for registration and login */ 

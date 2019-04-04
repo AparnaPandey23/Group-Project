@@ -4,10 +4,10 @@ var Room = require('../models/room');
 var ChildLink = require('../models/childLink');
 
 router.get('/newRoom', function(req, res, next) {
-    res.render('roomSetup', { title: 'New Room', layout:"layout2" });
+    res.render('roomSetup', { title: 'New Room', layout:"layout3" });
 });
 router.get('/listRoom', function(req, res, next) {
-    res.render('roomList', { title: 'Rooms', layout:"layout2" });
+    res.render('roomList', { title: 'List Rooms', layout:"layout3" });
 });
 
 //added
