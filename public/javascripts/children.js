@@ -173,6 +173,30 @@ function setParent(parentId, event) {
    
 }
 
+function addChildToRoom(Crech_id,Child_id){
+    $.ajax({
+            type: 'POST',
+            url: '/child/addtoRoom',
+            dataType: 'json',
+            data: {
+                'C_id': Crech_id,
+                'K_id': Child_id,
+                'timeA': event.target.inputtimeA.value,
+                'timeB': event.target.inputtimeB.value,
+            },
+            success: function(id){
+               console.log("Fuck_Yea")
+            },
+            error: function(errMsg) {
+                swal(
+                    'aww Shucks',
+                    errMsg.responseJSON.body,
+                    'error'
+                )
+            }
+        });
+}
+
 function addChild(parId, event) {
     console.log("Add child called - id - " + parId);
     $.ajax({

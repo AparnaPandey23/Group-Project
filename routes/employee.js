@@ -3,10 +3,15 @@ var router = express.Router();
 var Employee = require('../models/employee');
 var jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
+var Link = require('../models/links');
 
 /* GET requests to render pages */
 router.get('/register', function(req, res, next) {
     res.render('registerEMP');
+});
+
+router.get('/NewEmployee', function(req, res, next) {
+    res.render('registerEMPM', { title: 'Creche Home', layout: "layout2" });
 });
 
 /* POST requests for registration and login */ 
@@ -40,6 +45,51 @@ router.post('/register', function(req, res, next){
 	}
     });
 });
+
+
+router.post('/registerM', function(req, res, next){
+    var username = req.body.user_name;
+    var password = req.body.password;
+    var email = req.body.email;
+    var C_id = req.body.C_id;
+
+    Employee.findOne({ 'user_name' :  username }, function(err, user) {
+        if (err)
+            res.send(err);
+        if (user) {
+            res.status(401).json({
+                "status": "info",
+                "body": "Username already taken"
+            });
+        } else {
+            var newEMP = new Employee();
+            newEMP.user_name = username;
+            newEMP.password = newEMP.generateHash(password);
+            newEMP.email = email;
+            newEMP.creche_id = C_id;
+
+            newEMP.save(function(err, employee) {
+                if (err)
+                    throw err;  
+                else{
+                    var newLink = new Link();
+                    newLink.creche_id = C_id
+                    newLink.emp_id = employee._id;
+                    newLink.save(function(err,link){
+                if (err)
+                    throw err;
+                else
+                    console.log("Yes");
+                });
+
+                }
+                res.json({'success' : "suck"});
+            });
+	}
+    });
+});
+
+
 
 router.post('/updateCreche', function(req, res, next){
     var emp_id = req.body.emp_id;
@@ -108,6 +158,30 @@ router.get('/currentUser', function(req, res, next) {
         }
 });
 
+// get the id of the crech assosiated of the 
+router.get('/currentCreche', function(req, res, next) {
+    try {
+        var jwtString = req.cookies.Authorization.split(" ");
+        var profile = verifyJwt(jwtString[1]);
+        if (profile) {
+            Employee.findOne({'_id': profile.user_id}, function (err, user){
+                if (err)    res.send(err);
+                    if (user)   res.json({"empid":user.creche_id});
+            }
+        );
+        }
+    } catch (err) {
+            res.json({
+                "status": "error",
+                "body": [
+                    "You are not logged in."
+                ]
+            });
+        }
+});
+
+
+
 function createJwt(profile) {
     return jwt.sign(profile, 'CSIsTheWorst', {
         expiresIn: '2d'
@@ -118,6 +192,7 @@ function verifyJwt(jwtString) {
     var value = jwt.verify(jwtString, 'CSIsTheWorst');
     return value;
 }
+
 
 /* GET request to return username of user currently logged in */
 router.get('/getUserById', function(req, res, next) {

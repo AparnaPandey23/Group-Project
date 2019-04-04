@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-/* GET add activity page. */
+/* GET stayConnected page. */
 router.get('/addActivity', function(req, res, next) {
   try {
     var userJwtString = req.cookies.Authorization.split(" ");
@@ -24,7 +24,6 @@ router.get('/addActivity', function(req, res, next) {
         });
     }
 });
-
 
 /* GET stayConnected page. */
 router.get('/stayConnected', function(req, res, next) {

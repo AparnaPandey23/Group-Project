@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var Child = require('../models/child');
+var ChildLink = require('../models/childLink');
 var Attendance = require('../models/attendance');
 
 /* GET child list page. */
@@ -99,9 +100,7 @@ router.post('/addchild', function(req, res, next){
         }
 });
 // will get every child in the database will have to change this to prevent this from happning 
-router.get('/getchild'
-           , function(req, res, next)
-           {
+router.get('/getchild',function(req, res, next){
     Child.find({userid:req.query.userid}, function (err,child_fname) {
         if (err)
             res.send(err);
@@ -144,6 +143,39 @@ router.post('/getChildren', function(req, res, next){
         }
 
 });
+
+router.post('/addtoRoom', function(req, res, next){
+        var child_id = req.body.C_id;
+        var Creche_id = req.body.K_id;
+        var TA = req.body.timeA;
+        var TB = req.body.timeB;
+        
+        // Create new child object
+       var newCLink = ChildLink();
+
+        // If the logged in user is a parent, set its par_id
+        newCLink.creche_id = Creche_id;
+        newCLink.child_id = child_id;
+        newCLink.timea = TA;
+        newCLink.timeb = TB;
+            newCLink.save(function(err, linkC) {
+                if (err)
+                    throw err;
+                res.json({'success' : 'Child created'});
+            });
+});
+
+router.get('/getRoomAChild', function(req, res, next){
+        var cid = req.body.C_id;
+        // Create new child objec
+        ChildLink.find({'child_id':cid},function(err,rooms){
+         if (err)
+            res.send(err);
+        res.json(rooms);
+    });
+        // If the logged in user is a parent, set its par_id
+});
+
 
 // NOT CHANGED TO JWT YET - UNTIL ADDING DELETE CHILD BUTTON
 // deleate the Child Request need to pass in the id of the child to be deleated
