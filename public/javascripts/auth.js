@@ -1,7 +1,7 @@
 var switchStatus = false;
 
 $(document).ready(
-    // REGISTRATION
+    // Registration - Users
     function() {
         $("#reg-form").submit(function (event) {
             event.preventDefault();
@@ -29,7 +29,7 @@ $(document).ready(
     });
 
 $(document).ready(
-    // REGISTRATION
+    // Registration - Employees    
     function() {
         $("#EMPreg-form").submit(function (event) {
             event.preventDefault();
@@ -58,7 +58,6 @@ $(document).ready(
 
 
 var idRgoten;
-
 
 function getidofCreche() {
     //console.log(idRgoten);
