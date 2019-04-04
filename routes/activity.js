@@ -6,8 +6,9 @@ router.get('/addActivity', function(req, res, next) {
     try {
       var userJwtString = req.cookies.Authorization.split(" ");
       var profile = verifyJwt(userJwtString[1]);
-      
+      console.log(profile);
       if (profile) {
+          
           if(profile.user_id){
               res.render('addActivity', { title: 'View Activity' ,layout: 'layout2'}); 
           } else if(profile.emp_id){
