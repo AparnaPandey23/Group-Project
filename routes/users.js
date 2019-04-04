@@ -76,9 +76,9 @@ router.post('/login', function(req, res, next){
                 "status": "error",
                 "body": "Username not found"
             });
-        } }); });
-
-
+        }
+    });
+});
 
 /* GET request to return profile of user currently logged in */
 router.get('/currentUser', function(req, res, next) {
@@ -103,11 +103,9 @@ router.get('/getUserById', function(req, res, next) {
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
-
         if (profile)
         {
             userid = profile.user_id;
-
             try 
             {
                 User.findOne({'_id': userid}, function (err, user)
@@ -153,7 +151,9 @@ router.post('/getParent', function(req, res, next){
                 "status": "error",
                 "body": "Parent not found"
             });
-        } }); });
+        }
+    });
+});
 
 
 /* Updating the Profiel of the Usser 
