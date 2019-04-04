@@ -10,7 +10,7 @@ router.get('/newCreche', function(req, res, next) {
 
 /* GET add landing  page. */
 router.get('/home', function(req, res, next) {
-    res.render('CrecheHome', { title: 'Creche Home', layout: "layout2" });
+    res.render('CrecheHome', { title: 'Creche Home', layout: "layout3" });
 });
 
 router.post('/newcreche', function(req, res, next){
