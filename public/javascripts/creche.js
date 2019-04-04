@@ -1,8 +1,35 @@
+var idCgoten;
+function getidOfEmployee() {
+    $.ajax({
+        async: false,
+        type: 'GET',
+        url: '/employee/currentUser',
+        dataType: 'json',
+        data: {
+        },
+        success: function(token){
+            console.log(token);
+            idCgoten = token.empid.emp_id;
+        },
+        error: function(errMsg) {
+            swal(
+                'Oops...',
+                'error'
+            )
+        }
+    });
+    return idCgoten;
+}
+
+
 $(document).ready(
     function() { 
         $("#Creche_setup").submit(function (event) {
             event.preventDefault();
+            idCgoten = getidOfEmployee();
+            console.log(idCgoten);
             $.ajax({
+                async: false,
                 type: 'POST',
                 url: '/creche/newcreche',
                 dataType: 'json',
@@ -12,10 +39,11 @@ $(document).ready(
                     'creche_a1': event.target.line1Add.value,
 		            'creche_a2': event.target.line2Add.value,
  		            'creche_a3': event.target.line3Add.value,
-		            'creche_a4': event.target.line4Add.value
+		            'creche_a4': event.target.line4Add.value,
+                    'creche_emp': idCgoten
                 },
                 success: function(creche){
-                    // Not tested
+                     console.log(idCgoten);
                     addCrecheToEmp(creche.id);
                 },
                 error: function(errMsg) {

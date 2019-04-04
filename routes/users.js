@@ -35,7 +35,7 @@ router.post('/register', function(req, res, next){
             newUser.user_name = username;
             newUser.password = newUser.generateHash(password);
             newUser.email = email;
-            
+
             newUser.save(function(err, user) {
                 if (err)
                     throw err;
@@ -44,7 +44,7 @@ router.post('/register', function(req, res, next){
                 res.cookie('Authorization', 'Bearer ' + user.access_token); 
                 res.json({'success' : user.access_token});
             });
-	}
+        }
     });
 });
 
@@ -79,22 +79,23 @@ router.post('/login', function(req, res, next){
         } }); });
 
 
+
 /* GET request to return profile of user currently logged in */
 router.get('/currentUser', function(req, res, next) {
     try {
         var jwtString = req.cookies.Authorization.split(" ");
         var profile = verifyJwt(jwtString[1]);
         if (profile) {
-            res.json({"userid":profile});
+            res.json({"userid":profile}); 
         }
     } catch (err) {
-            res.json({
-                "status": "error",
-                "body": [
-                    "You are not logged in."
-                ]
-            });
-        }
+        res.json({
+            "status": "error",
+            "body": [
+                "You are not logged in."
+            ]
+        });
+    }
 });
 
 /* GET request to return username of user currently logged in */
@@ -110,7 +111,7 @@ router.get('/getUserById', function(req, res, next) {
             try 
             {
                 User.findOne({'_id': userid}, function (err, user)
-                {
+                             {
                     if (err)    res.send(err);
                     if (user)   res.json({"user_name":user.user_name});
                     else        res.status(401).send(   {"status": "error", "body": "User not found"});
@@ -153,5 +154,93 @@ router.post('/getParent', function(req, res, next){
                 "body": "Parent not found"
             });
         } }); });
+
+
+/* Updating the Profiel of the Usser 
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+*/
+router.post('/upDateName',function(req,res,next){
+    var name = req.body.name;
+    var id = req.body.id;
+    User.updateOne({'_id': id}, {$set:{"full_Name": name}}, function(err, user){
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({'success' : 'updated'});
+        }
+    });
+});
+
+router.post('/upDateMobile',function(req,res,next){
+    var changeOB = req.body.mobileA;
+    var id = req.body.id;
+    User.updateOne({'_id': id}, {$set:{"mobile": changeOB}}, function(err, user){
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({'success' : 'updated'});
+        }
+    });
+});
+
+router.post('/upDateLandLine',function(req,res,next){
+    var changeOB = req.body.mobileB;
+    var id = req.body.id;
+    console.log(id);
+    console.log(changeOB);
+    User.updateOne({'_id': id},{$set:{"land_Line": changeOB}}, function(err, user){
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({'success' : 'updated'});
+        }
+    });
+});
+router.post('/upDateEmail',function(req,res,next){
+    var changeOB = req.body.emaila;
+    var id = req.body.id;
+    User.updateOne({'_id': id}, {$set:{"email": changeOB}}, function(err, user){
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({'success' : 'updated'});
+        }
+    });
+});
+router.post('/upDateHomeadd',function(req,res,next){
+    var changeOB = req.body.home_Addd;
+    var id = req.body.id;
+    User.insertOne({'_id': id}, {$set:{"home_add": changeOB}}, function(err, user){
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({'success' : 'updated'});
+        }
+    });
+});
+router.post('/upDateworkAdd',function(req,res,next){
+    var changeOB = req.body.work_Addd;
+    var id = req.body.id;
+    User.updateOne({'_id': id}, {$set:{"work_add": changeOB}}, function(err, user){
+        if (err)
+            res.send(err);
+        if (user) {
+            res.json({'success' : 'updated'});
+        }
+    });
+});
+/* geting the usser object of the Usser 
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+**************************************************************
+*/
 
 module.exports = router;
