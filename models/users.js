@@ -9,7 +9,12 @@ var usersSchema = new Schema({
     password: String,
     email: String,
     fb_id: { type: String, default: null },
-    access_token: String
+    access_token: String,
+    full_Name: { type: String, default: null },
+    mobile: { type: String, default: null },
+    land_Line: { type: String, default: null },
+    home_add: { type: String, default: null },
+    work_add: { type: String, default: null }
 });
 
 /*

@@ -30,14 +30,23 @@
                                     <i class="fas fa-user-circle fa-1x"></i>
                                     <input class="form-input active validate z-depth-3" id="inputFullName" type="text" placeholder="Full Name" required />  
                                   </span>
-
+				<button class="log-in sign-up z-depth-1" id="submit-Btn" onclick="updatefirstName()"  > Submit</button>
                               </div>
                               <div class="row" id="mobile">
                                 <!--   Phone number -->
                                 <span class="input-item col s12 z-depth-1" >
                                   <i class="fas fa-mobile-alt"></i>
-                                  <input class="form-input active validate" id="inputMobile" placeholder="Mobile Number" type="text" required/>
+
+                                  <input class="form-input active validate" id="mobile" name="mobile" placeholder="Mobile Number" type="text" required/>			
                                 </span>
+				<button class="log-in sign-up z-depth-1" id="submit-Btn"  onclick="updateMobile()"  > Submit</button>	
+                                <!--   Spouse's Phone number -->
+                                <span class="input-item col s12 z-depth-1" >
+                                  <i class="fas fa-mobile-alt"></i>
+                                  <input class="form-input active validate" id="mobile2" name="mobile2" placeholder="Landline Number (Optional)" type="text"/>
+
+                                </span>
+				<button class="log-in sign-up z-depth-1" id="submit-Btn"  onclick="updateLandLine()"  > Submit</button>
                               </div>
                               {{!-- Email --}}
                               <div class="row">
@@ -45,21 +54,23 @@
                                     <i class="fas fa-at" style="margin-top:20px;"></i>
                                     <input class="form-input active validate" id="inputEmail" type="email" placeholder="Parent's Email" />
                                   </span>
+				<button class="log-in sign-up z-depth-1" id="submit-Btn"  onclick="updateEmail()"  > Submit</button>
                               </div>
                               <div class="row">
                                   <!--   Home Address -->
                                   <span class="input-item col s6 z-depth-1">
                                     <i class="fas fa-home fa-1x"></i>
-                                    <input class="form-input active validate z-depth-3" id="inputHomeAdd" type="text" placeholder="Home Address" required />  
+                                    <input class="form-input active validate z-depth-3" id="homeAdd" type="text" placeholder="Home Address" required />    
                                   </span>
+				 <button class="log-in sign-up z-depth-1" id="submit-Btn"  onclick="upDateHomeadd()"  > Submit</button>
 
                                   <!--   Work Address -->
                                   <span class="input-item col s6 z-depth-1">
                                     <i class="fas fa-building fa-1x"></i>
                                     <input class="form-input active validate" id="inputWorkAdd" type="text" placeholder="Work Address (Optional)" />
                                   </span>
+				<button class="log-in sign-up z-depth-1" id="submit-Btn" onclick="upDateworkAdd()"  > Submit</button>
                               </div>
-                              <button class="log-in sign-up z-depth-1" id="submit-Btn" type="submit" onclick="Materialize.toast('Updated Profile',2000,'rounded')"  > Submit</button>
                           </div>
                       </div>
                   </form>
