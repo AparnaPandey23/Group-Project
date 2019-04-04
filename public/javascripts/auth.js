@@ -113,6 +113,8 @@ function loginCreche(id){
         dataType: 'json',
         data: { 
             'creche_id': id
+        }, success: function(){
+            $(location).attr('href', '/feed' );
         },
         error: function(errMsg) {
             swal(
