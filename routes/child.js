@@ -12,9 +12,9 @@ router.get('/children', function(req, res, next) {
         
         if (profile) {
             if(profile.user_id){
-                res.render('children', { title: 'Children' ,layout: 'layout2'}); 
+                res.render('childList', { title: 'Children' ,layout: 'layout2'}); 
             } else if(profile.emp_id){
-                res.render('children', { title: 'Children' ,layout: 'layout3'});                
+                res.render('childList', { title: 'Children' ,layout: 'layout3'});                
             }
         }
     } catch (err) {
