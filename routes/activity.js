@@ -1,28 +1,28 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET add activity page. */
+/* GET stayConnected page. */
 router.get('/addActivity', function(req, res, next) {
-  try {
-    var userJwtString = req.cookies.Authorization.split(" ");
-    var profile = verifyJwt(userJwtString[1]);
-    
-    if (profile) {
-        if(profile.user_id){
-            res.render('addActivity', { title: 'Pick an Activity' ,layout: 'layout2'}); 
-        } else if(profile.emp_id){
-            res.render('addActivity', { title: 'Pick an Activity' ,layout: 'layout3'});                
-        }
-    }
-} catch (err) {
-        res.json({
-            "status": "error",
-            "body": [
-                "You are not logged in."
-            ]
-        });
-    }
-});
+    try {
+      var userJwtString = req.cookies.Authorization.split(" ");
+      var profile = verifyJwt(userJwtString[1]);
+      
+      if (profile) {
+          if(profile.user_id){
+              res.render('addActivity', { title: 'View Activity' ,layout: 'layout2'}); 
+          } else if(profile.emp_id){
+              res.render('addActivity', { title: 'Pick an Activity' ,layout: 'layout3'});                
+          }
+      }
+  } catch (err) {
+          res.json({
+              "status": "error",
+              "body": [
+                  "You are not logged in."
+              ]
+          });
+      }
+  });
 
 
 /* GET stayConnected page. */

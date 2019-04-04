@@ -16,7 +16,7 @@ router.get('/home', function(req, res, next) {
         
         if (profile) {
             if(profile.emp_id){
-                res.render('privacy', { title: 'Privacy' ,layout: 'layout3'});                
+                res.render('home2', { title: 'Home' ,layout: 'layout3'});                
             }
         }
     } catch (err) {
